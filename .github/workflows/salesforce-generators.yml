@@ -2,17 +2,49 @@ name: Salesforce Generators
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
+    paths:
+      - 'src/utils/generators/**'
+      - 'src/tests/salesforce/**'
   workflow_dispatch:
 
 jobs:
-  test:
+  test-generators:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        mkdir -p src/pages tests/pages
-        echo "class TestPage {}" > src/pages/TestPage.js
-        echo "test('passes', () => {});" > tests/pages/TestPage.spec.js
-        echo "Salesforce generators completed successfully"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create .env file
+        run: |
+          cat > .env << 'EOL'
+          # Salesforce Configuration
+          SF_USERNAME=${{ secrets.SF_USERNAME || 'dummy@example.com' }}
+          SF_PASSWORD=${{ secrets.SF_PASSWORD || 'dummypassword' }}
+          SF_LOGIN_URL=https://login.salesforce.com
+          SF_INSTANCE_URL=https://example.lightning.force.com
+          EOL
+      
+      - name: Test page object generators
+        run: |
+          if [ -n "${{ secrets.SF_USERNAME }}" ] && [ -n "${{ secrets.SF_PASSWORD }}" ]; then
+            node bin/generate-page --type=salesforce --name=Contact
+            node bin/generate-selectors --type=salesforce --object=Contact
+          else
+            echo "::warning::Salesforce credentials not found in GitHub Secrets. Skipping generator tests."
+            echo "To run generator tests, add SF_USERNAME and SF_PASSWORD to your GitHub repository secrets."
+            mkdir -p src/pages/salesforce
+            echo "// Mock Contact page object" > src/pages/salesforce/ContactPage.js
+          fi
+      
+      - name: Upload generated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: salesforce-generated-files
+          path: src/pages/salesforce/

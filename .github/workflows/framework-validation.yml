@@ -2,16 +2,51 @@ name: Framework Validation
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly on Sunday at midnight
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        mkdir -p reports
-        echo "✅ Framework validation completed successfully" > reports/validation.txt
-        echo "Framework validation passed"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+      
+      - name: Create .env file
+        run: cp .env.example .env
+      
+      - name: Run basic tests
+        run: npm run test -- --project=chromium
+      
+      - name: Validate build process
+        run: npm run build
+      
+      - name: Generate validation report
+        run: |
+          mkdir -p reports/validation
+          echo "# Framework Validation Report" > reports/validation/validation-report.md
+          echo "## Date: $(date)" >> reports/validation/validation-report.md
+          echo "## Status: ✅ Passed" >> reports/validation/validation-report.md
+          echo "## Details:" >> reports/validation/validation-report.md
+          echo "- All tests executed successfully" >> reports/validation/validation-report.md
+          echo "- Build process completed without errors" >> reports/validation/validation-report.md
+          echo "- Framework is ready for use" >> reports/validation/validation-report.md
+      
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: reports/validation/

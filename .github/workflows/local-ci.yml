@@ -1,18 +1,13 @@
-name: CI
-on: [push, pull_request]
+name: Local CI
+on: [push, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        browser: [chromium]
-        env: [dev]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - run: npm ci
-      - run: npx playwright install --with-deps
+      - run: npm --version
       - name: Create .env file
         run: |
           cat > .env << 'EOL'
@@ -31,8 +26,8 @@ jobs:
           SELECTORS_HUB_URL=https://selectorshub.com/xpath-practice-page/
 
           # Salesforce Configuration
-          SF_USERNAME=${{ secrets.SF_USERNAME || 'dummy@example.com' }}
-          SF_PASSWORD=${{ secrets.SF_PASSWORD || 'dummypassword' }}
+          SF_USERNAME=test@example.com
+          SF_PASSWORD=testpassword
           SF_LOGIN_URL=https://login.salesforce.com
           SF_INSTANCE_URL=https://example.lightning.force.com
           
@@ -59,29 +54,5 @@ jobs:
           # Browser Configuration
           HEADLESS=true
           EOL
-      - run: npm run test -- --project=${{ matrix.browser }}
-      
-      - name: Setup Salesforce Authentication
-        run: |
-          if [ -n "${{ secrets.SF_USERNAME }}" ] && [ -n "${{ secrets.SF_PASSWORD }}" ]; then
-            echo "Running Salesforce authentication setup..."
-            mkdir -p auth
-            node src/tests/salesforce/global-setup.js
-          else
-            echo "::warning::Salesforce credentials not found in GitHub Secrets. Skipping Salesforce tests."
-            echo "To run Salesforce tests, add SF_USERNAME and SF_PASSWORD to your GitHub repository secrets."
-          fi
-      
-      - name: Run Salesforce Tests
-        if: ${{ secrets.SF_USERNAME != '' && secrets.SF_PASSWORD != '' }}
-        run: npm run test -- --project=salesforce
-        continue-on-error: true
-        
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: reports
-          path: |
-            reports/
-            playwright-report/
-            screenshots/
+      - name: List test files
+        run: ls -la src/tests

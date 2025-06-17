@@ -1,17 +1,51 @@
-name: Build Docs
+name: Documentation Build
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
+    paths:
+      - 'docs/**'
+      - 'docs-site/**'
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
+    paths:
+      - 'docs/**'
+      - 'docs-site/**'
   workflow_dispatch:
 
 jobs:
   build-docs:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        mkdir -p docs
-        echo "# Documentation" > docs/index.md
-        echo "Documentation built successfully"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
+      
+      - name: Install dependencies
+        run: |
+          cd docs-site
+          npm ci
+      
+      - name: Build documentation
+        run: |
+          cd docs-site
+          npm run build
+      
+      - name: Upload documentation build
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-build
+          path: docs-site/build/
+      
+      - name: Consolidate documentation
+        run: |
+          node scripts/consolidate-docs.js
+      
+      - name: Upload consolidated docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-docs
+          path: consolidated-docs/

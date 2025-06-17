@@ -1,17 +1,57 @@
-name: Create Distribution Bundle
+name: Create Framework Bundle
 
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    tags:
+      - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number for the bundle'
+        required: true
+        default: '1.0.0'
 
 jobs:
   bundle:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        mkdir -p dist
-        echo "// Distribution bundle" > dist/bundle.js
-        echo "Distribution bundle created successfully"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Set version
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version
+      
+      - name: Create bundle
+        run: npm run create-bundle
+      
+      - name: Build package
+        run: npm run build
+      
+      - name: Create release archive
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          zip -r playwright-framework-v${VERSION}.zip dist/ README.md LICENSE.md
+      
+      - name: Upload bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: framework-bundle
+          path: |
+            dist/
+            playwright-framework-*.zip
+      
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: playwright-framework-*.zip
+          generate_release_notes: true

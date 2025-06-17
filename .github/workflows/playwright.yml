@@ -2,16 +2,75 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox]
+        test-type: [e2e, api, accessibility]
     steps:
-    - run: |
-        mkdir -p test-results
-        echo "✅ All tests passed successfully" > test-results/results.txt
-        echo "Tests completed successfully"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Create .env file
+        run: |
+          cat > .env << 'EOL'
+          # API Configuration
+          API_BASE_URL=https://reqres.in/api
+          API_URL=https://reqres.in/api
+          API_KEY=reqres-free-v1
+
+          # Web Configuration
+          BASE_URL=https://opensource-demo.orangehrmlive.com
+          EXAMPLE_URL=https://example.com
+          TODO_APP_URL=https://demo.playwright.dev/todomvc
+          ORANGEHRM_URL=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+          PLAYWRIGHT_DOCS_URL=https://playwright.dev/
+          AUTOMATION_EXERCISE_URL=https://automationexercise.com
+          SELECTORS_HUB_URL=https://selectorshub.com/xpath-practice-page/
+          
+          # Credentials
+          USERNAME=Admin
+          PASSWORD=admin123
+          INVALID_USERNAME=invalid
+          INVALID_PASSWORD=wrong
+          API_TOKEN=your_api_token
+
+          # Test Data
+          TEST_USER_ID=2
+          TEST_NONEXISTENT_USER_ID=999
+          TEST_PAGE=1
+          MAX_VALID_USER_ID=12
+          MAX_PAGE_WITH_DATA=2
+          USERS_PER_PAGE=6
+          TEST_USER_IDS=1,2,3,23
+          TEST_PAGES=1,2,3
+
+          # External Resources
+          AXE_CORE_CDN=https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.0/axe.min.js
+          
+          # Browser Configuration
+          HEADLESS=true
+          EOL
+      - name: Run Playwright tests
+        run: npm run test:${{ matrix.test-type }} -- --project=${{ matrix.browser }}
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.browser }}-${{ matrix.test-type }}
+          path: |
+            playwright-report/
+            test-results/
+            reports/

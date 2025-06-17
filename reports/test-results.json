@@ -226,6 +226,4932 @@
   },
   "suites": [
     {
+      "title": "accessibility/accessibility.spec.js",
+      "file": "accessibility/accessibility.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Accessibility Tests",
+          "file": "accessibility/accessibility.spec.js",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "login page should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7174,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Critical violations: []\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:22:59.085Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-9931f552b2f60567d48f",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "dashboard should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 7270,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:22:59.102Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-ea55faee601413cca4f6",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "login page should pass specific accessibility rules",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 6864,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:22:59.102Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-97c5ccaf14ecfd2f8293",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "login page should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 5020,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Critical violations: []\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:22.153Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-0a2e551a08d8fbb0a056",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "dashboard should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 5510,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:22.151Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-8e8c0158d2401e230613",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "login page should pass specific accessibility rules",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4700,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:22.193Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-51a7c8063a3cbf2bb166",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "login page should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 6122,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Critical violations: []\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:40.129Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-4fa4c00ce5b2d5281a65",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "dashboard should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 4860,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:40.330Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-ca130c805cc9654acf27",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "login page should pass specific accessibility rules",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4907,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:40.464Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-44da76cfffbb6c0a9996",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "login page should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 23,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3805,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Critical violations: []\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:02.389Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-a02bd5101018875550e0",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "dashboard should not have critical accessibility violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 3904,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:02.643Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-908a0aea1eb153881a54",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "login page should pass specific accessibility rules",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 4163,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:02.718Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5fe40304dd19a43854e-acf313d1169eb9da9bd1",
+              "file": "accessibility/accessibility.spec.js",
+              "line": 78,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "accessibility/fixed-accessibilityTest.spec.js",
+      "file": "accessibility/fixed-accessibilityTest.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Fixed Accessibility Tests",
+          "file": "accessibility/fixed-accessibilityTest.spec.js",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "OrangeHRM login page should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6470,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Accessibility violations: [\n  {\n    type: \u001b[32m'html-lang'\u001b[39m,\n    message: \u001b[32m'Document language not specified'\u001b[39m,\n    severity: \u001b[32m'serious'\u001b[39m,\n    element: { tagName: \u001b[32m'html'\u001b[39m, selector: \u001b[32m'html'\u001b[39m }\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:22:59.096Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-f39698b59754ed9097d3",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM dashboard should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 7270,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:22:59.109Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-f6c317efa94234342803",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login form should be accessible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6583,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:06.676Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-5df235556435b12bed2b",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login page should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5768,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Accessibility violations: [\n  {\n    type: \u001b[32m'html-lang'\u001b[39m,\n    message: \u001b[32m'Document language not specified'\u001b[39m,\n    severity: \u001b[32m'serious'\u001b[39m,\n    element: { tagName: \u001b[32m'html'\u001b[39m, selector: \u001b[32m'html'\u001b[39m }\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:22.188Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-7ef937eba915fa347307",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM dashboard should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "skipped",
+                      "duration": 4950,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:24.729Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-4f7525efd71cf518b44b",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login form should be accessible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3714,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:28.618Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-3622ec585c9d902df17d",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login page should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4870,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Accessibility violations: [\n  {\n    type: \u001b[32m'html-lang'\u001b[39m,\n    message: \u001b[32m'Document language not specified'\u001b[39m,\n    severity: \u001b[32m'serious'\u001b[39m,\n    element: { tagName: \u001b[32m'html'\u001b[39m, selector: \u001b[32m'html'\u001b[39m }\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:41.010Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-5d6b85aa752a98ddebc7",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM dashboard should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 4536,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:41.997Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-be3fd55ecb853b4c6801",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login form should be accessible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5025,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:45.454Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-efe725109d454f184765",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login page should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 26,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4028,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Accessibility violations: [\n  {\n    type: \u001b[32m'html-lang'\u001b[39m,\n    message: \u001b[32m'Document language not specified'\u001b[39m,\n    severity: \u001b[32m'serious'\u001b[39m,\n    element: { tagName: \u001b[32m'html'\u001b[39m, selector: \u001b[32m'html'\u001b[39m }\n  }\n]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:02.828Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-2d696d265bb8850f7ee5",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM dashboard should generate accessibility report",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 23,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3651,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:06.289Z",
+                      "annotations": [
+                        {
+                          "type": "skip"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-7b8bc64faa76b266479f",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "OrangeHRM login form should be accessible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "accessibility",
+                  "projectName": "accessibility",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3933,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:24:06.639Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f256d5914c87c8b0f30b-818852eb92fdc74bddc5",
+              "file": "accessibility/fixed-accessibilityTest.spec.js",
+              "line": 78,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "core/authentication.spec.js",
+      "file": "core/authentication.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication",
+          "file": "core/authentication.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5839,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:07.077Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-cbbbfb3ff76efdc496ac",
+              "file": "core/authentication.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6046,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:07.383Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-f24717e0b0b2f39d9bfa",
+              "file": "core/authentication.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should require username and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 6268,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:07.480Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-d19fa9149de3202bd979",
+              "file": "core/authentication.spec.js",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4860,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:28.786Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-5f3fe5b6e601d8bbc4d9",
+              "file": "core/authentication.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 4726,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:28.855Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-c28e7ffcb81704b2bf4b",
+              "file": "core/authentication.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should require username and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4743,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:28.931Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-422edd238cfa1ead3162",
+              "file": "core/authentication.spec.js",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5200,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:45.550Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-c5699e06c3fd44f0444b",
+              "file": "core/authentication.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 5262,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:46.050Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-6e14d4097599a443a35f",
+              "file": "core/authentication.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should require username and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5510,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:46.684Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d98e8b186f38dfa3d015-7e8b36e02379c9b91a16",
+              "file": "core/authentication.spec.js",
+              "line": 36,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "core/form-validation.spec.js",
+      "file": "core/form-validation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Form Validation",
+          "file": "core/form-validation.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should validate required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5929,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:07.487Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-9a067bf451ab76020524",
+              "file": "core/form-validation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should validate input format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5613,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:12.944Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-0899430497a1c39c5c6c",
+              "file": "core/form-validation.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should accept valid form submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 5871,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:13.266Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-e97daf711d99f1836513",
+              "file": "core/form-validation.spec.js",
+              "line": 40,
+              "column": 3
+            },
+            {
+              "title": "should validate required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4586,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:30.062Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-034f31f33d2cec24a43d",
+              "file": "core/form-validation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should validate input format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4575,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:32.338Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-ec99845f9aebee30e170",
+              "file": "core/form-validation.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should accept valid form submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 4610,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:33.590Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-30f96ecc1828211cf0ab",
+              "file": "core/form-validation.spec.js",
+              "line": 40,
+              "column": 3
+            },
+            {
+              "title": "should validate required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5223,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:46.718Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-f16e5f914000d56ee853",
+              "file": "core/form-validation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should validate input format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5263,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:50.486Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-c725fdd240da90a64660",
+              "file": "core/form-validation.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should accept valid form submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5165,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:50.754Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db3ffc29bc7ca02daf5c-d93b7e7d65fcc8eb90e4",
+              "file": "core/form-validation.spec.js",
+              "line": 40,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "core/framework-validation.spec.js",
+      "file": "core/framework-validation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Framework Validation",
+          "file": "core/framework-validation.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 2060,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:13.434Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1c6e2aeb17c9ccecf0e9-5d953cc25fbd7bd3416a",
+              "file": "core/framework-validation.spec.js",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 944,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:33.652Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1c6e2aeb17c9ccecf0e9-47ba53113669e38bf3f6",
+              "file": "core/framework-validation.spec.js",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 891,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:51.316Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1c6e2aeb17c9ccecf0e9-0aa1227294c37dd8ee8d",
+              "file": "core/framework-validation.spec.js",
+              "line": 8,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "core/navigation.spec.js",
+      "file": "core/navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Navigation",
+          "file": "core/navigation.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should navigate to Checkboxes page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5162,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:13.441Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-acfcceff5a47eeb59fa1",
+              "file": "core/navigation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Dropdown page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5340,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:13.755Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-6b9537e9b5f08ce576d2",
+              "file": "core/navigation.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Form Authentication page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5793,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:15.501Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-3dd63cdfb177cff0b61d",
+              "file": "core/navigation.spec.js",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to home page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5465,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:18.562Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-58fb28096f99861085b1",
+              "file": "core/navigation.spec.js",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Checkboxes page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4387,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:33.682Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-bd5e46431170489fa7ab",
+              "file": "core/navigation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Dropdown page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4401,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:34.601Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-8287bfc69e10cb76f3fd",
+              "file": "core/navigation.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Form Authentication page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4624,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:34.652Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-2a5abf50cf53b4f75125",
+              "file": "core/navigation.spec.js",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to home page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4494,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:36.917Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-8d5007c46f46873dc2b0",
+              "file": "core/navigation.spec.js",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Checkboxes page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4241,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:51.946Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-8113e62c58d0c8049e65",
+              "file": "core/navigation.spec.js",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Dropdown page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4253,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:52.199Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-f5052a8d8dedc48a6e62",
+              "file": "core/navigation.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Form Authentication page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4856,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:52.212Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-40b5018350a0e0144b86",
+              "file": "core/navigation.spec.js",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to home page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 4196,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:55.754Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f6a6fda948725e58e0b-31f77e2bdbac8821b0fa",
+              "file": "core/navigation.spec.js",
+              "line": 41,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "core/orangehrm-tests.spec.js",
+      "file": "core/orangehrm-tests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "OrangeHRM Authentication",
+          "file": "core/orangehrm-tests.spec.js",
+          "line": 59,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 281,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:18.618Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-408d58b2c410ab2bc41c",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 183,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:18.905Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-2b23fdad2a73a9292839",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 85,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 167,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.082Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-3b4c4dfedd60173f1ec3",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 143,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.206Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-f8bc02b6988d20dc1dd1",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 85,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 120,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:55.935Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-348edda7cc696774a105",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 121,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.058Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-a22b6a386eb61c5547fa",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 85,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "OrangeHRM Navigation",
+          "file": "core/orangehrm-tests.spec.js",
+          "line": 110,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should navigate to Admin page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 178,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.092Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-de9504584e1e2aaba9be",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 130,
+              "column": 3
+            },
+            {
+              "title": "should navigate to PIM page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 196,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.107Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-6d0229fec1dbc6ea7eb2",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 139,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to Dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 175,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.147Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-a199aa291c1159affa45",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Admin page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.253Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-8f1412c0fb66a053298c",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 130,
+              "column": 3
+            },
+            {
+              "title": "should navigate to PIM page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 147,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.355Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-1ef5b8b4a9907314e30b",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 139,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to Dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 152,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.401Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-25b6d834bb608c3529d6",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Admin page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 131,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.181Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-246d40424bce7093af3f",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 130,
+              "column": 3
+            },
+            {
+              "title": "should navigate to PIM page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "skipped",
+                      "duration": 135,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.196Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-8e89510c291b84bdf81f",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 139,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to Dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 127,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.315Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-35be919abe9af1afa661",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 148,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "OrangeHRM Form Validation",
+          "file": "core/orangehrm-tests.spec.js",
+          "line": 162,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should validate password strength in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 212,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.274Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-ff96aa8cd8d53aed8a7c",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "should validate password confirmation in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.308Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-87545cb1b38392b9720d",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 213,
+              "column": 3
+            },
+            {
+              "title": "should validate password strength in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "skipped",
+                      "duration": 158,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.505Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-e59c5329204397b2a825",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "should validate password confirmation in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 179,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.555Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-73e66fec2480748e68a7",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 213,
+              "column": 3
+            },
+            {
+              "title": "should validate password strength in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "skipped",
+                      "duration": 136,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.334Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-6a65d4353c1fc66b2150",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "should validate password confirmation in Add User form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "OrangeHRM tests are skipped due to site availability issues"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 133,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.446Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "OrangeHRM tests are skipped due to site availability issues"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e7ff90172f71caf93113-fa1a2583a52a0d68a507",
+              "file": "core/orangehrm-tests.spec.js",
+              "line": 213,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "examples/flaky-test-example.spec.js",
+      "file": "examples/flaky-test-example.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Flaky Test Examples",
+          "file": "examples/flaky-test-example.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "flaky test with annotation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "flaky",
+                      "description": "This test is known to be flaky"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2090,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.332Z",
+                      "annotations": [
+                        {
+                          "type": "flaky",
+                          "description": "This test is known to be flaky"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-a19348adc1614a64e47f",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "test that might be quarantined automatically",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2161,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.494Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-afd04b36b0f71fd04981",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "manually skipped test if needed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2108,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:19.575Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-3286f1e9b30b5619e441",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "flaky test with annotation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "flaky",
+                      "description": "This test is known to be flaky"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1006,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.672Z",
+                      "annotations": [
+                        {
+                          "type": "flaky",
+                          "description": "This test is known to be flaky"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-535793b4490f7e532dd6",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "test that might be quarantined automatically",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1051,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:38.741Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-e9c1f87be20d89a9cc8f",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "manually skipped test if needed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1129,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.006Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-2f20e4bb7ea3a478b29d",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "flaky test with annotation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "flaky",
+                      "description": "This test is known to be flaky"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 840,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.460Z",
+                      "annotations": [
+                        {
+                          "type": "flaky",
+                          "description": "This test is known to be flaky"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-3e052dbb2a96fb939e12",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "test that might be quarantined automatically",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 823,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.477Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-5dd0d40c5c2c4225d646",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "manually skipped test if needed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 852,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:56.587Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9615df678fe8c575b758-f4bdf435c894550dcb64",
+              "file": "examples/flaky-test-example.spec.js",
+              "line": 30,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "framework-validation.spec.js",
+      "file": "framework-validation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Framework Validation",
+          "file": "framework-validation.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 206,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e1e32b0b7aaf51135c6-b9b60e491ab79b1f4864",
+              "file": "framework-validation.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 135,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.279Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e1e32b0b7aaf51135c6-b0f94353241e4e5bcfa3",
+              "file": "framework-validation.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "Framework validation test",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 116,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e1e32b0b7aaf51135c6-d3b7f5c395de737dca21",
+              "file": "framework-validation.spec.js",
+              "line": 6,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "integration/jira-integration.spec.js",
+      "file": "integration/jira-integration.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Jira API Integration",
+          "file": "integration/jira-integration.spec.js",
+          "line": 10,
+          "column": 15,
+          "specs": [
+            {
+              "title": "should search for issues using JQL @JIRA-123",
+              "ok": true,
+              "tags": [
+                "JIRA-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.426Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-bd4a03c3d9e8d3378fef",
+              "file": "integration/jira-integration.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should get issue details @JIRA-124",
+              "ok": true,
+              "tags": [
+                "JIRA-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.426Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-1ff4de6ddb00d96512dc",
+              "file": "integration/jira-integration.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "should search for issues using JQL @JIRA-123",
+              "ok": true,
+              "tags": [
+                "JIRA-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-bc128cddd0cfa131bfce",
+              "file": "integration/jira-integration.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should get issue details @JIRA-124",
+              "ok": true,
+              "tags": [
+                "JIRA-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-45014e352a05631d5156",
+              "file": "integration/jira-integration.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "should search for issues using JQL @JIRA-123",
+              "ok": true,
+              "tags": [
+                "JIRA-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.193Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-4c1877c38e4fe5c438d1",
+              "file": "integration/jira-integration.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should get issue details @JIRA-124",
+              "ok": true,
+              "tags": [
+                "JIRA-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.193Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f9185e6a87017cabf9d5-4d27c934a6345d3ff7e1",
+              "file": "integration/jira-integration.spec.js",
+              "line": 21,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "integration/salesforce-objects.spec.js",
+      "file": "integration/salesforce-objects.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Salesforce Objects Integration",
+          "file": "integration/salesforce-objects.spec.js",
+          "line": 10,
+          "column": 15,
+          "specs": [
+            {
+              "title": "should get object metadata @SF-123",
+              "ok": true,
+              "tags": [
+                "SF-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.427Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-206a9e57db4f198a9952",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve test case @SF-124",
+              "ok": true,
+              "tags": [
+                "SF-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.429Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-597c6396d75ef52d0e7e",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "should get object metadata @SF-123",
+              "ok": true,
+              "tags": [
+                "SF-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-c68d7f7687635777b1e9",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve test case @SF-124",
+              "ok": true,
+              "tags": [
+                "SF-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-09fefe5b65f4ca44826b",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "should get object metadata @SF-123",
+              "ok": true,
+              "tags": [
+                "SF-123"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.193Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-9d5e711261e59ebbe124",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve test case @SF-124",
+              "ok": true,
+              "tags": [
+                "SF-124"
+              ],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.193Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "bac9b7e3e72c83522999-e0b398e5bc9e170eec94",
+              "file": "integration/salesforce-objects.spec.js",
+              "line": 22,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "integration/testrail-example.spec.js",
+      "file": "integration/testrail-example.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TestRail Integration",
+          "file": "integration/testrail-example.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Execute TestRail test case",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.433Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a4a1b2d7fda9ffa10c68-e26b6b68696b600e0c3c",
+              "file": "integration/testrail-example.spec.js",
+              "line": 9,
+              "column": 8
+            },
+            {
+              "title": "Execute TestRail test case",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.418Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a4a1b2d7fda9ffa10c68-02189d0f8fd671d647e6",
+              "file": "integration/testrail-example.spec.js",
+              "line": 9,
+              "column": 8
+            },
+            {
+              "title": "Execute TestRail test case",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.194Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a4a1b2d7fda9ffa10c68-37c2cb926e0b04c150bc",
+              "file": "integration/testrail-example.spec.js",
+              "line": 9,
+              "column": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reporting/reportingUtils.spec.js",
+      "file": "reporting/reportingUtils.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Reporting Utilities",
+          "file": "reporting/reportingUtils.spec.js",
+          "line": 27,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should process Playwright results",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.450Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "04a95a9b0e2c2856f905-030c6729db5068a1ab73",
+              "file": "reporting/reportingUtils.spec.js",
+              "line": 28,
+              "column": 3
+            },
+            {
+              "title": "should process Playwright results",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.430Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "04a95a9b0e2c2856f905-8b19d6913dd956d9a7e1",
+              "file": "reporting/reportingUtils.spec.js",
+              "line": 28,
+              "column": 3
+            },
+            {
+              "title": "should process Playwright results",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.205Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "04a95a9b0e2c2856f905-08ef53b8f4887d963595",
+              "file": "reporting/reportingUtils.spec.js",
+              "line": 28,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reporting/simple.spec.js",
+      "file": "reporting/simple.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Simple Test",
+          "file": "reporting/simple.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should pass",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:21.458Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7a6de6e83844e6f8ca5f-0e48d7b57f59d68cfc54",
+              "file": "reporting/simple.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should pass",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:39.438Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7a6de6e83844e6f8ca5f-79823a369387008822d1",
+              "file": "reporting/simple.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should pass",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.217Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7a6de6e83844e6f8ca5f-db2245801bdc2a606b75",
+              "file": "reporting/simple.spec.js",
+              "line": 7,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "salesforce/salesforce-api-mock.spec.js",
+      "file": "salesforce/salesforce-api-mock.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Salesforce API Mock Tests",
+          "file": "salesforce/salesforce-api-mock.spec.js",
+          "line": 108,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should get API limits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "API Limits: {\n  \"DailyApiRequests\": {\n    \"Max\": 15000,\n    \"Remaining\": 14998\n  },\n  \"DailyBulkApiRequests\": {\n    \"Max\": 5000,\n    \"Remaining\": 5000\n  },\n  \"DailyGenericStreamingApiEvents\": {\n    \"Max\": 10000,\n    \"Remaining\": 10000\n  }\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.675Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dfc8226da50b5db5d5d1-5a87dc10ae3f636fb6fc",
+              "file": "salesforce/salesforce-api-mock.spec.js",
+              "line": 116,
+              "column": 3
+            },
+            {
+              "title": "should describe global objects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 7,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Objects: [ \u001b[32m'Account'\u001b[39m, \u001b[32m'Contact'\u001b[39m ]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.740Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dfc8226da50b5db5d5d1-164d25e1b7e0515b2f0d",
+              "file": "salesforce/salesforce-api-mock.spec.js",
+              "line": 129,
+              "column": 3
+            },
+            {
+              "title": "should describe Contact object",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 6,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Contact Fields: [ \u001b[32m'Id'\u001b[39m, \u001b[32m'FirstName'\u001b[39m, \u001b[32m'LastName'\u001b[39m, \u001b[32m'Email'\u001b[39m, \u001b[32m'Phone'\u001b[39m ]\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.741Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dfc8226da50b5db5d5d1-64599295d7433dd7f051",
+              "file": "salesforce/salesforce-api-mock.spec.js",
+              "line": 145,
+              "column": 3
+            },
+            {
+              "title": "should extract Contact metadata to file",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Contact metadata extracted to /Users/mzahirudeen/Desktop/AgentSync/Client Deliverable/AgentSyncProfessionalServices/temp/contact-metadata-mock.json\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.867Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "dfc8226da50b5db5d5d1-f8d113807ee55fe006a9",
+              "file": "salesforce/salesforce-api-mock.spec.js",
+              "line": 160,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "salesforce/salesforce-api.spec.js",
+      "file": "salesforce/salesforce-api.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Salesforce API Tests",
+          "file": "salesforce/salesforce-api.spec.js",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should get API limits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "No access token available"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.690Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "No access token available"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1c4768d57dc6a524a004-b3cc3c1d23b65c07bdaa",
+              "file": "salesforce/salesforce-api.spec.js",
+              "line": 26,
+              "column": 3
+            },
+            {
+              "title": "should describe global objects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "No access token available"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.693Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "No access token available"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1c4768d57dc6a524a004-1946a8dd6ed58875c5c0",
+              "file": "salesforce/salesforce-api.spec.js",
+              "line": 47,
+              "column": 3
+            },
+            {
+              "title": "should describe Contact object",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "No access token available"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.700Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "No access token available"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1c4768d57dc6a524a004-74abf5f41b4be4843592",
+              "file": "salesforce/salesforce-api.spec.js",
+              "line": 70,
+              "column": 3
+            },
+            {
+              "title": "should extract Contact metadata to file",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "No access token available"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.703Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "No access token available"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1c4768d57dc6a524a004-eb14c8bacb1d872f6478",
+              "file": "salesforce/salesforce-api.spec.js",
+              "line": 94,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "salesforce/salesforce-login.spec.js",
+      "file": "salesforce/salesforce-login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Salesforce Login Test",
+          "file": "salesforce/salesforce-login.spec.js",
+          "line": 20,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should login to Salesforce successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 19348,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Current page title: Verify Your Identity | Salesforce\n"
+                        },
+                        {
+                          "text": "Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.my.salesforce.com/_ui/identity/verification/method/SmsVerificationFinishUi/e?vcsrf=niitqWa5Ho4PlNbI_fp_O6oE25aiUT2u1GaHvmgqobXwd2Vhd5jOC9tkZe6yVlG8IZgyNy1D9Wi6v2kYPl14QmZBVo8i8ywEKO-vxvpfpCNWszLa5-1V6oKx31tVyLsydk1kgsa9D20tvIuPiKgfn1TBU7Ub4ygNdpkGL2f6Ftigl9u3RkXIhHXDiLJU2C80XZQn2Q4c1Y6Z96ttfswirxUofUjgqOf76q_krQ_CT0AD6H-BKwOoNgAkWuIQnEqQwadONOGfXs-_hn8eBf9o4282Skz3MqVywito2Yhd0trzj8iDJsB9p17FOq2UP3RyGThdCxqJ598aLhjWVjpcYC4Xodn2FjP45UoHpnLtkWjkkM4E4J2X8s2qEQCrYSi1GAprrID4B1l2AdiW_WPR3faUhfdsGqXeh-ZGAdqIqAIorlMkSyghCy0myEPQAIOhC_SK5vBi0tfkDPm0U1FrG_BnLCWdNLUQ3zib2Y8rIeXq5via7WCJ_rLps9a8eXzAmCI22T51MP3gonKMYcSXYzjXRpPxIJ3EIZnK-waODtietwHPY2XqQ_K-NfAzW1va9QECvG6clWdYJYz2R--36wXuoW6kqFp775MyaDLasT3ty95rD-rf2C9Zyo6CDmgpHhCt6lEGAOjdy5mSlGNBw8X9Ej9Acx272vo2guxx92I%3D&vpol=ic&vflid=0&vfgrp=1550467612&retURL=%2Fsecur%2Ffrontdoor.jsp%3Fallp%3D1%26cshc%3DL00000GHB89L00000OHE3z%26apv%3D1%26display%3Dpage%26ucs%3D1\n"
+                        },
+                        {
+                          "text": "✅ Successfully logged in to Salesforce and saved authentication state\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.708Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1fb1f462758e2810acb2-2dc13c921714257b4ce9",
+              "file": "salesforce/salesforce-login.spec.js",
+              "line": 21,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "salesforce/salesforce-simple-contact.spec.js",
+      "file": "salesforce/salesforce-simple-contact.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Salesforce Simple Contact Test",
+          "file": "salesforce/salesforce-simple-contact.spec.js",
+          "line": 7,
+          "column": 15,
+          "specs": [
+            {
+              "title": "should navigate to contacts list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "salesforce",
+                  "projectName": "salesforce",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-16T14:23:57.755Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "85a04c9f8fa855b10823-ef3a3b87e0d65251f998",
+              "file": "salesforce/salesforce-simple-contact.spec.js",
+              "line": 10,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "api/rest/create-user.spec.js",
       "file": "api/rest/create-user.spec.js",
       "column": 0,
@@ -251,15 +5177,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 417,
+                      "duration": 1035,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.259Z",
+                      "startTime": "2025-06-16T14:23:58.191Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -285,15 +5211,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 469,
+                      "duration": 1000,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.246Z",
+                      "startTime": "2025-06-16T14:23:58.190Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -319,15 +5245,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 416,
+                      "duration": 989,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.253Z",
+                      "startTime": "2025-06-16T14:23:58.290Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -353,15 +5279,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 532,
+                      "duration": 581,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.242Z",
+                      "startTime": "2025-06-16T14:23:59.195Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -387,15 +5313,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 483,
+                      "duration": 573,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.262Z",
+                      "startTime": "2025-06-16T14:23:59.231Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -438,15 +5364,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 324,
+                      "duration": 588,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.678Z",
+                      "startTime": "2025-06-16T14:23:59.287Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -472,15 +5398,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 340,
+                      "duration": 603,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.685Z",
+                      "startTime": "2025-06-16T14:23:59.781Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -506,15 +5432,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 1,
+                      "workerIndex": 19,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 341,
+                      "duration": 623,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.722Z",
+                      "startTime": "2025-06-16T14:23:59.809Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -540,15 +5466,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 41,
+                      "duration": 587,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.753Z",
+                      "startTime": "2025-06-16T14:23:59.876Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -574,15 +5500,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
+                      "workerIndex": 22,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 35,
+                      "duration": 768,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.783Z",
+                      "startTime": "2025-06-16T14:24:00.318Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -608,15 +5534,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 28,
+                      "duration": 583,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.796Z",
+                      "startTime": "2025-06-16T14:24:00.385Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -642,15 +5568,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 345,
+                      "duration": 563,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.820Z",
+                      "startTime": "2025-06-16T14:24:00.433Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -676,15 +5602,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 29,
+                      "duration": 576,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.826Z",
+                      "startTime": "2025-06-16T14:24:00.465Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -710,15 +5636,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 25,
+                      "duration": 618,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.857Z",
+                      "startTime": "2025-06-16T14:24:00.971Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -744,15 +5670,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 27,
+                      "duration": 593,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.883Z",
+                      "startTime": "2025-06-16T14:24:00.999Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -778,15 +5704,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 31,
+                      "duration": 91,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.911Z",
+                      "startTime": "2025-06-16T14:24:01.043Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -812,15 +5738,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
+                      "workerIndex": 22,
                       "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 26,
+                      "duration": 616,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.944Z",
+                      "startTime": "2025-06-16T14:24:01.090Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -863,15 +5789,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 42,
+                      "duration": 618,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:46.991Z",
+                      "startTime": "2025-06-16T14:24:01.177Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -897,15 +5823,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 2,
+                      "workerIndex": 20,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 43,
+                      "duration": 103,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.024Z",
+                      "startTime": "2025-06-16T14:24:01.625Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -931,15 +5857,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
+                      "workerIndex": 19,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 323,
+                      "duration": 597,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.049Z",
+                      "startTime": "2025-06-16T14:24:01.626Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -965,15 +5891,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 4,
+                      "workerIndex": 22,
                       "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 318,
+                      "duration": 571,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.035Z",
+                      "startTime": "2025-06-16T14:24:01.732Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1016,15 +5942,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 30,
+                      "duration": 92,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.068Z",
+                      "startTime": "2025-06-16T14:24:01.734Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1050,15 +5976,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 32,
+                      "duration": 103,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.070Z",
+                      "startTime": "2025-06-16T14:24:01.801Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1084,15 +6010,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 342,
+                      "duration": 581,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.099Z",
+                      "startTime": "2025-06-16T14:24:01.828Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1118,15 +6044,15 @@
                   "projectName": "api",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 26,
+                      "duration": 112,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-09T12:58:47.104Z",
+                      "startTime": "2025-06-16T14:24:01.906Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1146,10 +6072,10 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-06-09T12:58:45.690Z",
-    "duration": 1764.259,
-    "expected": 25,
-    "skipped": 0,
+    "startTime": "2025-06-16T14:22:58.535Z",
+    "duration": 78782.618,
+    "expected": 97,
+    "skipped": 49,
     "unexpected": 0,
     "flaky": 0
   }

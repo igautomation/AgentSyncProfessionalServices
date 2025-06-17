@@ -31,8 +31,8 @@ jobs:
           SELECTORS_HUB_URL=https://selectorshub.com/xpath-practice-page/
 
           # Salesforce Configuration
-          SF_USERNAME=${{ secrets.SF_USERNAME || 'dummy@example.com' }}
-          SF_PASSWORD=${{ secrets.SF_PASSWORD || 'dummypassword' }}
+          SF_USERNAME=dummy@example.com
+          SF_PASSWORD=dummypassword
           SF_LOGIN_URL=https://login.salesforce.com
           SF_INSTANCE_URL=https://example.lightning.force.com
           
@@ -61,19 +61,36 @@ jobs:
           EOL
       - run: npm run test -- --project=${{ matrix.browser }}
       
-      - name: Setup Salesforce Authentication
+      - name: Check for Salesforce credentials
+        id: check_sf_creds
         run: |
           if [ -n "${{ secrets.SF_USERNAME }}" ] && [ -n "${{ secrets.SF_PASSWORD }}" ]; then
-            echo "Running Salesforce authentication setup..."
-            mkdir -p auth
-            node src/tests/salesforce/global-setup.js
+            echo "has_creds=true" >> $GITHUB_OUTPUT
           else
-            echo "::warning::Salesforce credentials not found in GitHub Secrets. Skipping Salesforce tests."
-            echo "To run Salesforce tests, add SF_USERNAME and SF_PASSWORD to your GitHub repository secrets."
+            echo "has_creds=false" >> $GITHUB_OUTPUT
           fi
       
+      - name: Setup Salesforce Authentication
+        if: steps.check_sf_creds.outputs.has_creds == 'true'
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+        run: |
+          echo "Running Salesforce authentication setup..."
+          mkdir -p auth
+          node src/tests/salesforce/global-setup.js
+      
+      - name: Skip Salesforce Authentication
+        if: steps.check_sf_creds.outputs.has_creds != 'true'
+        run: |
+          echo "::warning::Salesforce credentials not found in GitHub Secrets. Skipping Salesforce tests."
+          echo "To run Salesforce tests, add SF_USERNAME and SF_PASSWORD to your GitHub repository secrets."
+      
       - name: Run Salesforce Tests
-        if: ${{ secrets.SF_USERNAME != '' && secrets.SF_PASSWORD != '' }}
+        if: steps.check_sf_creds.outputs.has_creds == 'true'
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
         run: npm run test -- --project=salesforce
         continue-on-error: true
         

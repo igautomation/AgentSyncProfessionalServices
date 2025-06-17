@@ -62,8 +62,11 @@ jobs:
       - run: npm run test -- --project=${{ matrix.browser }}
       
       - name: Setup Salesforce Authentication
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
         run: |
-          if [ -n "${{ secrets.SF_USERNAME }}" ] && [ -n "${{ secrets.SF_PASSWORD }}" ]; then
+          if [ -n "$SF_USERNAME" ] && [ -n "$SF_PASSWORD" ]; then
             echo "Running Salesforce authentication setup..."
             mkdir -p auth
             node src/tests/salesforce/global-setup.js
@@ -73,7 +76,10 @@ jobs:
           fi
       
       - name: Run Salesforce Tests
-        if: ${{ secrets.SF_USERNAME != '' && secrets.SF_PASSWORD != '' }}
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+        if: env.SF_USERNAME != '' && env.SF_PASSWORD != ''
         run: npm run test -- --project=salesforce
         continue-on-error: true
         

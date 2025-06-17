@@ -87,24 +87,24 @@ jobs:
         run: |
           mkdir -p src/tests/api/rest
           if [ ! -f "src/tests/api/rest/data-driven-api.spec.js" ]; then
-            cat > src/tests/api/rest/data-driven-api.spec.js << 'EOL'
-            const { test, expect } = require('@playwright/test');
-
-            test.describe('Basic API Test', () => {
-              test('GET request test', async ({ request }) => {
-                const response = await request.get('https://reqres.in/api/users/2');
-                expect(response.ok()).toBeTruthy();
-                const body = await response.json();
-                expect(body.data).toBeTruthy();
-              });
-            });
-            EOL
+            echo "const { test, expect } = require('@playwright/test');" > src/tests/api/rest/data-driven-api.spec.js
+            echo "" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "test.describe('Basic API Test', () => {" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "  test('GET request test', async ({ request }) => {" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "    const response = await request.get('https://reqres.in/api/users/2');" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "    expect(response.ok()).toBeTruthy();" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "    const body = await response.json();" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "    expect(body.data).toBeTruthy();" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "  });" >> src/tests/api/rest/data-driven-api.spec.js
+            echo "});" >> src/tests/api/rest/data-driven-api.spec.js
             echo "Created test file"
           fi
       
+      - name: Create test directories
+        run: mkdir -p test-results playwright-report reports
+      
       - name: Run API tests in Docker
         run: |
-          mkdir -p test-results playwright-report reports
           docker run --rm \
             -v $(pwd)/test-results:/app/test-results \
             -v $(pwd)/playwright-report:/app/playwright-report \

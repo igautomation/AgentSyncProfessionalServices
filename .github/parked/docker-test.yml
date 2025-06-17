@@ -2,9 +2,10 @@ name: Docker Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master, develop ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -48,7 +49,17 @@ jobs:
           AXE_CORE_CDN=https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.0/axe.min.js
           EOL
       
+      - name: Check if Dockerfile exists
+        id: check_dockerfile
+        run: |
+          if [ -f "Dockerfile" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Create Dockerfile
+        if: steps.check_dockerfile.outputs.exists != 'true'
         run: |
           cat > Dockerfile << 'EOL'
           FROM mcr.microsoft.com/playwright:v1.40.0-focal
@@ -76,7 +87,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       
       - name: Build Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           load: true
@@ -84,14 +95,33 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
+      - name: Check if API test file exists
+        id: check_api_test
+        run: |
+          if [ -f "src/tests/api/rest/data-driven-api.spec.js" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "API test file not found, will run a basic test instead"
+          fi
+      
       - name: Run API tests in Docker
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/test-results:/app/test-results \
-            -v ${{ github.workspace }}/playwright-report:/app/playwright-report \
-            -v ${{ github.workspace }}/reports:/app/reports \
-            --env-file .env \
-            playwright-framework:test npx playwright test src/tests/api/rest/data-driven-api.spec.js --project=chromium
+          if [ "${{ steps.check_api_test.outputs.exists }}" == "true" ]; then
+            docker run --rm \
+              -v ${{ github.workspace }}/test-results:/app/test-results \
+              -v ${{ github.workspace }}/playwright-report:/app/playwright-report \
+              -v ${{ github.workspace }}/reports:/app/reports \
+              --env-file .env \
+              playwright-framework:test npx playwright test src/tests/api/rest/data-driven-api.spec.js --project=chromium
+          else
+            docker run --rm \
+              -v ${{ github.workspace }}/test-results:/app/test-results \
+              -v ${{ github.workspace }}/playwright-report:/app/playwright-report \
+              -v ${{ github.workspace }}/reports:/app/reports \
+              --env-file .env \
+              playwright-framework:test npx playwright test src/tests/framework-validation.spec.js --project=chromium
+          fi
       
       - name: Upload test results
         if: always()

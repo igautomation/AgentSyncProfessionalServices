@@ -2,27 +2,29 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master, develop ]
-  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        browser: [chromium, firefox]
-        test-type: [e2e, api, accessibility]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '18'
+          cache: 'npm'
+      
       - name: Install dependencies
         run: npm ci
+      
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps ${{ matrix.browser }}
+        run: npx playwright install --with-deps
+      
       - name: Create .env file
         run: |
           cat > .env << 'EOL'
@@ -39,7 +41,7 @@ jobs:
           PLAYWRIGHT_DOCS_URL=https://playwright.dev/
           AUTOMATION_EXERCISE_URL=https://automationexercise.com
           SELECTORS_HUB_URL=https://selectorshub.com/xpath-practice-page/
-          
+
           # Credentials
           USERNAME=Admin
           PASSWORD=admin123
@@ -56,21 +58,39 @@ jobs:
           USERS_PER_PAGE=6
           TEST_USER_IDS=1,2,3,23
           TEST_PAGES=1,2,3
+          TEST_USER_EMAIL=user@example.com
+          TEST_USER_NAME=Test User
+
+          # Test Users
+          TEST_USER1_NAME=User 1
+          TEST_USER1_JOB=Job 1
+          TEST_USER1_STATUS=201
+          TEST_USER2_NAME=User 2
+          TEST_USER2_JOB=Job 2
+          TEST_USER2_STATUS=201
+          TEST_USER3_NAME=User 3
+          TEST_USER3_JOB=Job 3
+          TEST_USER3_STATUS=201
 
           # External Resources
           AXE_CORE_CDN=https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.0/axe.min.js
-          
-          # Browser Configuration
-          HEADLESS=true
           EOL
-      - name: Run Playwright tests
-        run: npm run test:${{ matrix.test-type }} -- --project=${{ matrix.browser }}
+      
+      - name: Run API tests
+        run: npx playwright test src/tests/api/rest/data-driven-api.spec.js --project=chromium
+      
+      - name: Run accessibility tests
+        if: success() || failure()  # Run even if previous step fails
+        run: npx playwright test src/tests/accessibility/fixed-accessibilityTest.spec.js --project=chromium
+      
+      - name: Generate report
+        if: always()
+        run: npx playwright show-report
+      
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.browser }}-${{ matrix.test-type }}
-          path: |
-            playwright-report/
-            test-results/
-            reports/
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

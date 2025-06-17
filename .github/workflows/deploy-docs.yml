@@ -2,36 +2,39 @@ name: Deploy Documentation
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
     paths:
-      - 'docs/**'
       - 'docs-site/**'
+      - '.github/workflows/deploy-docs.yml'
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: npm
-          cache-dependency-path: docs-site/package-lock.json
-      
+
       - name: Install dependencies
         run: |
           cd docs-site
           npm ci
-      
-      - name: Build documentation
+
+      - name: Build website
         run: |
           cd docs-site
           npm run build
-      
+
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: docs-site/build
-          branch: gh-pages
-          clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs-site/build
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

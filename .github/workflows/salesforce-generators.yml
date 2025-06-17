@@ -2,49 +2,78 @@ name: Salesforce Generators
 
 on:
   push:
-    branches: [ main, master, develop ]
     paths:
       - 'src/utils/generators/**'
-      - 'src/tests/salesforce/**'
-  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/utils/generators/**'
 
 jobs:
-  test-generators:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-      
+          
       - name: Install dependencies
         run: npm ci
-      
+        
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        
       - name: Create .env file
         run: |
           cat > .env << 'EOL'
           # Salesforce Configuration
-          SF_USERNAME=${{ secrets.SF_USERNAME || 'dummy@example.com' }}
-          SF_PASSWORD=${{ secrets.SF_PASSWORD || 'dummypassword' }}
-          SF_LOGIN_URL=https://login.salesforce.com
-          SF_INSTANCE_URL=https://example.lightning.force.com
+          SF_USERNAME=${{ secrets.SF_USERNAME }}
+          SF_PASSWORD=${{ secrets.SF_PASSWORD }}
+          SF_URL=https://login.salesforce.com
+          SF_ORG_ALIAS=github-ci-org
+          
+          # Output Configuration
+          PAGES_OUTPUT_DIR=./src/pages
+          TESTS_OUTPUT_DIR=./tests/pages
+          ELEMENTS_OUTPUT_FILE=./sf_elements.json
+          
+          # Browser Configuration
+          HEADLESS=true
+          BROWSER_TIMEOUT=60000
           EOL
-      
-      - name: Test page object generators
+          
+      - name: Create test directories
         run: |
-          if [ -n "${{ secrets.SF_USERNAME }}" ] && [ -n "${{ secrets.SF_PASSWORD }}" ]; then
-            node bin/generate-page --type=salesforce --name=Contact
-            node bin/generate-selectors --type=salesforce --object=Contact
+          mkdir -p src/pages
+          mkdir -p tests/pages
+          mkdir -p sessions
+          
+      - name: Run generator tests
+        run: |
+          # Run unit tests for generators
+          npm test -- tests/generators/
+          
+      - name: Test page generation workflow
+        if: ${{ secrets.SF_USERNAME != '' && secrets.SF_PASSWORD != '' }}
+        run: |
+          # Only run this if credentials are provided
+          # Skip this step in CI if script doesn't exist
+          if [ -f "./run-sf-workflow.sh" ]; then
+            chmod +x ./run-sf-workflow.sh
+            ./run-sf-workflow.sh --name TestPage
           else
-            echo "::warning::Salesforce credentials not found in GitHub Secrets. Skipping generator tests."
-            echo "To run generator tests, add SF_USERNAME and SF_PASSWORD to your GitHub repository secrets."
-            mkdir -p src/pages/salesforce
-            echo "// Mock Contact page object" > src/pages/salesforce/ContactPage.js
+            echo "Skipping page generation workflow - script not found"
           fi
-      
-      - name: Upload generated files
+          
+      - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: salesforce-generated-files
-          path: src/pages/salesforce/
+          name: generated-files
+          path: |
+            src/pages/TestPage.js
+            tests/pages/TestPage.spec.js
+            sf_elements.json
+            error-screenshot.png

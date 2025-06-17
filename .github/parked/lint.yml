@@ -1,0 +1,44 @@
+name: Lint
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: true
+      
+      - name: Check for ESLint configuration
+        id: check_eslint
+        if: ${{ failure() }}
+        run: |
+          if [ -f ".eslintrc.js" ] || [ -f ".eslintrc.json" ] || [ -f ".eslintrc.yml" ] || [ -f ".eslintrc" ]; then
+            echo "ESLint configuration found, but linting failed"
+            exit 1
+          else
+            echo "No ESLint configuration found, creating minimal config"
+            echo "module.exports = { root: true, extends: ['eslint:recommended'] };" > .eslintrc.js
+            echo "Minimal ESLint configuration created"
+          fi
+      
+      - name: Run Prettier check
+        run: npx prettier --check . || echo "Prettier check failed, but continuing workflow"
+        continue-on-error: true

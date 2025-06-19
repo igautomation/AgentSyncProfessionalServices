@@ -1,13 +1,18 @@
 {
-  "name": "@your-org/playwright-framework",
+  "name": "@agentsync/test-framework",
   "version": "1.0.0",
-  "description": "Playwright Test Framework",
+  "description": "AgentSync Professional Services Test Automation Framework",
   "main": "src/index.js",
   "bin": {
     "playwright-framework": "./bin/cli.js"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/agentsync-test-framework.git"
   },
   "scripts": {
     "test": "playwright test",
@@ -29,7 +34,9 @@
     "docs:build": "cd docs-site && npm run build",
     "build": "webpack",
     "prepublishOnly": "npm run build",
-    "test:salesforce:config": "playwright test --config=playwright.config.salesforce.js"
+    "test:salesforce:config": "playwright test --config=playwright.config.salesforce.js",
+    "release": "node scripts/release.js",
+    "framework:init": "node bin/cli.js init"
   },
   "keywords": [
     "e2e",

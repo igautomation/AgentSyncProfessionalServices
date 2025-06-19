@@ -15,34 +15,45 @@ program
 program
   .command('init')
   .description('Initialize a new Playwright Framework project')
+  .option('-n, --name <name>', 'Project name')
   .option('-t, --template <template>', 'Template to use (basic, full)', 'basic')
   .action(async (options) => {
-    console.log('🎭 Initializing new Playwright Framework project...');
+    console.log('🎭 Initializing new AgentSync Test Framework project...');
     
-    const templateDir = path.join(__dirname, '../templates', options.template);
+    const projectName = options.name || path.basename(process.cwd());
+    const templateDir = path.join(__dirname, '../templates/project-setup');
     const targetDir = process.cwd();
-    
-    if (!fs.existsSync(templateDir)) {
-      console.error(`Template "${options.template}" not found.`);
-      process.exit(1);
-    }
     
     try {
       // Create project structure
       console.log('📁 Creating project structure...');
       
-      // Copy template files
-      copyDirectorySync(templateDir, targetDir);
+      // Create directories
+      const dirs = ['tests', 'tests/e2e', 'tests/api', 'auth', 'reports'];
+      dirs.forEach(dir => {
+        const dirPath = path.join(targetDir, dir);
+        if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath, { recursive: true });
+        }
+      });
+      
+      // Copy and customize template files
+      copyAndCustomizeTemplate(templateDir, targetDir, projectName);
       
       // Install dependencies
       console.log('📦 Installing dependencies...');
       execSync('npm install', { stdio: 'inherit', cwd: targetDir });
       
+      // Install Playwright browsers
+      console.log('🌐 Installing Playwright browsers...');
+      execSync('npx playwright install', { stdio: 'inherit', cwd: targetDir });
+      
       console.log('✅ Project initialized successfully!');
       console.log('\nNext steps:');
-      console.log('  1. Review the configuration in playwright.config.js');
-      console.log('  2. Run your first test: npx playwright test');
-      console.log('  3. Generate a report: npx playwright show-report');
+      console.log('  1. Configure your environment variables in .env');
+      console.log('  2. Review the configuration in playwright.config.js');
+      console.log('  3. Run your first test: npm test');
+      console.log('  4. Generate a report: npm run report');
     } catch (error) {
       console.error('❌ Error initializing project:', error.message);
       process.exit(1);
@@ -108,6 +119,47 @@ function copyDirectorySync(source, target) {
     } else {
       fs.copyFileSync(sourcePath, targetPath);
     }
+  }
+}
+
+function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
+  // Copy package.json template
+  const packageTemplate = path.join(templateDir, 'package.template.json');
+  const packageTarget = path.join(targetDir, 'package.json');
+  
+  if (fs.existsSync(packageTemplate)) {
+    let packageContent = fs.readFileSync(packageTemplate, 'utf8');
+    packageContent = packageContent.replace(/PROJECT_NAME/g, projectName);
+    packageContent = packageContent.replace(/project-name-tests/g, `${projectName.toLowerCase()}-tests`);
+    fs.writeFileSync(packageTarget, packageContent);
+  }
+  
+  // Copy playwright config template
+  const configTemplate = path.join(templateDir, 'playwright.config.template.js');
+  const configTarget = path.join(targetDir, 'playwright.config.js');
+  
+  if (fs.existsSync(configTemplate)) {
+    fs.copyFileSync(configTemplate, configTarget);
+  }
+  
+  // Copy environment template
+  const envTemplate = path.join(templateDir, '.env.template');
+  const envTarget = path.join(targetDir, '.env');
+  
+  if (fs.existsSync(envTemplate)) {
+    fs.copyFileSync(envTemplate, envTarget);
+  }
+  
+  // Copy GitHub Actions workflow
+  const workflowTemplate = path.join(templateDir, '.github-workflows-project-tests.yml');
+  const workflowDir = path.join(targetDir, '.github/workflows');
+  const workflowTarget = path.join(workflowDir, 'project-tests.yml');
+  
+  if (fs.existsSync(workflowTemplate)) {
+    if (!fs.existsSync(workflowDir)) {
+      fs.mkdirSync(workflowDir, { recursive: true });
+    }
+    fs.copyFileSync(workflowTemplate, workflowTarget);
   }
 }
 

@@ -33,6 +33,11 @@ module.exports = {
     BasePage: require('./pages/BasePage')
   },
   
+  // Locators
+  locators: {
+    SelfHealingLocator: require('./pages/locators/SelfHealingLocator')
+  },
+  
   /**
    * Load framework configuration
    * @returns {Object} Framework configuration

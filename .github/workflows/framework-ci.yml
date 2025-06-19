@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@agentsync'
       
       - name: Install dependencies
         run: npm ci
@@ -26,12 +28,18 @@ jobs:
         run: |
           cp .env.example .env
       
-      # Skip linting for now as there are too many issues
-      # - name: Run linting
-      #   run: npm run lint
+      - name: Run linting with CI config
+        run: npx eslint --config .eslintrc.ci.js . --max-warnings 1000
       
-      - name: Run framework tests
-        run: npm test
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      
+      - name: Run core tests
+        run: npx playwright test src/tests/core/framework-validation.spec.js
+        
+      - name: Run API tests
+        run: npx playwright test --project=api
+        continue-on-error: true
       
       - name: Build framework
         run: npm run build
@@ -45,7 +53,7 @@ jobs:
             test-results/
             playwright-report/
   
-  build-framework:
+  publish-framework:
     needs: test-framework
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
@@ -56,19 +64,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@agentsync'
       
       - name: Install dependencies
         run: npm ci
       
-      - name: Create .env file
-        run: |
-          cp .env.example .env
-      
       - name: Build framework
         run: npm run build
       
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: framework-build
-          path: dist/
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

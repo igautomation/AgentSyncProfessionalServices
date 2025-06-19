@@ -10,19 +10,21 @@ const packageJson = require('../package.json');
 
 program
   .version(packageJson.version)
-  .description('Playwright Framework CLI');
+  .description('AgentSync Test Framework CLI');
 
 program
   .command('init')
-  .description('Initialize a new Playwright Framework project')
+  .description('Initialize a new AgentSync Test Framework project')
   .option('-n, --name <name>', 'Project name')
   .option('-t, --template <template>', 'Template to use (basic, full)', 'basic')
+  .option('-d, --dir <directory>', 'Target directory', '.')
+  .option('--no-install', 'Skip dependency installation')
   .action(async (options) => {
-    console.log('🎭 Initializing new AgentSync Test Framework project...');
+    console.log('🚀 Initializing new AgentSync Test Framework project...');
     
     const projectName = options.name || path.basename(process.cwd());
     const templateDir = path.join(__dirname, '../templates/project-setup');
-    const targetDir = process.cwd();
+    const targetDir = path.resolve(process.cwd(), options.dir);
     
     try {
       // Create project structure
@@ -40,13 +42,20 @@ program
       // Copy and customize template files
       copyAndCustomizeTemplate(templateDir, targetDir, projectName);
       
-      // Install dependencies
-      console.log('📦 Installing dependencies...');
-      execSync('npm install', { stdio: 'inherit', cwd: targetDir });
-      
-      // Install Playwright browsers
-      console.log('🌐 Installing Playwright browsers...');
-      execSync('npx playwright install', { stdio: 'inherit', cwd: targetDir });
+      // Install dependencies if not skipped
+      if (options.install) {
+        console.log('📦 Installing dependencies...');
+        try {
+          execSync('npm install', { stdio: 'inherit', cwd: targetDir });
+          
+          // Install Playwright browsers
+          console.log('🌐 Installing Playwright browsers...');
+          execSync('npx playwright install', { stdio: 'inherit', cwd: targetDir });
+        } catch (error) {
+          console.warn('⚠️ Dependency installation failed. You may need to run npm install manually.');
+          console.warn('⚠️ Error:', error.message);
+        }
+      }
       
       console.log('✅ Project initialized successfully!');
       console.log('\nNext steps:');
@@ -66,13 +75,16 @@ program
   .option('-p, --page <name>', 'Generate a page object')
   .option('-t, --test <name>', 'Generate a test file')
   .option('-c, --component <name>', 'Generate a component')
+  .option('-d, --dir <directory>', 'Target directory', '.')
   .action((options) => {
+    const targetDir = path.resolve(process.cwd(), options.dir);
+    
     if (options.page) {
-      generatePage(options.page);
+      generatePage(options.page, targetDir);
     } else if (options.test) {
-      generateTest(options.test);
+      generateTest(options.test, targetDir);
     } else if (options.component) {
-      generateComponent(options.component);
+      generateComponent(options.component, targetDir);
     } else {
       console.error('Please specify what to generate (--page, --test, or --component)');
     }
@@ -83,7 +95,7 @@ program
   .description('Open framework documentation')
   .action(() => {
     console.log('Opening documentation...');
-    const docsUrl = 'https://your-org.github.io/playwright-framework';
+    const docsUrl = 'https://github.com/agentsync/test-framework/blob/main/docs/CONSOLIDATED_FRAMEWORK_GUIDE.md';
     
     const open = (process.platform === 'win32') ? 'start' : 
                 (process.platform === 'darwin') ? 'open' : 'xdg-open';
@@ -95,6 +107,21 @@ program
     }
   });
 
+program
+  .command('update')
+  .description('Update framework to latest version')
+  .action(() => {
+    console.log('Updating framework to latest version...');
+    
+    try {
+      execSync('npm update @agentsync/test-framework', { stdio: 'inherit' });
+      console.log('✅ Framework updated successfully!');
+    } catch (error) {
+      console.error('❌ Error updating framework:', error.message);
+      process.exit(1);
+    }
+  });
+
 program.parse(process.argv);
 
 // If no arguments provided, show help
@@ -103,25 +130,6 @@ if (!process.argv.slice(2).length) {
 }
 
 // Helper functions
-function copyDirectorySync(source, target) {
-  if (!fs.existsSync(target)) {
-    fs.mkdirSync(target, { recursive: true });
-  }
-
-  const entries = fs.readdirSync(source, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const sourcePath = path.join(source, entry.name);
-    const targetPath = path.join(target, entry.name);
-
-    if (entry.isDirectory()) {
-      copyDirectorySync(sourcePath, targetPath);
-    } else {
-      fs.copyFileSync(sourcePath, targetPath);
-    }
-  }
-}
-
 function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
   // Copy package.json template
   const packageTemplate = path.join(templateDir, 'package.template.json');
@@ -130,8 +138,9 @@ function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
   if (fs.existsSync(packageTemplate)) {
     let packageContent = fs.readFileSync(packageTemplate, 'utf8');
     packageContent = packageContent.replace(/PROJECT_NAME/g, projectName);
-    packageContent = packageContent.replace(/project-name-tests/g, `${projectName.toLowerCase()}-tests`);
+    packageContent = packageContent.replace(/project-name-tests/g, `${projectName.toLowerCase().replace(/\s+/g, '-')}-tests`);
     fs.writeFileSync(packageTarget, packageContent);
+    console.log(`📄 Created package.json`);
   }
   
   // Copy playwright config template
@@ -140,6 +149,7 @@ function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
   
   if (fs.existsSync(configTemplate)) {
     fs.copyFileSync(configTemplate, configTarget);
+    console.log(`📄 Created playwright.config.js`);
   }
   
   // Copy environment template
@@ -148,6 +158,7 @@ function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
   
   if (fs.existsSync(envTemplate)) {
     fs.copyFileSync(envTemplate, envTarget);
+    console.log(`📄 Created .env file`);
   }
   
   // Copy GitHub Actions workflow
@@ -160,22 +171,53 @@ function copyAndCustomizeTemplate(templateDir, targetDir, projectName) {
       fs.mkdirSync(workflowDir, { recursive: true });
     }
     fs.copyFileSync(workflowTemplate, workflowTarget);
+    console.log(`📄 Created GitHub Actions workflow`);
+  }
+  
+  // Copy README template
+  const readmeTemplate = path.join(templateDir, 'README.md');
+  const readmeTarget = path.join(targetDir, 'README.md');
+  
+  if (fs.existsSync(readmeTemplate)) {
+    let readmeContent = fs.readFileSync(readmeTemplate, 'utf8');
+    readmeContent = readmeContent.replace(/PROJECT_NAME/g, projectName);
+    fs.writeFileSync(readmeTarget, readmeContent);
+    console.log(`📄 Created README.md`);
+  }
+  
+  // Copy example test files
+  const testsDir = path.join(templateDir, 'tests');
+  const targetTestsDir = path.join(targetDir, 'tests');
+  
+  if (fs.existsSync(testsDir)) {
+    const testFiles = fs.readdirSync(testsDir);
+    testFiles.forEach(file => {
+      const sourcePath = path.join(testsDir, file);
+      const targetPath = path.join(targetTestsDir, file);
+      
+      if (fs.statSync(sourcePath).isFile()) {
+        fs.copyFileSync(sourcePath, targetPath);
+        console.log(`📄 Created test file: ${file}`);
+      }
+    });
   }
 }
 
-function generatePage(name) {
+function generatePage(name, targetDir) {
   const pageName = name.charAt(0).toUpperCase() + name.slice(1) + 'Page';
-  const targetDir = path.join(process.cwd(), 'src/pages');
-  const targetFile = path.join(targetDir, `${pageName}.js`);
+  const pagesDir = path.join(targetDir, 'tests/pages');
+  const targetFile = path.join(pagesDir, `${pageName}.js`);
   
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
+  if (!fs.existsSync(pagesDir)) {
+    fs.mkdirSync(pagesDir, { recursive: true });
   }
   
   const template = `/**
  * ${pageName} - Page Object for ${name} page
  * @class
  */
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
+
 class ${pageName} {
   /**
    * @param {import('@playwright/test').Page} page
@@ -194,7 +236,7 @@ class ${pageName} {
    * @param {string} [path=''] - Additional path to append to base URL
    */
   async navigate(path = '') {
-    await this.page.goto(\`\${process.env.BASE_URL || ''}\${path}\`);
+    await this.page.goto(\`\${path}\`);
     await this.page.waitForLoadState('networkidle');
   }
 
@@ -215,21 +257,22 @@ module.exports = ${pageName};
   console.log(`✅ Generated page object: ${targetFile}`);
 }
 
-function generateTest(name) {
+function generateTest(name, targetDir) {
   const testName = name.toLowerCase().replace(/\s+/g, '-');
-  const targetDir = path.join(process.cwd(), 'src/tests');
-  const targetFile = path.join(targetDir, `${testName}.spec.js`);
+  const testsDir = path.join(targetDir, 'tests/e2e');
+  const targetFile = path.join(testsDir, `${testName}.spec.js`);
   
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
+  if (!fs.existsSync(testsDir)) {
+    fs.mkdirSync(testsDir, { recursive: true });
   }
   
   const template = `const { test, expect } = require('@playwright/test');
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
 
 test.describe('${name} Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Setup for each test
-    await page.goto(process.env.BASE_URL || 'https://example.com');
+    await page.goto('/');
   });
 
   test('should load the page correctly', async ({ page }) => {
@@ -239,8 +282,20 @@ test.describe('${name} Tests', () => {
   });
 
   test('should perform basic functionality', async ({ page }) => {
-    // Test implementation
-    // Add your test steps here
+    // Create a self-healing locator
+    const button = new SelfHealingLocator(page, '#submit-button', {
+      fallbackStrategies: [
+        { selector: 'button[type="submit"]' },
+        { selector: 'text=Submit' }
+      ]
+    });
+    
+    // Use the locator
+    const element = await button.locate();
+    await element.click();
+    
+    // Add assertions
+    // expect(...).toBeVisible();
   });
 });
 `;
@@ -249,19 +304,21 @@ test.describe('${name} Tests', () => {
   console.log(`✅ Generated test file: ${targetFile}`);
 }
 
-function generateComponent(name) {
+function generateComponent(name, targetDir) {
   const componentName = name.charAt(0).toUpperCase() + name.slice(1);
-  const targetDir = path.join(process.cwd(), 'src/components');
-  const targetFile = path.join(targetDir, `${componentName}.js`);
+  const componentsDir = path.join(targetDir, 'tests/components');
+  const targetFile = path.join(componentsDir, `${componentName}.js`);
   
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
+  if (!fs.existsSync(componentsDir)) {
+    fs.mkdirSync(componentsDir, { recursive: true });
   }
   
   const template = `/**
  * ${componentName} - Reusable component
  * @class
  */
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
+
 class ${componentName} {
   /**
    * @param {import('@playwright/test').Page} page

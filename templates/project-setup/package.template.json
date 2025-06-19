@@ -9,14 +9,19 @@
     "test:ui": "playwright test --ui",
     "test:smoke": "playwright test --grep @smoke",
     "test:regression": "playwright test --grep @regression",
+    "test:api": "playwright test --project=api",
     "report": "playwright show-report",
-    "install:browsers": "playwright install"
+    "install:browsers": "playwright install",
+    "update:framework": "npm update @agentsync/test-framework"
   },
   "dependencies": {
-    "@agentsync/test-framework": "^1.0.0",
-    "@playwright/test": "^1.40.0"
+    "@agentsync/test-framework": "^1.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
     "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

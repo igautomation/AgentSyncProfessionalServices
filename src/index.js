@@ -1,4 +1,5 @@
 /**
+ * @agentsync/test-framework
  * Main entry point for the framework
  * Exports all framework components
  */
@@ -26,7 +27,7 @@ module.exports = {
   },
   
   // Fixtures
-  ...require('./fixtures/custom-fixtures'),
+  fixtures: require('./fixtures/custom-fixtures'),
   
   // Page objects
   pages: {
@@ -35,7 +36,12 @@ module.exports = {
   
   // Locators
   locators: {
-    SelfHealingLocator: require('./pages/locators/SelfHealingLocator')
+    SelfHealingLocator: require('./utils/web/SelfHealingLocator')
+  },
+  
+  // Configuration
+  config: {
+    baseConfig: require('./config/base.config')
   },
   
   /**
@@ -81,5 +87,10 @@ module.exports = {
   createFixtures: (fixtures = {}) => {
     const { test } = require('@playwright/test');
     return test.extend(fixtures);
-  }
+  },
+  
+  /**
+   * Framework version
+   */
+  version: require('../package.json').version
 };

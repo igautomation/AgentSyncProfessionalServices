@@ -6,13 +6,9 @@
   "bin": {
     "playwright-framework": "./bin/cli.js"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/agentsync-test-framework.git"
+    "url": "git+https://github.com/your-org/test-framework.git"
   },
   "scripts": {
     "test": "playwright test",

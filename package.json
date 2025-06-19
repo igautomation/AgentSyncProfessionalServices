@@ -1,5 +1,5 @@
 {
-  "name": "@agentsync/test-framework",
+  "name": "playwright-test-framework",
   "version": "1.0.0",
   "description": "AgentSync Professional Services Test Automation Framework",
   "main": "src/index.js",

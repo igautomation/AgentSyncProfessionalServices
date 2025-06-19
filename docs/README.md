@@ -1,30 +1,33 @@
 # Playwright Framework Documentation
 
-This folder contains all the consolidated documentation for the Playwright Testing Framework.
+This folder contains the documentation for the Playwright Testing Framework.
 
-## Documentation Structure
+## Framework Guide
 
-- **Core Documentation**: Main framework documentation files
-- **User Guides**: Instructions for using the framework
-- **API References**: Technical documentation for framework APIs
-- **Examples**: Example code and usage patterns
-- **Maintenance**: Information for framework maintainers
+We've consolidated all documentation into a single comprehensive guide:
 
-## Contents
+👉 [**CONSOLIDATED_FRAMEWORK_GUIDE.md**](CONSOLIDATED_FRAMEWORK_GUIDE.md)
 
-1. [README.md](README.md) - This file
-2. [USER_GUIDE.md](USER_GUIDE.md) - Comprehensive user guide for the framework
-3. [FRAMEWORK_GUIDE.md](FRAMEWORK_GUIDE.md) - Detailed framework features and capabilities
-4. [CONTRIBUTING.md](CONTRIBUTING.md) - Guidelines for contributing to the project
-5. [LICENSE.md](LICENSE.md) - License information
+This guide includes everything you need to know about the framework:
 
-## Additional Documentation
-
-Additional documentation can be found in the following locations:
-- `/docs` - Detailed documentation on specific framework components
-- `/examples` - Example code and usage patterns
-- `/docs-site` - Documentation website source
+- Installation & Setup
+- Framework Architecture
+- Key Features
+- Running Tests
+- Core Components
+- Utility Modules
+- Salesforce Integration
+- CI/CD Integration
+- Docker Support
+- Customization
+- Troubleshooting
+- Reference
 
 ## Getting Started
 
-To get started with the framework, refer to the [USER_GUIDE.md](USER_GUIDE.md) file.
+To get started with the framework:
+
+1. Read the [CONSOLIDATED_FRAMEWORK_GUIDE.md](CONSOLIDATED_FRAMEWORK_GUIDE.md)
+2. Follow the installation instructions
+3. Try running the example tests
+4. Refer to the troubleshooting section if you encounter issues

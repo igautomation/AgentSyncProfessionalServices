@@ -85,12 +85,42 @@ Comprehensive documentation is available in the `docs/` directory:
 - [Framework Guide](docs/FRAMEWORK_GUIDE.md)
 - [Salesforce Testing Guide](docs/salesforce-testing-guide.md)
 
+## 🔧 Troubleshooting
+
+### Common Issues:
+
+1. **"Cannot find module 'dotenv'" error**
+   ```bash
+   npm install
+   ```
+
+2. **GitHub Actions failing**
+   - Ensure all dependencies are in package.json
+   - Check that workflow files reference correct directories
+   - Verify environment variables are set correctly
+
+3. **Missing Playwright browsers**
+   ```bash
+   npx playwright install
+   ```
+
+4. **Tests not finding elements**
+   - Check if `.env` file exists and has correct URLs
+   - Verify network connectivity to test sites
+
+### Verification Test:
+```bash
+# Run a simple test to verify setup
+npx playwright test --list | head -5
+```
+
 ## 🆘 Support
 
 For questions or issues:
 1. Check the documentation in the `docs/` directory
 2. Review the example tests in `src/tests/examples/`
 3. Check the configuration files in `src/config/`
+4. Run the verification test above
 
 ## 🔒 Security Notes
 

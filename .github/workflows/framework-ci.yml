@@ -42,7 +42,7 @@ jobs:
             test-results/
             playwright-report/
   
-  publish-framework:
+  build-framework:
     needs: test-framework
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
@@ -53,8 +53,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@agentsync'
       
       - name: Install dependencies
         run: npm ci
@@ -62,7 +60,8 @@ jobs:
       - name: Build framework
         run: npm run build
       
-      - name: Publish to GitHub Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: framework-build
+          path: dist/

@@ -99,6 +99,5 @@ jobs:
         with:
           name: reports
           path: |
-            reports/
             playwright-report/
-            screenshots/
+            test-results/

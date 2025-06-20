@@ -22,7 +22,7 @@ export GITHUB_TOKEN=your_personal_access_token
 3. Install the framework:
 
 ```bash
-npm install @igautomation/test-framework
+npm install @igautomation/agentsyncprofessionalservices
 ```
 
 ### Quick Setup
@@ -30,14 +30,14 @@ npm install @igautomation/test-framework
 Use our setup script to create a new project:
 
 ```bash
-npx @igautomation/test-framework setup:client-project
+npx @igautomation/agentsyncprofessionalservices setup:client-project
 ```
 
 ## Usage
 
 ```javascript
 const { test, expect } = require('@playwright/test');
-const { utils, pages } = require('@igautomation/test-framework');
+const { utils, pages } = require('@igautomation/agentsyncprofessionalservices');
 
 // Create a page object
 class LoginPage extends pages.BasePage {

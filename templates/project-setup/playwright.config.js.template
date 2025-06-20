@@ -1,6 +1,6 @@
 // @ts-check
 const { defineConfig } = require('@playwright/test');
-const { baseConfig } = require('@igautomation/test-framework/config');
+const { baseConfig } = require('@igautomation/agentsyncprofessionalservices/config');
 const dotenv = require('dotenv');
 
 // Load environment variables from .env file

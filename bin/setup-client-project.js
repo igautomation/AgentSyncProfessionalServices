@@ -101,7 +101,8 @@ async function main() {
     'Client-specific test automation project using AgentSync Test Framework': projectDescription,
     'https://client-app-url.com': baseUrl,
     'https://client-api-url.com': apiUrl,
-    '@agentsync/test-framework': '@igautomation/test-framework'
+    '@igautomation/test-framework': '@igautomation/agentsyncprofessionalservices',
+    '@igautomation/agentsyncprofessionalservices': '@igautomation/agentsyncprofessionalservices'
   };
   
   // Copy template files

@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { utils } = require('@igautomation/test-framework');
+const { utils } = require('@igautomation/agentsyncprofessionalservices');
 
 test.describe('Example Test Suite', () => {
   test('should navigate to the homepage', async ({ page }) => {

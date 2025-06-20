@@ -23,6 +23,8 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Create environment files
         run: |
@@ -58,6 +60,9 @@ jobs:
     needs: test-framework
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
       
@@ -70,6 +75,8 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build framework
         run: npm run build

@@ -33,10 +33,10 @@ jobs:
         run: npx eslint --config .eslintrc.ci.js . --max-warnings 1000
       
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
       
       - name: Run core tests
-        run: npx playwright test src/tests/core/framework-validation.spec.js
+        run: npx playwright test src/tests/core/framework-validation.spec.js --project=chromium
         
       - name: Run API tests
         run: npx playwright test --project=api

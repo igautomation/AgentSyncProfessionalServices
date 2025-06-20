@@ -1,306 +1,244 @@
-# Multi-Project Framework Usage Guide
+# Multi-Project Framework Implementation Guide
 
-This guide explains how to use the AgentSync Test Framework across multiple projects.
-
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Repository Structure](#repository-structure)
-3. [Setting Up a New Project](#setting-up-a-new-project)
-4. [Framework Updates](#framework-updates)
-5. [Best Practices](#best-practices)
-6. [Troubleshooting](#troubleshooting)
+This guide explains how to use the AgentSync Test Framework across multiple client projects.
 
 ## Overview
 
-The AgentSync Test Framework is designed to be used across multiple projects, providing a consistent testing approach while allowing project-specific customizations.
+The AgentSync Test Framework is distributed as a private GitHub NPM package, allowing it to be securely used across multiple client projects. This approach provides several benefits:
 
-### Key Benefits
+- **Centralized Maintenance**: Framework updates are made in one place
+- **Version Control**: Each project can use a specific framework version
+- **Secure Distribution**: Private access through GitHub authentication
+- **Consistent Testing**: Standardized approach across all projects
 
-- **Centralized Framework**: Single source of truth for test utilities
-- **Easy Project Setup**: One command to initialize new projects
-- **Version Management**: Semantic versioning with automated releases
-- **Consistent Configuration**: Standardized setup across all projects
-- **Self-Healing Locators**: Built-in resilience for UI changes
+## Implementation Steps
 
-## Repository Structure
+### 1. Framework Repository Setup
 
-We recommend the following repository structure:
+The framework is hosted in a GitHub repository and published as a private NPM package.
 
-```
-framework-repo/                      # Framework repository
-├── src/                             # Framework source code
-├── package.json                     # Framework package definition
-└── README.md                        # Framework documentation
+**Key Components:**
+- GitHub repository with the framework code
+- GitHub Packages for distribution
+- GitHub Actions for automated testing and publishing
 
-project-1-repo/                      # Project 1 repository
-├── tests/                           # Test files
-├── package.json                     # Project dependencies (includes framework)
-└── playwright.config.js             # Project-specific configuration
+### 2. Client Project Setup
 
-project-2-repo/                      # Project 2 repository
-├── tests/                           # Test files
-├── package.json                     # Project dependencies (includes framework)
-└── playwright.config.js             # Project-specific configuration
-```
+Each client project consumes the framework as a dependency.
 
-## Setting Up a New Project
+#### Option A: Manual Setup
 
-### Using the CLI
+1. **Create Project Structure**
 
-The easiest way to set up a new project is using the framework CLI:
+   ```bash
+   mkdir client-project
+   cd client-project
+   ```
 
-```bash
-# Install the framework globally (one-time setup)
-npm install -g @agentsync/test-framework
+2. **Set Up Authentication**
 
-# Create a new project
-mkdir my-new-project
-cd my-new-project
-agentsync-framework init --name "My New Project"
-```
+   Create a `.npmrc` file:
 
-### Manual Setup
+   ```
+   @agentsync:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+   ```
 
-If you prefer to set up manually:
+3. **Create package.json**
 
-1. Create a new directory for your project
-2. Create a `package.json` file:
    ```json
    {
-     "name": "my-project-tests",
+     "name": "client-project",
      "version": "1.0.0",
-     "description": "Test automation for My Project",
-     "scripts": {
-       "test": "playwright test",
-       "test:headed": "playwright test --headed",
-       "test:debug": "playwright test --debug",
-       "test:ui": "playwright test --ui",
-       "report": "playwright show-report"
-     },
      "dependencies": {
        "@agentsync/test-framework": "^1.0.0"
      },
      "devDependencies": {
-       "@playwright/test": "^1.40.0",
-       "dotenv": "^16.3.1"
+       "@playwright/test": "^1.40.0"
      }
    }
    ```
 
-3. Create a `playwright.config.js` file:
-   ```javascript
-   const { defineConfig, devices } = require('@playwright/test');
-   const { baseConfig } = require('@agentsync/test-framework').config;
-   require('dotenv').config();
+4. **Install Dependencies**
 
-   module.exports = defineConfig({
-     ...baseConfig,
-     testDir: './tests',
-     use: {
-       baseURL: process.env.BASE_URL || 'https://your-app.com',
-     },
-     projects: [
-       {
-         name: 'chromium',
-         use: { ...devices['Desktop Chrome'] }
-       },
-       {
-         name: 'firefox',
-         use: { ...devices['Desktop Firefox'] }
-       }
-     ]
-   });
-   ```
-
-4. Create a `.env` file:
-   ```
-   BASE_URL=https://your-app.com
-   HEADLESS=true
-   ```
-
-5. Install dependencies:
    ```bash
    npm install
    ```
 
-## Framework Updates
+5. **Create Configuration Files**
 
-### Updating the Framework
+   Create a `playwright.config.js` file that extends the framework's base configuration.
 
-To update the framework in a project:
+#### Option B: Automated Setup (Recommended)
+
+Use the provided setup script:
 
 ```bash
-# Using the CLI
-agentsync-framework update
-
-# Or manually
-npm update @agentsync/test-framework
+npx @agentsync/test-framework setup:client-project
 ```
+
+This script will:
+1. Prompt for project information
+2. Create the project structure
+3. Set up configuration files
+4. Create example test files
+
+### 3. GitHub Actions Integration
+
+Each client project should include a GitHub Actions workflow for automated testing.
+
+1. **Create Workflow File**
+
+   Create a file at `.github/workflows/tests.yml`:
+
+   ```yaml
+   name: Client Tests
+   
+   on:
+     push:
+       branches: [main, develop]
+     pull_request:
+       branches: [main]
+   
+   jobs:
+     test:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v4
+         
+         - name: Setup Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: '18'
+             registry-url: 'https://npm.pkg.github.com'
+             scope: '@agentsync'
+         
+         - name: Install dependencies
+           run: npm ci
+           env:
+             NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
+         - name: Install Playwright browsers
+           run: npx playwright install --with-deps
+         
+         - name: Run tests
+           run: npm test
+   ```
+
+2. **Add GitHub Token Secret**
+
+   Add a `GITHUB_TOKEN` secret in your repository settings.
+
+### 4. Framework Usage in Tests
+
+```javascript
+const { test, expect } = require('@playwright/test');
+const { utils, pages } = require('@agentsync/test-framework');
+
+test('should use framework utilities', async ({ page }) => {
+  const { webInteractions } = utils.web;
+  
+  await page.goto('/');
+  await webInteractions.waitForPageLoad(page);
+  
+  // Use self-healing locators
+  const { SelfHealingLocator } = utils.web;
+  
+  const loginButton = new SelfHealingLocator(page, {
+    selector: 'button[type="submit"]',
+    fallbackSelectors: [
+      'button:has-text("Login")',
+      '.login-button'
+    ],
+    name: 'Login Button'
+  });
+  
+  await loginButton.click();
+});
+```
+
+### 5. Framework Updates
+
+When the framework is updated:
+
+1. **Publish New Version**
+
+   ```bash
+   cd framework-repo
+   npm version patch  # or minor or major
+   npm run publish:framework
+   ```
+
+2. **Update Client Projects**
+
+   ```bash
+   cd client-project
+   npm update @agentsync/test-framework
+   ```
+
+## Best Practices
 
 ### Version Management
 
-The framework follows semantic versioning:
+- Use semantic versioning for the framework
+- Pin to specific versions in critical projects
+- Use version ranges (e.g., `^1.0.0`) for flexibility in non-critical projects
 
-- **Major (X.0.0)**: Breaking changes
-- **Minor (1.X.0)**: New features, backward compatible
-- **Patch (1.2.X)**: Bug fixes
+### Authentication
 
-In your project's `package.json`, use the caret (`^`) to allow compatible updates:
-
-```json
-"dependencies": {
-  "@agentsync/test-framework": "^1.0.0"
-}
-```
-
-## Best Practices
+- Use GitHub Personal Access Tokens for local development
+- Use GitHub Actions tokens for CI/CD
+- Rotate tokens regularly for security
 
 ### Project Structure
 
 ```
-my-project/
+client-project/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
 ├── tests/
-│   ├── e2e/              # End-to-end tests
-│   ├── api/              # API tests
-│   ├── pages/            # Page objects
-│   └── components/       # Reusable components
-├── auth/                 # Authentication state
-├── reports/              # Test reports
-├── .env                  # Environment variables
-├── package.json          # Project dependencies
-└── playwright.config.js  # Playwright configuration
+│   ├── example.spec.js
+│   └── ...
+├── .env
+├── .npmrc
+├── package.json
+└── playwright.config.js
 ```
 
-### Using Self-Healing Locators
+### Documentation
 
-```javascript
-const { test, expect } = require('@playwright/test');
-const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
-
-test('should use self-healing locator', async ({ page }) => {
-  const button = new SelfHealingLocator(page, '#submit-button', {
-    fallbackStrategies: [
-      { selector: 'button[type="submit"]' },
-      { selector: 'text=Submit' }
-    ]
-  });
-  
-  const element = await button.locate();
-  await element.click();
-});
-```
-
-### Environment Variables
-
-Store environment-specific configuration in `.env` files:
-
-```
-# .env.dev
-BASE_URL=https://dev.your-app.com
-API_BASE_URL=https://dev-api.your-app.com
-
-# .env.prod
-BASE_URL=https://your-app.com
-API_BASE_URL=https://api.your-app.com
-```
-
-Load the appropriate environment:
-
-```bash
-# Load dev environment
-cp .env.dev .env
-npm test
-
-# Load prod environment
-cp .env.prod .env
-npm test
-```
-
-### CI/CD Integration
-
-Each project should have its own CI/CD workflow:
-
-```yaml
-# .github/workflows/project-tests.yml
-name: Project Tests
-on:
-  push:
-    branches: [main]
-  schedule:
-    - cron: '0 2 * * *'  # Daily at 2 AM
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@agentsync'
-      
-      - name: Install dependencies
-        run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Run tests
-        run: npm test
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-```
+- Keep a CHANGELOG.md in the framework repository
+- Document breaking changes clearly
+- Provide migration guides for major version updates
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### Authentication to GitHub Packages
+1. **Authentication Errors**
 
-If you see errors accessing the framework package:
-
-1. Create a Personal Access Token (PAT) with `read:packages` scope
-2. Add to your `.npmrc` file:
    ```
-   //npm.pkg.github.com/:_authToken=YOUR_PAT
-   @agentsync:registry=https://npm.pkg.github.com
+   npm ERR! 401 Unauthorized
    ```
 
-#### Framework Version Conflicts
+   **Solution**: Check your GitHub token and .npmrc configuration.
 
-If you see errors about incompatible versions:
+2. **Missing Dependencies**
 
-1. Check your project's `package.json` for the framework version
-2. Update to the latest compatible version:
-   ```bash
-   npm update @agentsync/test-framework
    ```
-3. If breaking changes are needed, consult the migration guide
-
-#### Self-Healing Locator Issues
-
-If self-healing locators aren't working as expected:
-
-1. Check that you're importing correctly:
-   ```javascript
-   const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
-   ```
-2. Ensure you're providing fallback strategies:
-   ```javascript
-   new SelfHealingLocator(page, '#primary-selector', {
-     fallbackStrategies: [
-       { selector: '.backup-selector' },
-       { selector: 'text=Button Text' }
-     ]
-   });
+   Error: Cannot find module '@agentsync/test-framework'
    ```
 
-### Getting Help
+   **Solution**: Verify your package.json and run `npm install`.
 
-If you encounter issues:
+3. **Version Conflicts**
 
-1. Check the [framework documentation](https://github.com/agentsync/test-framework/blob/main/docs/CONSOLIDATED_FRAMEWORK_GUIDE.md)
-2. Contact the framework team on Slack at #test-framework-support
-3. Submit an issue on the [framework repository](https://github.com/agentsync/test-framework/issues)
+   **Solution**: Update to the latest compatible version or pin to a specific version.
+
+### Support
+
+For framework support:
+
+- GitHub Issues: [https://github.com/agentsync/test-framework/issues](https://github.com/agentsync/test-framework/issues)
+- Email: support@agentsync.com

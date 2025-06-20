@@ -1,159 +1,85 @@
-# PROJECT_NAME Test Automation
+# Client Test Automation Project
 
-This project uses the AgentSync Test Framework for automated testing.
+This project uses the AgentSync Test Framework to automate testing for the client application.
 
-## Quick Start
+## Setup
+
+1. **Authentication Setup**
+
+   Create a `.npmrc` file in the project root with the following content:
+
+   ```
+   @agentsync:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+   ```
+
+   You'll need a GitHub Personal Access Token with `read:packages` scope.
+
+2. **Environment Setup**
+
+   Copy the `.env.template` file to `.env` and update the values:
+
+   ```bash
+   cp .env.template .env
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Install Playwright Browsers**
+
+   ```bash
+   npx playwright install
+   ```
+
+## Running Tests
+
+Run all tests:
 
 ```bash
-# Install dependencies
-npm install
-
-# Install Playwright browsers
-npx playwright install
-
-# Run all tests
 npm test
+```
 
-# Run tests in headed mode
+Run tests in headed mode:
+
+```bash
 npm run test:headed
+```
 
-# Run specific test suite
-npm run test:smoke
-npm run test:regression
+Run tests in debug mode:
 
-# View test report
+```bash
+npm run test:debug
+```
+
+Run tests with Playwright UI:
+
+```bash
+npm run test:ui
+```
+
+## Viewing Reports
+
+```bash
 npm run report
 ```
 
-## Configuration
+## GitHub Actions Integration
 
-### Environment Variables
-Copy `.env.template` to `.env` and configure:
+This project includes a GitHub Actions workflow that runs tests automatically:
 
-```bash
-# Application URLs
-BASE_URL=https://your-app.com
-API_BASE_URL=https://api.your-app.com
+- On push to main and develop branches
+- On pull requests to main
+- Daily at 2 AM
 
-# Authentication
-USERNAME=test.user@example.com
-PASSWORD=your-password
+To set up GitHub Actions:
 
-# Test Configuration
-HEADLESS=true
-TIMEOUT=30000
-```
+1. Add a `GITHUB_TOKEN` secret in your repository settings
+2. Push the code to GitHub
 
-### Playwright Configuration
-Main configuration is in `playwright.config.js`. Key settings:
+## Framework Documentation
 
-- **Test Directory**: `./tests`
-- **Browsers**: Chrome, Firefox, Safari, Mobile Chrome
-- **Reporters**: HTML, JSON, JUnit
-- **Retries**: 2 on CI, 0 locally
-
-## Writing Tests
-
-### Basic Test Structure
-```javascript
-const { test, expect } = require('@playwright/test');
-
-test.describe('Feature Tests', () => {
-  test('should test functionality', async ({ page }) => {
-    await page.goto('/');
-    // Test implementation
-  });
-});
-```
-
-### Using Self-Healing Locators
-```javascript
-const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
-
-test('should use self-healing locator', async ({ page }) => {
-  const button = new SelfHealingLocator(page, '#submit-btn', {
-    fallbackStrategies: [
-      { selector: 'button[type="submit"]' },
-      { selector: 'text=Submit' }
-    ]
-  });
-  
-  const element = await button.locate();
-  await element.click();
-});
-```
-
-### API Testing
-```javascript
-test('should test API endpoint', async ({ request }) => {
-  const response = await request.get('/api/users');
-  expect(response.status()).toBe(200);
-  
-  const users = await response.json();
-  expect(users).toHaveLength.greaterThan(0);
-});
-```
-
-## Test Organization
-
-```
-tests/
-├── e2e/           # End-to-end tests
-├── api/           # API tests
-├── smoke/         # Smoke tests
-└── regression/    # Regression tests
-```
-
-## CI/CD Integration
-
-Tests run automatically on:
-- Push to main/develop branches
-- Pull requests
-- Daily schedule (2 AM UTC)
-
-### GitHub Actions
-The workflow runs tests across multiple browsers and uploads results as artifacts.
-
-## Framework Features
-
-- **Self-Healing Locators**: Automatic fallback strategies
-- **Multi-Browser Support**: Chrome, Firefox, Safari, Mobile
-- **API Testing**: Built-in request utilities
-- **Visual Testing**: Screenshot comparison
-- **Accessibility Testing**: WCAG compliance checks
-- **Performance Testing**: Core Web Vitals monitoring
-- **Reporting**: HTML, JSON, JUnit formats
-
-## Troubleshooting
-
-### Common Issues
-
-**Tests failing locally but passing in CI:**
-- Check browser versions: `npx playwright install`
-- Verify environment variables in `.env`
-
-**Locator not found errors:**
-- Use self-healing locators with fallback strategies
-- Check element timing with `waitFor` methods
-
-**Authentication issues:**
-- Verify credentials in `.env`
-- Check storage state in `./auth/` directory
-
-### Debug Mode
-```bash
-# Run in debug mode
-npm run test:debug
-
-# Run with UI mode
-npm run test:ui
-
-# Run specific test file
-npx playwright test tests/login.spec.js --debug
-```
-
-## Support
-
-- Framework Documentation: [Link to docs]
-- Issue Tracking: [GitHub Issues]
-- Team Slack: #test-automation
+For more information about the AgentSync Test Framework, refer to the [framework documentation](https://github.com/agentsync/test-framework).

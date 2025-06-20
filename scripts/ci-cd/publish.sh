@@ -35,7 +35,7 @@ fi
 
 # Create .npmrc file for GitHub Packages
 echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
-echo "@agentsync:registry=https://npm.pkg.github.com" >> .npmrc
+echo "@igautomation:registry=https://npm.pkg.github.com" >> .npmrc
 
 # Build the framework
 echo "🔨 Building framework..."
@@ -49,4 +49,4 @@ npm publish
 rm .npmrc
 
 echo "✅ Package published successfully!"
-echo "You can now install it with: npm install @agentsync/test-framework"
+echo "You can now install it with: npm install @igautomation/test-framework"

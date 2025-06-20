@@ -1,26 +1,46 @@
 # AgentSync Test Framework
 
-A comprehensive test automation framework for AgentSync projects.
+A comprehensive test automation framework for AgentSync projects, distributed as a private GitHub NPM package.
 
 ## Installation
 
-```bash
-# Install from npm
-npm install agentsync-test-framework
+### Using GitHub Packages
 
-# Or install from local tarball
-npm install ./agentsync-test-framework-1.0.0.tgz
+1. Create a `.npmrc` file in your project root:
+
+```
+@igautomation:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-For detailed installation instructions, see the [Installation Guide](docs/INSTALLATION.md).
+2. Set your GitHub token:
+
+```bash
+export GITHUB_TOKEN=your_personal_access_token
+```
+
+3. Install the framework:
+
+```bash
+npm install @igautomation/test-framework
+```
+
+### Quick Setup
+
+Use our setup script to create a new project:
+
+```bash
+npx @igautomation/test-framework setup:client-project
+```
 
 ## Usage
 
 ```javascript
-const { BasePage, utils } = require('agentsync-test-framework');
+const { test, expect } = require('@playwright/test');
+const { utils, pages } = require('@igautomation/test-framework');
 
 // Create a page object
-class LoginPage extends BasePage {
+class LoginPage extends pages.BasePage {
   constructor(page) {
     super(page);
     this.usernameInput = this.page.locator('#username');
@@ -35,15 +55,26 @@ class LoginPage extends BasePage {
   }
 }
 
-// Use the framework utilities
-const { common } = utils;
-await common.waitForPageLoad(page);
+// Use self-healing locators
+test('login test', async ({ page }) => {
+  const { SelfHealingLocator } = utils.web;
+  
+  const loginButton = new SelfHealingLocator(page, {
+    selector: 'button[type="submit"]',
+    fallbackSelectors: [
+      'button:has-text("Login")',
+      '.login-button'
+    ],
+    name: 'Login Button'
+  });
+  
+  await loginButton.click();
+});
 ```
-
-For more examples and usage information, see the [Usage Guide](docs/USAGE.md).
 
 ## Features
 
+- **Private GitHub Package**: Secure distribution across multiple projects
 - **Page Object Model**: Structured approach to organizing test code
 - **Self-Healing Locators**: Resilient element locators that adapt to UI changes
 - **Database Utilities**: Easy database interactions for test data management
@@ -51,35 +82,15 @@ For more examples and usage information, see the [Usage Guide](docs/USAGE.md).
 - **Plugin System**: Extensible architecture for custom functionality
 - **Configuration Management**: Flexible configuration system
 - **CLI Tool**: Command-line interface for project setup and management
+- **GitHub Actions Integration**: Ready-to-use CI/CD workflows
 
 ## Documentation
 
 - [Installation Guide](docs/INSTALLATION.md)
-- [Usage Guide](docs/USAGE.md)
-- [API Reference](docs/README.md)
-- [Examples](docs/examples/)
-
-## Project Structure
-
-```
-agentsync-test-framework/
-├── src/
-│   ├── config/         # Configuration files
-│   ├── pages/          # Base page objects
-│   ├── utils/          # Utility modules
-│   └── index.js        # Main exports
-├── bin/                # CLI tools
-├── docs/               # Documentation
-└── templates/          # Project templates
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -am 'Add my feature'`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Submit a pull request
+- [GitHub Packages Setup Guide](docs/GITHUB_PACKAGES_SETUP.md)
+- [Multi-Project Guide](docs/MULTI_PROJECT_GUIDE.md)
+- [Quick Start Guide](docs/QUICK_START.md)
+- [Client Setup Checklist](docs/CLIENT_SETUP_CHECKLIST.md)
 
 ## License
 

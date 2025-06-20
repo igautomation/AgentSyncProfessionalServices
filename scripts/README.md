@@ -1,31 +1,40 @@
-# Essential Playwright Framework Scripts
+# Scripts Directory
 
-This directory contains the essential scripts needed to run and maintain the Playwright test framework.
+This directory contains various scripts for the AgentSync Test Framework.
 
 ## Directory Structure
 
-- `runners/` - Scripts for running different types of tests
-  - `run-api-tests.sh` - Run API tests only
-  - `run-e2e-tests.sh` - Run end-to-end tests only
-  - `run-tests.sh` - Run all tests
+- **build/** - Scripts for building and bundling the framework
+  - `create-bundle.js` - Creates a distributable bundle of the framework
+  - `build-docs.sh` - Builds documentation
+  - `deploy-docs.sh` - Deploys documentation
 
-- `setup/` - Scripts for setting up the framework
-  - `setup.js` - Initial framework setup (directories, env vars, etc.)
-  - `setup-hooks.js` - Set up Git hooks for the project
+- **ci-cd/** - Scripts for CI/CD pipelines and releases
+  - `publish.sh` - Publishes the framework to GitHub Packages
+  - `release.js` - Manages framework versioning and release process
+  - `setup-branches.sh` - Sets up Git branches for development
 
-- `utils/` - Utility scripts for framework maintenance
-  - `framework-health-check.js` - Check the health of the framework
-  - `validate-tests.js` - Validate test quality and best practices
-  - `validate-framework.js` - Comprehensive framework validation
+- **docs/** - Documentation-related scripts
+  - `consolidate-docs.js` - Consolidates Markdown documentation into a single directory
+  - `README.md` - Original documentation for scripts
 
-- `test-runner.sh` - Interactive CLI wrapper for running tests
+- **runners/** - Test runner scripts
+  - `run-api-tests.sh` - Runs API tests
+  - `run-e2e-tests.sh` - Runs end-to-end tests
+  - `run-salesforce-test.js` - Runs Salesforce-specific tests
+  - `run-sf-workflow.sh` - Runs Salesforce workflow tests
+  - `run-simple-salesforce-test.js` - Runs simplified Salesforce tests
+  - `run-tests.sh` - General test runner
+  - `test-runner.sh` - Interactive test runner CLI
 
-## Usage
+- **setup/** - Setup and initialization scripts
+  - `setup-hooks.js` - Sets up Git hooks
+  - `setup.js` - General setup script
 
-1. Initial Setup: `node setup/setup.js`
-2. Run Tests: `./runners/run-tests.sh`
-3. Run API Tests: `./runners/run-api-tests.sh`
-4. Run E2E Tests: `./runners/run-e2e-tests.sh`
-5. Check Framework Health: `node utils/framework-health-check.js`
-6. Validate Tests: `node utils/validate-tests.js`
-7. Interactive Test Runner: `./test-runner.sh`
+- **utils/** - Utility scripts
+  - `.eslintrc.js` - ESLint configuration for scripts
+  - `coverage.js` - Generates test coverage reports
+  - `framework-health-check.js` - Checks framework health
+  - `naming-convention-check.js` - Validates naming conventions
+  - `validate-framework.js` - Validates framework integrity
+  - `validate-tests.js` - Validates test structure and quality

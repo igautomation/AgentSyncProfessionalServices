@@ -1,112 +1,234 @@
 # GitHub Packages Setup Guide
 
-This guide explains how to set up GitHub Packages for installing the AgentSync Test Framework.
+This guide explains how to set up and use the AgentSync Test Framework as a private GitHub package.
 
-## Prerequisites
+## For Framework Maintainers
 
-1. GitHub account with access to the AgentSync organization
-2. Personal Access Token (PAT) with `read:packages` scope
+### Publishing the Framework
 
-## Setup Instructions
+1. **Prepare for Publishing**
 
-### 1. Create a Personal Access Token (PAT)
+   Ensure your `package.json` has the correct configuration:
 
-1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
-2. Click "Generate new token" → "Generate new token (classic)"
-3. Give it a name like "AgentSync Packages"
-4. Select the `read:packages` scope
-5. Click "Generate token"
-6. **Copy the token** - you'll only see it once!
-
-### 2. Configure npm to use GitHub Packages
-
-Create or edit your `~/.npmrc` file:
-
-```
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
-@agentsync:registry=https://npm.pkg.github.com
-```
-
-Replace `YOUR_GITHUB_TOKEN` with the PAT you created.
-
-### 3. Using Environment Variables (Recommended)
-
-For better security, use an environment variable:
-
-1. Add to your shell profile (`.bashrc`, `.zshrc`, etc.):
-   ```bash
-   export GITHUB_TOKEN=your_token_here
+   ```json
+   {
+     "name": "@agentsync/test-framework",
+     "version": "1.0.0",
+     "publishConfig": {
+       "registry": "https://npm.pkg.github.com"
+     }
+   }
    ```
 
-2. Update your `~/.npmrc`:
+2. **Authentication**
+
+   Create a `.npmrc` file in the project root:
+
    ```
-   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
    @agentsync:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
    ```
 
-3. Reload your shell:
+   Set your GitHub token:
+
    ```bash
-   source ~/.bashrc  # or ~/.zshrc
+   export GITHUB_TOKEN=your_personal_access_token
    ```
 
-### 4. Project-Specific Configuration
+3. **Manual Publishing**
 
-For project-specific configuration, create a `.npmrc` file in your project root:
+   ```bash
+   npm publish
+   ```
 
-```
-@agentsync:registry=https://npm.pkg.github.com
-```
+4. **Automated Publishing with GitHub Actions**
 
-And run npm with the auth token:
+   The framework includes a GitHub Actions workflow that automatically publishes the package when a new release is created.
 
-```bash
-GITHUB_TOKEN=your_token_here npm install
-```
+   To create a new release:
 
-### 5. CI/CD Configuration
+   1. Go to the GitHub repository
+   2. Click on "Releases"
+   3. Click "Draft a new release"
+   4. Enter the version tag (e.g., `v1.0.1`)
+   5. Add release notes
+   6. Click "Publish release"
 
-For GitHub Actions:
+### Version Management
 
-```yaml
-- name: Setup Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: '18'
-    registry-url: 'https://npm.pkg.github.com'
-    scope: '@agentsync'
+Follow semantic versioning:
 
-- name: Install dependencies
-  run: npm ci
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
+- **Major version (X.0.0)**: Breaking changes
+- **Minor version (1.X.0)**: New features (backward compatible)
+- **Patch version (1.0.X)**: Bug fixes (backward compatible)
+
+## For Client Projects
+
+### Setting Up a New Client Project
+
+1. **Create Project Structure**
+
+   ```bash
+   mkdir my-client-project
+   cd my-client-project
+   ```
+
+2. **Authentication Setup**
+
+   Create a `.npmrc` file:
+
+   ```
+   @agentsync:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+   ```
+
+3. **Initialize Project**
+
+   ```bash
+   npm init -y
+   ```
+
+4. **Update package.json**
+
+   ```json
+   {
+     "name": "my-client-project",
+     "version": "1.0.0",
+     "dependencies": {
+       "@agentsync/test-framework": "^1.0.0"
+     },
+     "devDependencies": {
+       "@playwright/test": "^1.40.0"
+     }
+   }
+   ```
+
+5. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+### Using the Framework in Client Projects
+
+1. **Import Framework Components**
+
+   ```javascript
+   const { utils, fixtures, pages } = require('@agentsync/test-framework');
+   ```
+
+2. **Use Framework Utilities**
+
+   ```javascript
+   const { webInteractions } = utils.web;
+   await webInteractions.waitForPageLoad(page);
+   ```
+
+3. **Use Self-Healing Locators**
+
+   ```javascript
+   const { SelfHealingLocator } = utils.web;
+   
+   const loginButton = new SelfHealingLocator(page, {
+     selector: 'button[type="submit"]',
+     fallbackSelectors: [
+       'button:has-text("Login")',
+       '.login-button'
+     ],
+     name: 'Login Button'
+   });
+   
+   await loginButton.click();
+   ```
+
+4. **Extend Base Page Objects**
+
+   ```javascript
+   const { BasePage } = require('@agentsync/test-framework').pages;
+   
+   class LoginPage extends BasePage {
+     constructor(page) {
+       super(page);
+       this.usernameInput = page.locator('#username');
+       this.passwordInput = page.locator('#password');
+       this.loginButton = page.locator('button[type="submit"]');
+     }
+     
+     async login(username, password) {
+       await this.usernameInput.fill(username);
+       await this.passwordInput.fill(password);
+       await this.loginButton.click();
+     }
+   }
+   
+   module.exports = LoginPage;
+   ```
+
+### GitHub Actions Integration
+
+1. **Create GitHub Actions Workflow**
+
+   Create a file at `.github/workflows/tests.yml`:
+
+   ```yaml
+   name: Client Tests
+   
+   on:
+     push:
+       branches: [main, develop]
+     pull_request:
+       branches: [main]
+   
+   jobs:
+     test:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v4
+         
+         - name: Setup Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: '18'
+             registry-url: 'https://npm.pkg.github.com'
+             scope: '@agentsync'
+         
+         - name: Install dependencies
+           run: npm ci
+           env:
+             NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
+         - name: Install Playwright browsers
+           run: npx playwright install --with-deps
+         
+         - name: Run tests
+           run: npm test
+   ```
+
+2. **Add GitHub Token Secret**
+
+   Add a `GITHUB_TOKEN` secret in your repository settings.
 
 ## Troubleshooting
 
-### Authentication Errors
+### Authentication Issues
 
-If you see errors like:
-```
-npm ERR! Unable to authenticate, need: Basic realm="GitHub Package Registry"
-```
+If you encounter authentication issues:
 
-Check that:
-1. Your PAT has the correct permissions
-2. Your PAT is correctly set in your `.npmrc` file
-3. Your PAT hasn't expired
+1. Ensure your GitHub token has the `read:packages` scope
+2. Check that your `.npmrc` file is correctly configured
+3. Verify that the token environment variable is set
 
 ### Package Not Found
 
-If you see errors like:
-```
-npm ERR! 404 Not Found - GET https://npm.pkg.github.com/@agentsync%2ftest-framework
-```
+If the package cannot be found:
 
-Check that:
-1. You have access to the repository
-2. The package has been published
-3. You're using the correct package name
+1. Check that you're using the correct package name (`@agentsync/test-framework`)
+2. Verify that your `.npmrc` file is in the project root
+3. Ensure you have access to the GitHub repository
 
-## Further Help
+### Version Conflicts
 
-If you continue to experience issues, contact the framework team on Slack at #test-framework-support.
+If you encounter version conflicts:
+
+1. Check the framework's version in your `package.json`
+2. Update to the latest version if needed: `npm update @agentsync/test-framework`

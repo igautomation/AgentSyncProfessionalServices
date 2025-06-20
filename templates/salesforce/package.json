@@ -1,11 +1,12 @@
 {
-  "name": "agentsync-test-project",
+  "name": "agentsync-salesforce-tests",
   "version": "1.0.0",
-  "description": "Test project using AgentSync Test Framework",
+  "description": "Salesforce tests using AgentSync Test Framework",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "setup": "node global-setup.js"
   },
   "dependencies": {
     "@igautomation/agentsyncprofessionalservices": "^1.0.0"

@@ -11,8 +11,15 @@
     "./config": "./src/config/base.config.js"
   },
   "bin": {
-    "agentsync-framework": "./bin/cli.js"
+    "agentsync-framework": "./bin/cli.js",
+    "agentsync-init": "./bin/init-project.js"
   },
+  "files": [
+    "src",
+    "bin",
+    "templates",
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igautomation/AgentSyncProfessionalServices.git"
@@ -32,6 +39,7 @@
     "setup:credentials": "node setup-credentials.js",
     "setup:salesforce": "node src/tests/salesforce/global-setup.js",
     "setup:client-project": "node bin/setup-client-project.js",
+    "init": "node bin/init-project.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

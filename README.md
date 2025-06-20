@@ -25,13 +25,21 @@ export GITHUB_TOKEN=your_personal_access_token
 npm install @igautomation/agentsyncprofessionalservices
 ```
 
-### Quick Setup
+### Quick Setup with Templates
 
-Use our setup script to create a new project:
+Use our project templates to get started quickly:
 
 ```bash
-npx @igautomation/agentsyncprofessionalservices setup:client-project
+# Using npx
+npx @igautomation/agentsyncprofessionalservices init -t basic -d my-project
+
+# Or if installed globally
+agentsync-init -t basic -d my-project
 ```
+
+Available templates:
+- `basic`: General web testing project
+- `salesforce`: Salesforce-specific testing project
 
 ## Usage
 
@@ -75,6 +83,7 @@ test('login test', async ({ page }) => {
 ## Features
 
 - **Private GitHub Package**: Secure distribution across multiple projects
+- **Project Templates**: Ready-to-use templates for quick setup
 - **Page Object Model**: Structured approach to organizing test code
 - **Self-Healing Locators**: Resilient element locators that adapt to UI changes
 - **Database Utilities**: Easy database interactions for test data management

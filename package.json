@@ -36,7 +36,8 @@
     "prepublishOnly": "npm run build",
     "test:salesforce:config": "playwright test --config=playwright.config.salesforce.js",
     "release": "node scripts/release.js",
-    "framework:init": "node bin/cli.js init"
+    "framework:init": "node bin/cli.js init",
+    "publish:framework": "./scripts/publish.sh"
   },
   "keywords": [
     "e2e",

@@ -1,5 +1,5 @@
 {
-  "name": "@agentsync/test-framework",
+  "name": "agentsync-test-framework",
   "version": "1.0.0",
   "description": "AgentSync Test Automation Framework for multi-project distribution",
   "main": "src/index.js",
@@ -9,10 +9,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agentsync/test-framework.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
   },
   "scripts": {
     "test": "playwright test",
@@ -81,6 +77,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-playwright": "^0.18.0",
     "husky": "^8.0.3",
+    "ignore-loader": "^0.1.2",
     "lint-staged": "^15.1.0",
     "prettier": "^3.0.3",
     "terser-webpack-plugin": "^5.3.14",

@@ -1,7 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 const dotenv = require('dotenv');
-const path = require('path');
+const _path = require('path');
 
 // Load Salesforce-specific environment variables
 dotenv.config({ path: '.env.salesforce' });

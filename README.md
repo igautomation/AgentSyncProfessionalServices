@@ -1,203 +1,86 @@
-# AgentSync Playwright Test Framework
+# AgentSync Test Framework
 
-A comprehensive test automation framework built with Playwright for end-to-end testing of web applications, APIs, and Salesforce.
+A comprehensive test automation framework for AgentSync projects.
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 16 or higher
-- npm or yarn
-- Git
-
-### Installation
+## Installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd AgentSyncProfessionalServices
+# Install from npm
+npm install agentsync-test-framework
 
-# Install dependencies
-npm install
-
-# Install Playwright browsers
-npx playwright install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your credentials
+# Or install from local tarball
+npm install ./agentsync-test-framework-1.0.0.tgz
 ```
 
-### Common Setup Issues & Solutions
+For detailed installation instructions, see the [Installation Guide](docs/INSTALLATION.md).
 
-1. **Missing Playwright Browsers**
-   ```bash
-   # If browsers are missing, install them explicitly
-   npx playwright install chromium firefox webkit
-   ```
+## Usage
 
-2. **Environment Variables**
-   - Ensure your `.env` file has all required variables from `.env.example`
-   - For Salesforce testing, make sure to set all SF_* variables
+```javascript
+const { BasePage, utils } = require('agentsync-test-framework');
 
-3. **Permission Issues**
-   ```bash
-   # If you encounter permission issues with scripts
-   chmod +x scripts/*.sh
-   chmod +x bin/*
-   ```
+// Create a page object
+class LoginPage extends BasePage {
+  constructor(page) {
+    super(page);
+    this.usernameInput = this.page.locator('#username');
+    this.passwordInput = this.page.locator('#password');
+    this.loginButton = this.page.locator('#login-button');
+  }
 
-4. **Node Version Issues**
-   ```bash
-   # Check your Node.js version
-   node -v
-   # Use nvm to install correct version if needed
-   nvm install 16
-   nvm use 16
-   ```
+  async login(username, password) {
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
+  }
+}
 
-### Salesforce Setup
-
-```bash
-# Create auth directory if it doesn't exist
-mkdir -p auth
-
-# Set up Salesforce authentication state
-npm run setup:salesforce
+// Use the framework utilities
+const { common } = utils;
+await common.waitForPageLoad(page);
 ```
 
-## 🧪 Running Tests
+For more examples and usage information, see the [Usage Guide](docs/USAGE.md).
 
-```bash
-# Run all tests
-npm test
+## Features
 
-# Run tests with UI mode
-npx playwright test --ui
+- **Page Object Model**: Structured approach to organizing test code
+- **Self-Healing Locators**: Resilient element locators that adapt to UI changes
+- **Database Utilities**: Easy database interactions for test data management
+- **Common Test Utilities**: Helper functions for common test operations
+- **Plugin System**: Extensible architecture for custom functionality
+- **Configuration Management**: Flexible configuration system
+- **CLI Tool**: Command-line interface for project setup and management
 
-# Run specific test types
-npm run test:api            # API tests
-npm run test:e2e            # End-to-end tests
-npm run test:accessibility  # Accessibility tests
-npm run test:salesforce     # Salesforce tests
-
-# Run tests in headed mode
-npx playwright test --headed
-
-# View test reports
-npm run report
-```
-
-## 🏗️ Framework Architecture
-
-The framework follows a modular architecture:
-
-```
-AgentSyncProfessionalServices/
-├── src/                    # Source code
-│   ├── cli/                # Command-line interface tools
-│   ├── config/             # Configuration files
-│   ├── core/               # Core framework functionality
-│   ├── dashboard/          # Test dashboard components
-│   ├── data/               # Test data files
-│   ├── fixtures/           # Test fixtures
-│   ├── helpers/            # Helper utilities
-│   ├── pages/              # Page objects
-│   │   └── salesforce/     # Salesforce page objects
-│   ├── tests/              # Test files
-│   │   ├── accessibility/  # Accessibility tests
-│   │   ├── api/            # API tests
-│   │   ├── core/           # Core functionality tests
-│   │   ├── examples/       # Example tests
-│   │   ├── integration/    # Integration tests
-│   │   ├── salesforce/     # Salesforce tests
-│   └── utils/              # Utility modules
-│       ├── accessibility/  # Accessibility testing utilities
-│       ├── api/            # API testing utilities
-│       ├── salesforce/     # Salesforce utilities
-│       └── many others...  # Various utility modules
-├── auth/                   # Authentication state storage
-├── docs/                   # Documentation
-├── reports/                # Test reports
-└── scripts/                # Helper scripts
-```
-
-## 🛠️ Key Features
-
-- **Cross-browser Testing**: Chrome, Firefox, Safari, and Edge support
-- **API Testing**: REST and GraphQL API testing capabilities
-- **Accessibility Testing**: Automated accessibility audits
-- **Performance Testing**: Core Web Vitals and performance metrics
-- **Data-Driven Testing**: Support for multiple data formats
-- **Self-Healing Locators**: Automatic recovery from broken selectors
-- **Reporting**: Customizable HTML reports and dashboards
-- **CI/CD Integration**: GitHub Actions workflows and Docker support
-- **Salesforce Integration**: Specialized utilities for Salesforce testing
-- **Mobile Testing**: Mobile browser emulation capabilities
-- **Visual Testing**: Screenshot comparison and visual regression testing
-
-## 🔌 Salesforce Testing
-
-The framework includes specialized support for Salesforce testing:
-
-```bash
-# Set up Salesforce credentials in .env file
-# Required variables:
-# SF_USERNAME, SF_PASSWORD, SF_LOGIN_URL, SF_SECURITY_TOKEN, SF_INSTANCE_URL
-
-# Set up Salesforce authentication state
-npm run setup:salesforce
-
-# Run Salesforce tests
-npm run test:salesforce
-
-# Run Salesforce tests with specific configuration
-npm run test:salesforce:config
-```
-
-For detailed information, see the [Salesforce Testing Guide](docs/salesforce-testing-guide.md).
-
-## 📊 Reporting
-
-Test reports are generated automatically and can be viewed with:
-
-```bash
-npm run report
-```
-
-Reports include:
-- Test results with pass/fail status
-- Screenshots of failures
-- Performance metrics
-- Accessibility violations
-- Visual comparison results
-
-## 🐳 Docker Support
-
-Run tests in Docker for consistent execution environments:
-
-```bash
-# Build and run with Docker
-docker-compose up
-
-# Run specific tests
-docker-compose run playwright npm run test:api
-```
-
-## 📚 Documentation
-
-Comprehensive documentation is available in the `docs/` directory:
+## Documentation
 
 - [Installation Guide](docs/INSTALLATION.md)
-- [Running Tests](docs/RUNNING_TESTS.md)
-- [Framework Guide](docs/FRAMEWORK_GUIDE.md)
-- [User Guide](docs/USER_GUIDE.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Salesforce Testing Guide](docs/salesforce-testing-guide.md)
+- [Usage Guide](docs/USAGE.md)
+- [API Reference](docs/README.md)
+- [Examples](docs/examples/)
 
-## 🤝 Contributing
+## Project Structure
 
-Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details on contributing to this project.
+```
+agentsync-test-framework/
+├── src/
+│   ├── config/         # Configuration files
+│   ├── pages/          # Base page objects
+│   ├── utils/          # Utility modules
+│   └── index.js        # Main exports
+├── bin/                # CLI tools
+├── docs/               # Documentation
+└── templates/          # Project templates
+```
 
-## 📄 License
+## Contributing
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -am 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Submit a pull request
+
+## License
+
+MIT

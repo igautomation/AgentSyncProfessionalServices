@@ -3,7 +3,7 @@
  */
 const { chromium } = require('@playwright/test');
 const fs = require('fs');
-const path = require('path');
+const _path = require('path');
 require('dotenv').config();
 
 async function globalSetup() {

@@ -2,7 +2,7 @@
  * Framework Validation Test
  */
 const { test, expect } = require('@playwright/test');
-require('dotenv').config({ path: '.env.dev' });
+require('dotenv').config();
 
 test.describe('Framework Validation', () => {
   test('Framework validation test', async ({ page }) => {

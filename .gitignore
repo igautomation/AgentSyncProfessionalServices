@@ -9,3 +9,8 @@ node_modules/
 .env
 .env.*
 !.env.example
+/logs/
+/.vscode/
+/.idea/
+/reports/
+/.DS_Store

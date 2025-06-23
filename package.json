@@ -113,5 +113,8 @@
   },
   "peerDependencies": {
     "@playwright/test": "^1.53.1"
+  },
+  "resolutions": {
+    "chartjs-node-canvas/chart.js": "^4.4.0"
   }
 }

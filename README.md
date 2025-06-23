@@ -6,14 +6,20 @@ A comprehensive test automation framework for AgentSync projects, distributed as
 
 ### Using GitHub Packages
 
-1. Create a `.npmrc` file in your project root:
+1. Run the setup script to configure your GitHub token:
+
+```bash
+npm run setup:github-token
+```
+
+Or manually create a `.npmrc` file in your project root:
 
 ```
 @igautomation:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-2. Set your GitHub token:
+2. Set your GitHub token as an environment variable:
 
 ```bash
 export GITHUB_TOKEN=your_personal_access_token
@@ -196,6 +202,7 @@ Refer to `.env.example` for all available configuration options.
 
 - [Installation Guide](docs/INSTALLATION.md)
 - [GitHub Packages Setup Guide](docs/GITHUB_PACKAGES_SETUP.md)
+- [NPM Setup Guide](docs/npm-setup.md)
 - [Multi-Project Guide](docs/MULTI_PROJECT_GUIDE.md)
 - [Quick Start Guide](docs/QUICK_START.md)
 - [Client Setup Checklist](docs/CLIENT_SETUP_CHECKLIST.md)

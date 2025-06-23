@@ -10,6 +10,24 @@ const { extractCollections, enhancePageObjectWithCollections } = require('./domC
 const config = require('./config');
 
 /**
+ * Sanitize a string to be a valid JavaScript identifier
+ * @param {string} name - The name to sanitize
+ * @returns {string} - A valid JavaScript identifier
+ */
+function sanitizeIdentifier(name) {
+  if (!name) return '_unknown';
+  // Replace invalid characters with underscores
+  let sanitized = name.replace(/[^a-zA-Z0-9_$]/g, '_');
+  
+  // Ensure it doesn't start with a number
+  if (/^[0-9]/.test(sanitized)) {
+    sanitized = '_' + sanitized;
+  }
+  
+  return sanitized;
+}
+
+/**
  * Generate a page object from a URL
  * @param {Object} options Generation options
  * @returns {Promise<Object>} Generation result
@@ -64,6 +82,20 @@ async function generatePageObject(options) {
       collections = await extractCollections(page);
     }
     
+    
+    // Deduplicate collections
+    Object.keys(collections).forEach(type => {
+      const uniqueNames = new Set();
+      collections[type] = collections[type].filter(item => {
+        const name = sanitizeIdentifier(item.name).toLowerCase();
+        if (uniqueNames.has(name)) {
+          return false;
+        }
+        uniqueNames.add(name);
+        return true;
+      });
+    });
+
     // Generate page class
     const className = name.replace(/[^a-zA-Z0-9]/g, '');
     const fileName = `${className}.js`;
@@ -72,6 +104,14 @@ async function generatePageObject(options) {
     // Create output directory if it doesn't exist
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath, { recursive: true });
+    }
+    
+    // Check if BasePage exists, create it if not
+    const basePagePath = path.join(outputPath, 'BasePage.js');
+    if (!fs.existsSync(basePagePath)) {
+      console.log('Creating BasePage class...');
+      const basePageContent = generateBasePageClass();
+      fs.writeFileSync(basePagePath, basePageContent);
     }
     
     // Generate base page class
@@ -100,6 +140,7 @@ async function generatePageObject(options) {
       const testContent = generateTestClass(className, url, elements, collections, isSalesforcePage);
       const testDir = config.output.testsDir;
       
+      // Ensure test directory exists
       if (!fs.existsSync(testDir)) {
         fs.mkdirSync(testDir, { recursive: true });
       }
@@ -240,7 +281,7 @@ class ${className} extends BasePage {
     ${Object.entries(elements).map(([type, items]) => {
       if (type === 'modals') return ''; // Skip modals, we handle them separately
       return items.length > 0 ? `// ${type.charAt(0).toUpperCase() + type.slice(1)}\n    ` + 
-      items.map(item => `this.${item.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()} = '${item.selector}';`).join('\n    ')
+      items.map(item => `this.${sanitizeIdentifier(item.name).toLowerCase()} = '${item.selector}';`).join('\n    ')
       : ''
     }).filter(Boolean).join('\n\n    ')}${modalSelectors}
   }
@@ -255,11 +296,19 @@ class ${className} extends BasePage {
       ? "await this.page.waitForSelector('force-record-layout-section', { timeout: 30000 }).catch(() => {});"
       : "// Wait for main content to be available\n    await this.page.waitForSelector('body', { timeout: 30000 });"}
   }
+  
+  /**
+   * Get list items from any list on the page
+   * @returns {Promise<Array<string>>} List items text content
+   */
+  async getListItems() {
+    return await this.page.locator('ul li, ol li').allTextContents();
+  }
 
   ${Object.entries(elements).map(([type, items]) => {
     if (type === 'modals') return ''; // Skip modals, we handle them separately
     return items.map(item => {
-      const methodName = item.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const methodName = sanitizeIdentifier(item.name).toLowerCase();
       const capitalizedMethodName = methodName.charAt(0).toUpperCase() + methodName.slice(1);
       
       switch(type) {
@@ -331,8 +380,8 @@ function generateTestClass(className, url, elements, collections, isSalesforce) 
   const hasInputs = elements.inputs && elements.inputs.length > 0;
   const hasButtons = elements.buttons && elements.buttons.length > 0;
   const hasLinks = elements.links && elements.links.length > 0;
-  const hasTables = collections.tables && collections.tables.length > 0;
-  const hasLists = collections.lists && collections.lists.length > 0;
+  const hasTables = collections && collections.tables && collections.tables.length > 0;
+  const hasLists = collections && collections.lists && collections.lists.length > 0;
   const hasModals = elements.modals && elements.modals.length > 0;
   
   // Add modal test if we found modals
@@ -341,7 +390,7 @@ function generateTestClass(className, url, elements, collections, isSalesforce) 
     modalTest = `
   test('should handle modal dialogs', async () => {
     // Trigger a modal (you may need to adjust this based on your application)
-    ${hasButtons ? `await ${instanceName}.click${elements.buttons[0].name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase().charAt(0).toUpperCase() + elements.buttons[0].name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase().slice(1)}();` : '// Trigger modal here'}
+    ${hasButtons ? `await ${instanceName}.click${sanitizeIdentifier(elements.buttons[0].name).toLowerCase().charAt(0).toUpperCase() + sanitizeIdentifier(elements.buttons[0].name).toLowerCase().slice(1)}();` : '// Trigger modal here'}
     
     // Wait for modal to appear
     const modalVisible = await ${instanceName}.waitForModal();
@@ -366,7 +415,7 @@ function generateTestClass(className, url, elements, collections, isSalesforce) 
  * @generated
  */
 const { test, expect } = require('@playwright/test');
-const ${className} = require('../src/pages/${className}');
+const ${className} = require('../pages/${className}');
 
 test.describe('${className} Tests', () => {
   let page;
@@ -397,7 +446,7 @@ test.describe('${className} Tests', () => {
   ${hasInputs ? `
   test('should interact with form elements', async () => {
     ${elements.inputs.slice(0, 3).map(input => {
-      const methodName = input.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const methodName = sanitizeIdentifier(input.name).toLowerCase();
       const capitalizedMethodName = methodName.charAt(0).toUpperCase() + methodName.slice(1);
       return `// Fill ${input.name} field
     await ${instanceName}.fill${capitalizedMethodName}('Test value');`;
@@ -405,7 +454,7 @@ test.describe('${className} Tests', () => {
     ${hasButtons ? `
     // Submit form
     ${elements.buttons.slice(0, 1).map(button => {
-      const methodName = button.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const methodName = sanitizeIdentifier(button.name).toLowerCase();
       const capitalizedMethodName = methodName.charAt(0).toUpperCase() + methodName.slice(1);
       return `await ${instanceName}.click${capitalizedMethodName}();`;
     }).join('\n    ')}` : ''}
@@ -413,7 +462,7 @@ test.describe('${className} Tests', () => {
   ${hasLinks ? `
   test('should navigate using links', async () => {
     ${elements.links.slice(0, 1).map(link => {
-      const methodName = link.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const methodName = sanitizeIdentifier(link.name).toLowerCase();
       const capitalizedMethodName = methodName.charAt(0).toUpperCase() + methodName.slice(1);
       return `// Click ${link.name} link
     const navigationPromise = page.waitForNavigation();
@@ -424,7 +473,7 @@ test.describe('${className} Tests', () => {
   ${hasTables ? `
   test('should interact with tables', async () => {
     ${collections.tables.slice(0, 1).map(table => {
-      const safeName = table.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const safeName = sanitizeIdentifier(table.name).toLowerCase();
       const capitalizedName = safeName.charAt(0).toUpperCase() + safeName.slice(1);
       return `// Get table rows
     const rows = await ${instanceName}.get${capitalizedName}Rows();
@@ -434,14 +483,109 @@ test.describe('${className} Tests', () => {
   ${hasLists ? `
   test('should interact with lists', async () => {
     ${collections.lists.slice(0, 1).map(list => {
-      const safeName = list.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+      const safeName = sanitizeIdentifier(list.name).toLowerCase();
       const capitalizedName = safeName.charAt(0).toUpperCase() + safeName.slice(1);
       return `// Get list items
     const items = await ${instanceName}.get${capitalizedName}Items();
     expect(items.length).toBeGreaterThan(0);`;
     }).join('\n    ')}
-  });` : ''}${modalTest}
+  });` : `
+  test('should interact with lists', async () => {
+    // Get list items
+    const items = await ${instanceName}.getListItems();
+    expect(items.length).toBeGreaterThan(0);
+  });`}${modalTest}
 });`;
+}
+
+/**
+ * Generate BasePage class content
+ * @returns {string} Generated BasePage class content
+ */
+function generateBasePageClass() {
+  return `/**
+ * BasePage - Base class for all page objects
+ */
+class BasePage {
+  /**
+   * @param {import('@playwright/test').Page} page
+   */
+  constructor(page) {
+    this.page = page;
+  }
+
+  /**
+   * Navigate to a URL
+   * @param {string} url - URL to navigate to
+   */
+  async goto(url) {
+    await this.page.goto(url);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  /**
+   * Click on an element
+   * @param {string} selector - Element selector
+   */
+  async click(selector) {
+    await this.page.click(selector);
+  }
+
+  /**
+   * Fill an input field
+   * @param {string} selector - Input selector
+   * @param {string} value - Value to fill
+   */
+  async fill(selector, value) {
+    await this.page.fill(selector, value);
+  }
+
+  /**
+   * Select an option from a dropdown
+   * @param {string} selector - Select element selector
+   * @param {string|Object} value - Option value or label
+   */
+  async selectOption(selector, value) {
+    await this.page.selectOption(selector, value);
+  }
+
+  /**
+   * Check if an element is visible
+   * @param {string} selector - Element selector
+   * @returns {Promise<boolean>} - Whether the element is visible
+   */
+  async isVisible(selector) {
+    return await this.page.isVisible(selector);
+  }
+
+  /**
+   * Get text content of an element
+   * @param {string} selector - Element selector
+   * @returns {Promise<string>} - Text content
+   */
+  async getText(selector) {
+    return await this.page.textContent(selector);
+  }
+
+  /**
+   * Wait for an element to be visible
+   * @param {string} selector - Element selector
+   * @param {Object} options - Wait options
+   */
+  async waitForElement(selector, options = {}) {
+    await this.page.waitForSelector(selector, { state: 'visible', ...options });
+  }
+
+  /**
+   * Take a screenshot
+   * @param {string} name - Screenshot name
+   */
+  async screenshot(name) {
+    await this.page.screenshot({ path: \`./screenshots/\${name}.png\` });
+  }
+}
+
+module.exports = { BasePage };`;
 }
 
 module.exports = { generatePageObject };

@@ -73,7 +73,7 @@ class ConfigManager {
       
       output: {
         pagesDir: process.env.PAGES_OUTPUT_DIR || './src/pages',
-        testsDir: process.env.TESTS_OUTPUT_DIR || './tests/pages',
+        testsDir: process.env.TESTS_OUTPUT_DIR || './src/tests',
         elementsFile: process.env.ELEMENTS_OUTPUT_FILE || './temp/sf_elements.json',
         sessionFile: process.env.SF_SESSION_FILE || './sessions/sf_session.txt',
         authStorageDir: process.env.AUTH_STORAGE_DIR || './auth'

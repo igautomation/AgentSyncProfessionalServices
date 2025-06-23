@@ -1,123 +1,71 @@
-# Page Object Generators
+# Page Object Generator
 
-This directory contains utilities for automatically generating Page Objects from DOM elements.
+This directory contains utilities for generating page objects and test files from web pages.
 
-## Features
+## Overview
 
-- Extract standard web elements (inputs, buttons, selects, etc.)
-- Extract Salesforce-specific elements (lightning components)
-- Extract DOM collections (tables, lists, grids)
-- Extract and handle modals and dialogs
-- Generate page object classes with appropriate methods
-- Generate test files with basic test cases
+The page object generator creates page objects and corresponding test files from web pages. It supports:
 
-## DOM Collections Support
-
-The generators support extracting and working with DOM collections:
-
-- **Tables**: Standard HTML tables, ARIA tables, and grid roles
-- **Lists**: Ordered and unordered lists, listbox roles
-- **Grids**: CSS grid-based layouts
-- **Repeaters**: Repeated elements with similar structure
-- **Lightning Datatables**: Salesforce Lightning datatable components
-
-## Modal/Dialog Support
-
-The generators now detect and handle modal dialogs with methods for:
-
-- Waiting for modals to appear
-- Getting modal titles and content
-- Clicking buttons within modals
-- Filling form fields in modals
-- Closing modals
-- Checking modal visibility
+- Standard web pages
+- Salesforce pages
+- Authentication
+- Element extraction
+- DOM collection extraction
+- Test file generation
 
 ## Usage
 
 ```bash
-# Standard web application
-node generate-page.js --url https://example.com/page --name ExamplePage
-
-# Salesforce application
-node generate-page.js --url https://myorg.lightning.force.com/page --name SfPage --salesforce
-
-# With authentication
-node generate-page.js --url https://myorg.lightning.force.com/page --name SfPage --salesforce --username user@example.com --password mypassword
-
-# Without collections
-node generate-page.js --url https://example.com/page --name ExamplePage --no-collections
-
-# Generate test files
-node generate-page.js --url https://example.com/page --name ExamplePage --generate-tests
-
-# Run in visible mode (non-headless)
-node generate-page.js --url https://example.com/page --name ExamplePage --visible
+node generate-page.js --url "https://example.com" --name ExamplePage --generate-tests
 ```
 
-## Configuration
+### Options
 
-See `config.js` for default configuration options. Key settings include:
+- `--url`, `-u`: URL to generate page object from (required)
+- `--name`, `-n`: Name of the page class
+- `--output`, `-o`: Output directory (default: ./src/pages)
+- `--visible`, `-v`: Run in visible browser mode
+- `--username`: Username for authentication
+- `--password`: Password for authentication
+- `--salesforce`, `-sf`: Generate Salesforce-specific page object
+- `--no-collections`: Don't include DOM collection methods
+- `--generate-tests`, `-t`: Generate test files
+- `--help`, `-h`: Show help message
 
-```javascript
-{
-  // Output paths
-  output: {
-    pagesDir: './src/pages',
-    testsDir: './tests/pages'
-  },
-  
-  // Extraction options
-  extraction: {
-    waitForSelectors: { /* ... */ },
-    timeout: 60000,
-    extractCollections: true
-  },
-  
-  // Salesforce specific options
-  salesforce: {
-    loginUrl: 'https://login.salesforce.com',
-    components: [ /* ... */ ]
-  }
-}
-```
-
-## Core Files
+## Files
 
 - `generate-page.js`: Main CLI entry point
-- `page-generator.js`: Core page object generation logic
-- `element-extractor.js`: Element extraction for standard and Salesforce pages
-- `domCollections.js`: DOM collections utilities
-- `config.js`: Configuration settings
-- `selectors.js`: Selector patterns for element identification
+- `page-generator.js`: Core functionality for generating page objects and tests
+- `element-extractor.js`: Extracts elements from web pages
+- `domCollections.js`: Handles DOM collections like tables and lists
+- `config.js`: Configuration for the generator
+- `verify-paths.js`: Utility to verify page generator paths
+- `improve-generator.js`: Utility to improve the page generator
 
 ## Examples
 
-### Generate a standard page object:
+### Basic Example
 
 ```bash
-node generate-page.js --url https://example.com/login --name LoginPage
+node generate-page.js --url "https://example.com" --name HomePage
 ```
 
-### Generate a Salesforce page object:
+### Salesforce Example
 
 ```bash
-node generate-page.js --url https://myorg.lightning.force.com/lightning/o/Contact/new --name ContactPage --salesforce
+node generate-page.js --url "https://your-instance.salesforce.com/lightning/o/Contact/new" --name ContactForm --salesforce --username "user@example.com" --password "password" --generate-tests
 ```
 
-### Generate with authentication:
+### Visible Mode
 
 ```bash
-node generate-page.js --url https://myorg.lightning.force.com/lightning/o/Contact/new --name ContactPage --salesforce --username user@example.com --password mypassword
+node generate-page.js --url "https://example.com" --name HomePage --visible
 ```
 
-### Generate page object with tests:
+## Troubleshooting
 
-```bash
-node generate-page.js --url https://example.com/login --name LoginPage --generate-tests
-```
+If you encounter issues with the generated files:
 
-### Generate for modal/dialog pages:
-
-```bash
-node generate-page.js --url https://myorg.lightning.force.com/lightning/o/Contact/new --name NewContactDialog --salesforce --generate-tests
-```
+1. Run `node verify-paths.js` to check for path issues
+2. Run `node improve-generator.js` to apply improvements to the generator
+3. Check that the BasePage class exists in the output directory

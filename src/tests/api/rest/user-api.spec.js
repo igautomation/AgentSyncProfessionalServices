@@ -8,8 +8,8 @@ require('dotenv').config({ path: '.env.dev' });
 
 test.describe('User API Tests', () => {
   // Get API base URL from environment variables
-  const baseUrl = 'https://reqres.in/api';
-  const apiKey = process.env.API_KEY || 'reqres-free-v1';
+  const baseUrl = process.env.API_BASE_URL || process.env.REQRES_API_URL || '';
+  const apiKey = process.env.API_KEY || '';
   const apiHeaderName = process.env.API_HEADER_NAME || 'x-api-key';
   
   /**

@@ -16,8 +16,10 @@ Use this checklist to ensure proper setup of the AgentSync Test Framework in cli
   - [ ] Created `playwright.config.js` extending framework configuration
 
 - [ ] **Environment Setup**
-  - [ ] Created `.env` file with required environment variables
+  - [ ] Created environment-specific files (`.env.dev`, `.env.qa`, `.env.prod`) from `.env.example`
+  - [ ] Configured all required environment variables for each environment
   - [ ] Set up `GITHUB_TOKEN` environment variable
+  - [ ] Added `.env.*` files to `.gitignore`
 
 ## Installation
 
@@ -87,6 +89,9 @@ Use this checklist to ensure proper setup of the AgentSync Test Framework in cli
   - [ ] Limited token permissions to minimum required
 
 - [ ] **Sensitive Data**
-  - [ ] Ensured no credentials in code
+  - [ ] Verified no hard-coded URLs in code
+  - [ ] Verified no hard-coded credentials in code
+  - [ ] Verified no hard-coded API keys in code
   - [ ] Set up secure environment variable handling
   - [ ] Configured proper gitignore for sensitive files
+  - [ ] Reviewed documentation examples for hard-coded values

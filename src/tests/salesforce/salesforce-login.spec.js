@@ -8,8 +8,13 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 
-// Load Salesforce-specific environment variables
-dotenv.config({ path: '.env.salesforce' });
+// Load environment variables
+dotenv.config({ path: '.env.dev' });
+
+// For backwards compatibility, also try to load Salesforce-specific variables if the file exists
+if (fs.existsSync('.env.salesforce')) {
+  dotenv.config({ path: '.env.salesforce' });
+}
 
 // Ensure auth directory exists
 const authDir = path.join(process.cwd(), 'auth');

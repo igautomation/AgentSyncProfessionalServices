@@ -24,8 +24,8 @@ class ApiClient {
     };
     
     // Add API key header if available from environment or config
-    const apiKey = process.env.API_KEY || config.api.apiKey;
-    const apiHeaderName = process.env.API_HEADER_NAME || 'x-api-key';
+    const apiKey = process.env.API_KEY || (config.api && config.api.apiKey);
+    const apiHeaderName = process.env.API_HEADER_NAME || (config.api && config.api.headerName) || 'x-api-key';
     if (apiKey) {
       this.defaultHeaders[apiHeaderName] = apiKey;
     }

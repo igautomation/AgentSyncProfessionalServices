@@ -17,8 +17,8 @@ module.exports = {
   clientSecret: process.env.SALESFORCE_CLIENT_SECRET || process.env.SF_CLIENT_SECRET || '',
   
   // API settings
-  apiVersion: process.env.SALESFORCE_API_VERSION || process.env.SF_API_VERSION || '57.0',
-  loginUrl: process.env.SALESFORCE_LOGIN_URL || process.env.SF_LOGIN_URL || 'https://login.salesforce.com',
+  apiVersion: process.env.SALESFORCE_API_VERSION || process.env.SF_API_VERSION || '',
+  loginUrl: process.env.SALESFORCE_LOGIN_URL || process.env.SF_LOGIN_URL || '',
   instanceUrl: process.env.SALESFORCE_INSTANCE_URL || process.env.SF_INSTANCE_URL || process.env.SF_URL || '',
   
   // Test data paths

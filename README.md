@@ -166,6 +166,32 @@ The framework includes the following modules:
 - **GitHub Actions Integration**: Ready-to-use CI/CD workflows
 - **Latest Playwright Version**: Uses Playwright v1.53.1
 
+## Environment Variables
+
+This framework uses environment variables for configuration to avoid hard-coded values. Before using the framework, you should set up your environment variables:
+
+1. Copy the `.env.example` file to create environment-specific files:
+   ```bash
+   cp .env.example .env.dev
+   cp .env.example .env.qa
+   cp .env.example .env.prod
+   ```
+
+2. Fill in the appropriate values in each environment file. These files should NEVER be committed to version control.
+
+3. Load the environment variables in your tests:
+   ```javascript
+   require('dotenv').config({ path: '.env.dev' }); // or other environment
+   ```
+
+4. Access environment variables in your tests:
+   ```javascript
+   const baseUrl = process.env.BASE_URL;
+   const apiKey = process.env.API_KEY;
+   ```
+
+Refer to `.env.example` for all available configuration options.
+
 ## Documentation
 
 - [Installation Guide](docs/INSTALLATION.md)
@@ -173,6 +199,7 @@ The framework includes the following modules:
 - [Multi-Project Guide](docs/MULTI_PROJECT_GUIDE.md)
 - [Quick Start Guide](docs/QUICK_START.md)
 - [Client Setup Checklist](docs/CLIENT_SETUP_CHECKLIST.md)
+- [Environment Variables Guide](docs/ENVIRONMENT_VARIABLES.md)
 
 ## License
 

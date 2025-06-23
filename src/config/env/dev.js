@@ -1,16 +1,16 @@
 /**
  * Development environment configuration
  * 
- * SAMPLE TEST APPLICATIONS:
- * - Web UI: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
- * - API: https://reqres.in/
+ * Configure your test applications in .env.dev file
  */
+require('dotenv').config({ path: '.env.dev' });
+
 module.exports = {
-  baseUrl: 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login',
-  apiUrl: 'https://reqres.in/api',
+  baseUrl: process.env.BASE_URL || '',
+  apiUrl: process.env.API_URL || '',
   credentials: {
-    username: 'Admin',
-    password: 'admin123',
+    username: process.env.TEST_USERNAME || '',
+    password: process.env.TEST_PASSWORD || '',
   },
   timeouts: {
     default: 30000,

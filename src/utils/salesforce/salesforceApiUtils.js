@@ -21,8 +21,8 @@ class SalesforceApiUtils {
   constructor(config = {}) {
     this.instanceUrl = config.instanceUrl || process.env.SF_INSTANCE_URL;
     this.accessToken = config.accessToken || process.env.SF_ACCESS_TOKEN;
-    this.apiVersion = config.apiVersion || process.env.SF_API_VERSION || 'v62.0';
-    this.loginUrl = process.env.SF_LOGIN_URL || 'https://login.salesforce.com';
+    this.apiVersion = config.apiVersion || process.env.SF_API_VERSION || '';
+    this.loginUrl = process.env.SF_LOGIN_URL || '';
     
     // Remove trailing slash from instance URL if present
     if (this.instanceUrl && this.instanceUrl.endsWith('/')) {

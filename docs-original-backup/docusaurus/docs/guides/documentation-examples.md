@@ -28,9 +28,10 @@ This guide provides practical examples of how to use the documentation to solve 
    ```javascript
    // src/tests/my-first-test.spec.js
    const { test, expect } = require('@playwright/test');
+   require('dotenv').config();
 
    test('has title', async ({ page }) => {
-     await page.goto('https://example.com');
+     await page.goto(process.env.EXAMPLE_URL || '');
      await expect(page).toHaveTitle(/Example/);
    });
    ```
@@ -153,22 +154,23 @@ This guide provides practical examples of how to use the documentation to solve 
      });
 
      test('should get user by ID', async () => {
-       const response = await apiUtils.get('https://reqres.in/api/users/2');
+       const userId = process.env.TEST_USER_ID || '2';
+       const response = await apiUtils.get(`${process.env.API_BASE_URL}/users/${userId}`);
        
        expect(response.status()).toBe(200);
        
        const body = await response.json();
-       expect(body.data.id).toBe(2);
+       expect(body.data.id).toBe(parseInt(userId));
        expect(body.data.email).toBeTruthy();
      });
 
      test('should create a new user', async () => {
        const userData = {
-         name: 'John Doe',
-         job: 'Software Engineer'
+         name: process.env.TEST_USER_NAME || '<user_name>',
+         job: process.env.TEST_USER_JOB || '<job_title>'
        };
        
-       const response = await apiUtils.post('https://reqres.in/api/users', userData);
+       const response = await apiUtils.post(`${process.env.API_BASE_URL}/users`, userData);
        
        expect(response.status()).toBe(201);
        
@@ -341,7 +343,7 @@ This guide provides practical examples of how to use the documentation to solve 
 2. Add `page.pause()` to the test:
    ```javascript
    test('failing test', async ({ page }) => {
-     await page.goto('https://example.com');
+     await page.goto(process.env.EXAMPLE_URL || '');
      await page.pause(); // This will open the Playwright Inspector
      await page.click('button');
    });
@@ -480,7 +482,7 @@ This guide provides practical examples of how to use the documentation to solve 
 
      test.beforeEach(async ({ page }) => {
        visualUtils = new VisualComparisonUtils(page);
-       await page.goto('https://example.com');
+       await page.goto(process.env.EXAMPLE_URL || '');
      });
 
      test('homepage should match baseline', async ({ page }) => {

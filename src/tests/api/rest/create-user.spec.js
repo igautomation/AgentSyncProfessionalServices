@@ -34,17 +34,17 @@ test.describe('Create User API Tests', () => {
 
   test.beforeEach(({ request }) => {
     // Create a new API client using environment variables
-    apiClient = new ApiClient(process.env.REQRES_API_URL || 'https://reqres.in');
+    apiClient = new ApiClient(process.env.REQRES_API_URL || process.env.API_BASE_URL || '');
     // Set authentication token for API requests
-    apiClient.setAuthToken(process.env.API_KEY || 'reqres-free-v1');
+    apiClient.setAuthToken(process.env.API_KEY || '');
     schemaValidator = new SchemaValidator();
   });
 
   test('Create new user with valid data', async ({ request }) => {
-    // Get user data
+    // Get user data from environment or use placeholder values
     const userData = {
-      name: 'John Doe',
-      job: 'Software Engineer',
+      name: process.env.TEST_USER_NAME || '<user_name>',
+      job: process.env.TEST_USER_JOB || '<job_title>',
     };
 
     // Send POST request to create a user
@@ -58,9 +58,9 @@ test.describe('Create User API Tests', () => {
   });
 
   test('Create user with minimal data', async ({ request }) => {
-    // Generate minimal user data
+    // Generate minimal user data from environment or use placeholder
     const userData = {
-      name: 'Jane Smith',
+      name: process.env.TEST_USER_NAME_2 || '<user_name_2>',
     };
 
     // Send POST request to create a user
@@ -73,10 +73,10 @@ test.describe('Create User API Tests', () => {
   });
 
   test('Update user with PUT request', async ({ request }) => {
-    // Get updated user data
+    // Get updated user data from environment or use placeholders
     const updatedUserData = {
-      name: 'John Updated',
-      job: 'Senior Engineer',
+      name: process.env.TEST_USER_NAME_UPDATED || '<updated_user_name>',
+      job: process.env.TEST_USER_JOB_UPDATED || '<updated_job_title>',
     };
 
     // Send PUT request to update a user
@@ -92,9 +92,9 @@ test.describe('Create User API Tests', () => {
   });
 
   test('Update user with PATCH request', async ({ request }) => {
-    // Generate partial user data
+    // Generate partial user data from environment or use placeholder
     const partialUserData = {
-      job: 'Product Manager',
+      job: process.env.TEST_USER_JOB_PARTIAL || '<partial_job_update>',
     };
 
     // Send PATCH request to update a user

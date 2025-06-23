@@ -12,6 +12,8 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +26,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd docs-site
-          npm ci --legacy-peer-deps
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
 
       - name: Build website
         run: |

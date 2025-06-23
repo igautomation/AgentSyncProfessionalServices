@@ -10,7 +10,6 @@ module.exports = {
     library: {
       name: 'agentsyncTestFramework',
       type: 'umd',
-      export: 'default',
     },
     globalObject: 'this',
   },
@@ -25,6 +24,11 @@ module.exports = {
     'sqlite3': 'sqlite3',
     'sqlite': 'sqlite',
     'mssql': 'mssql',
+    'canvas': 'canvas',
+    'canvas-prebuilt': 'canvas-prebuilt',
+    'chartjs-node-canvas': 'chartjs-node-canvas',
+    'node-cron': 'node-cron',
+    'nodemailer': 'nodemailer',
   },
   module: {
     rules: [
@@ -48,6 +52,8 @@ module.exports = {
         format: {
           comments: false,
         },
+        keep_classnames: true,
+        keep_fnames: true
       },
       extractComments: false,
     })],

@@ -9,10 +9,10 @@
     "setup": "node global-setup.js"
   },
   "dependencies": {
-    "@igautomation/agentsyncprofessionalservices": "^1.0.0"
+    "@igautomation/agentsyncprofessionalservices": "^1.0.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "^1.53.1",
     "dotenv": "^16.3.1"
   }
 }

@@ -27,14 +27,14 @@ npm install @igautomation/agentsyncprofessionalservices
 
 ### Quick Setup with Templates
 
-Use our project templates to get started quickly:
+To create a new project using templates:
 
 ```bash
-# Using npx
-npx @igautomation/agentsyncprofessionalservices init -t basic -d my-project
+# First install the framework
+npm install @igautomation/agentsyncprofessionalservices
 
-# Or if installed globally
-agentsync-init -t basic -d my-project
+# Then use the full package name with npx
+npx @igautomation/agentsyncprofessionalservices init -t basic -d my-project
 ```
 
 Available templates:
@@ -43,11 +43,24 @@ Available templates:
 
 ## Usage
 
+### Basic Example
+
 ```javascript
 const { test, expect } = require('@playwright/test');
-const { utils, pages } = require('@igautomation/agentsyncprofessionalservices');
+const { utils } = require('@igautomation/agentsyncprofessionalservices');
 
-// Create a page object
+test('basic test', async ({ page }) => {
+  await page.goto('https://example.com');
+  await expect(page).toHaveTitle('Example Domain');
+});
+```
+
+### Page Object Model
+
+```javascript
+const { test, expect } = require('@playwright/test');
+const { pages } = require('@igautomation/agentsyncprofessionalservices');
+
 class LoginPage extends pages.BasePage {
   constructor(page) {
     super(page);
@@ -63,8 +76,21 @@ class LoginPage extends pages.BasePage {
   }
 }
 
-// Use self-healing locators
 test('login test', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await page.goto('/login');
+  await loginPage.login('user@example.com', 'password');
+  await expect(page).toHaveURL('/dashboard');
+});
+```
+
+### Self-Healing Locators
+
+```javascript
+const { test } = require('@playwright/test');
+const { utils } = require('@igautomation/agentsyncprofessionalservices');
+
+test('using self-healing locators', async ({ page }) => {
   const { SelfHealingLocator } = utils.web;
   
   const loginButton = new SelfHealingLocator(page, {
@@ -80,6 +106,52 @@ test('login test', async ({ page }) => {
 });
 ```
 
+### Salesforce Testing
+
+```javascript
+const { test, expect } = require('@playwright/test');
+const { utils } = require('@igautomation/agentsyncprofessionalservices');
+
+test('salesforce test', async ({ page }) => {
+  // Login to Salesforce
+  await utils.salesforce.login(page, {
+    username: process.env.SF_USERNAME,
+    password: process.env.SF_PASSWORD
+  });
+  
+  // Navigate to Contacts tab
+  await utils.salesforce.navigateToTab(page, 'Contacts');
+  
+  // Create a new contact
+  await page.click('a[title="New"]');
+  await page.fill('input[name="lastName"]', 'Test Contact');
+  await page.click('button[name="SaveEdit"]');
+  
+  // Verify success message
+  await expect(page.locator('.toastMessage')).toContainText('Contact');
+});
+```
+
+## Available Modules
+
+The framework includes the following modules:
+
+- **utils.web**: Web testing utilities
+- **utils.api**: API testing utilities
+- **utils.salesforce**: Salesforce testing utilities
+- **utils.database**: Database interaction utilities
+- **utils.common**: Common utilities
+- **utils.reporting**: Reporting utilities
+- **utils.visual**: Visual testing utilities
+- **utils.accessibility**: Accessibility testing utilities
+- **utils.performance**: Performance testing utilities
+- **utils.mobile**: Mobile testing utilities
+- **utils.localization**: Localization testing utilities
+- **utils.security**: Security testing utilities
+- **utils.testrail**: TestRail integration utilities
+- **utils.scheduler**: Test scheduling utilities
+- **utils.plugins**: Plugin system utilities
+
 ## Features
 
 - **Private GitHub Package**: Secure distribution across multiple projects
@@ -92,6 +164,7 @@ test('login test', async ({ page }) => {
 - **Configuration Management**: Flexible configuration system
 - **CLI Tool**: Command-line interface for project setup and management
 - **GitHub Actions Integration**: Ready-to-use CI/CD workflows
+- **Latest Playwright Version**: Uses Playwright v1.53.1
 
 ## Documentation
 

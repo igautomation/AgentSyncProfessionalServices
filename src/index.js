@@ -23,11 +23,15 @@ module.exports = {
     mobile: require('./utils/mobile'),
     localization: require('./utils/localization'),
     security: require('./utils/security'),
-    testrail: require('./utils/testrail')
+    testrail: require('./utils/testrail'),
+    salesforce: require('./utils/salesforce'),
+    scheduler: require('./utils/scheduler'),
+    plugins: require('./utils/plugins')
   },
   
   // Fixtures
-  fixtures: require('./fixtures/custom-fixtures'),
+  fixtures: require('./fixtures'),
+  customFixtures: require('./fixtures/custom-fixtures'),
   
   // Page objects
   pages: {
@@ -87,6 +91,21 @@ module.exports = {
   createFixtures: (fixtures = {}) => {
     const { test } = require('@playwright/test');
     return test.extend(fixtures);
+  },
+  
+  /**
+   * Initialize a new project
+   * @param {Object} options - Project options
+   * @returns {Promise<void>}
+   */
+  initProject: async (options = {}) => {
+    try {
+      const initProject = require('./utils/common/initProject');
+      return initProject(options);
+    } catch (error) {
+      console.error('Error initializing project:', error.message);
+      throw error;
+    }
   },
   
   /**

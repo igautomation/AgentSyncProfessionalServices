@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Simple script to publish the package to GitHub Packages
+ * Script to publish the package to GitHub Packages
  */
 
 const { execSync } = require('child_process');
@@ -19,6 +19,12 @@ if (!process.env.GITHUB_TOKEN) {
 const npmrcContent = `@igautomation:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=${process.env.GITHUB_TOKEN}`;
 
+// Backup existing .npmrc if it exists
+let npmrcBackup = null;
+if (fs.existsSync('.npmrc')) {
+  npmrcBackup = fs.readFileSync('.npmrc', 'utf8');
+}
+
 fs.writeFileSync('.npmrc', npmrcContent);
 
 try {
@@ -26,9 +32,27 @@ try {
   console.log('🔨 Building package...');
   execSync('npm run build', { stdio: 'inherit' });
 
+  // Ensure all necessary directories exist
+  const dirs = ['templates', 'docs', 'config'];
+  for (const dir of dirs) {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  }
+
+  // Create dist directory if it doesn't exist
+  if (!fs.existsSync('dist')) {
+    fs.mkdirSync('dist', { recursive: true });
+  }
+
+  // Copy index.js to dist if it doesn't exist
+  if (!fs.existsSync('dist/index.js')) {
+    fs.copyFileSync('index.js', 'dist/index.js');
+  }
+
   // Publish to GitHub Packages
   console.log('📦 Publishing to GitHub Packages...');
-  execSync('npm publish', { stdio: 'inherit' });
+  execSync('npm publish --access=restricted', { stdio: 'inherit' });
 
   console.log('✅ Package published successfully!');
   console.log('You can now install it with: npm install @igautomation/agentsyncprofessionalservices');
@@ -36,6 +60,10 @@ try {
   console.error('❌ Failed to publish package:', error.message);
   process.exit(1);
 } finally {
-  // Clean up .npmrc
-  fs.unlinkSync('.npmrc');
+  // Restore original .npmrc if it existed
+  if (npmrcBackup) {
+    fs.writeFileSync('.npmrc', npmrcBackup);
+  } else {
+    fs.unlinkSync('.npmrc');
+  }
 }

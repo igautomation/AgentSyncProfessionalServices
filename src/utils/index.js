@@ -13,22 +13,56 @@ const common = require('./common');
 // Web utilities
 const web = require('./web');
 
-// Salesforce utilities
-const salesforce = require('./salesforce');
-const salesforceObjects = require('./salesforce/objects');
+// Reporting utilities
+const reporting = require('./reporting');
+
+// Database utilities
+const database = require('./database');
+
+// Visual testing utilities
+const visual = require('./visual');
+
+// Accessibility testing utilities
+const accessibility = require('./accessibility');
+
+// Performance testing utilities
+const performance = require('./performance');
+
+// Mobile testing utilities
+const mobile = require('./mobile');
+
+// Localization utilities
+const localization = require('./localization');
+
+// Security utilities
+const security = require('./security');
 
 // Test management utilities
 const testrail = require('./testrail');
-const xray = require('./xray');
-const jira = require('./jira');
+
+// Salesforce utilities
+const salesforce = require('./salesforce');
+
+// Scheduler utilities
+const scheduler = require('./scheduler');
+
+// Plugin utilities
+const plugins = require('./plugins');
 
 module.exports = {
   api,
-  common,
   web,
-  salesforce,
-  salesforceObjects,
+  common,
+  reporting,
+  database,
+  visual,
+  accessibility,
+  performance,
+  mobile,
+  localization,
+  security,
   testrail,
-  xray,
-  jira
+  salesforce,
+  scheduler,
+  plugins
 };

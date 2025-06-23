@@ -32,10 +32,10 @@ You can initialize a new project using these templates with:
 
 ```bash
 # Using npx
-npx @igautomation/agentsyncprofessionalservices init -t basic -d my-project
+npx agentsync init -t basic -d my-project
 
 # Or if installed globally
-agentsync-init -t basic -d my-project
+agentsync init -t basic -d my-project
 ```
 
 Options:
@@ -47,7 +47,7 @@ Options:
 If you have the framework installed in your project:
 
 ```bash
-npm run init -- -t salesforce -d salesforce-tests
+npm exec -- agentsync init -t salesforce -d salesforce-tests
 ```
 
 ## Template Structure

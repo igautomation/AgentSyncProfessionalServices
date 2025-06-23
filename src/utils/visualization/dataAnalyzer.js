@@ -1,343 +1,231 @@
+/**
+ * Data Analyzer
+ * Analyzes and transforms data for visualization
+ */
+
 const logger = require('../common/logger');
 
 /**
- * Data Analyzer for processing scraped data
+ * Data Analyzer for preparing data for visualizations
  */
 class DataAnalyzer {
   /**
    * Constructor
    */
   constructor() {
-    // No initialization needed
+    // Default color palette for charts
+    this.colorPalette = [
+      '#4e79a7', '#f28e2c', '#e15759', '#76b7b2', '#59a14f',
+      '#edc949', '#af7aa1', '#ff9da7', '#9c755f', '#bab0ab'
+    ];
   }
   
   /**
-   * Extract a specific column from an array of objects
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to extract
-   * @returns {Array} Extracted column values
+   * Filter data based on a predicate function
+   * @param {Array<Object>} data - Data to filter
+   * @param {Function} predicate - Filter predicate
+   * @returns {Array<Object>} Filtered data
    */
-  extractColumn(data, column) {
-    try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
+  filter(data, predicate) {
+    return data.filter(predicate);
+  }
+  
+  /**
+   * Group data by a field
+   * @param {Array<Object>} data - Data to group
+   * @param {string} field - Field to group by
+   * @returns {Object} Grouped data
+   */
+  groupBy(data, field) {
+    return data.reduce((groups, item) => {
+      const key = item[field];
+      if (!groups[key]) {
+        groups[key] = [];
       }
+      groups[key].push(item);
+      return groups;
+    }, {});
+  }
+  
+  /**
+   * Aggregate data
+   * @param {Array<Object>} data - Data to aggregate
+   * @param {string} groupField - Field to group by
+   * @param {string} valueField - Field to aggregate
+   * @param {string} aggregation - Aggregation function (sum, avg, count, min, max)
+   * @returns {Object} Aggregated data
+   */
+  aggregate(data, groupField, valueField, aggregation = 'sum') {
+    const groups = this.groupBy(data, groupField);
+    const result = {};
+    
+    for (const key in groups) {
+      const values = groups[key].map(item => parseFloat(item[valueField]));
       
-      return data.map(item => item[column]);
+      switch (aggregation) {
+        case 'sum':
+          result[key] = values.reduce((sum, val) => sum + val, 0);
+          break;
+        case 'avg':
+          result[key] = values.reduce((sum, val) => sum + val, 0) / values.length;
+          break;
+        case 'count':
+          result[key] = values.length;
+          break;
+        case 'min':
+          result[key] = Math.min(...values);
+          break;
+        case 'max':
+          result[key] = Math.max(...values);
+          break;
+        default:
+          result[key] = values.reduce((sum, val) => sum + val, 0);
+      }
+    }
+    
+    return result;
+  }
+  
+  /**
+   * Prepare data for charts
+   * @param {Array<Object>} data - Data to prepare
+   * @param {string} labelField - Field to use for labels
+   * @param {string|Array<string>} valueField - Field(s) to use for values
+   * @param {string} chartType - Chart type (bar, line, pie)
+   * @returns {Object} Prepared chart data
+   */
+  prepareChartData(data, labelField, valueField, chartType = 'bar') {
+    try {
+      if (chartType === 'pie') {
+        // Prepare data for pie chart
+        const aggregated = this.aggregate(data, labelField, valueField, 'sum');
+        const labels = Object.keys(aggregated);
+        const values = Object.values(aggregated);
+        
+        // Generate colors
+        const backgroundColor = labels.map((_, i) => this.colorPalette[i % this.colorPalette.length]);
+        
+        return {
+          labels,
+          data: values,
+          backgroundColor
+        };
+      } else {
+        // Prepare data for bar or line chart
+        const labels = [...new Set(data.map(item => item[labelField]))];
+        
+        // Handle multiple value fields
+        const valueFields = Array.isArray(valueField) ? valueField : [valueField];
+        
+        const datasets = valueFields.map((field, index) => {
+          const aggregated = this.aggregate(data, labelField, field, 'sum');
+          
+          return {
+            label: field,
+            data: labels.map(label => aggregated[label] || 0),
+            backgroundColor: this.colorPalette[index % this.colorPalette.length],
+            borderColor: chartType === 'line' ? this.colorPalette[index % this.colorPalette.length] : undefined,
+            fill: chartType === 'line' ? false : undefined
+          };
+        });
+        
+        return {
+          labels,
+          datasets
+        };
+      }
     } catch (error) {
-      logger.error(`Failed to extract column ${column}`, error);
+      logger.error(`Failed to prepare chart data: ${error.message}`);
       throw error;
     }
   }
   
   /**
-   * Count occurrences of values in a column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to count
-   * @returns {Object} Object with counts for each value
+   * Calculate statistics for a dataset
+   * @param {Array<Object>} data - Data to analyze
+   * @param {string} field - Field to analyze
+   * @returns {Object} Statistics
    */
-  countValues(data, column) {
+  calculateStatistics(data, field) {
     try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
-      
-      return data.reduce((counts, item) => {
-        const value = item[column];
-        counts[value] = (counts[value] || 0) + 1;
-        return counts;
-      }, {});
-    } catch (error) {
-      logger.error(`Failed to count values in column ${column}`, error);
-      throw error;
-    }
-  }
-  
-  /**
-   * Calculate statistics for a numeric column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to analyze
-   * @returns {Object} Statistics object
-   */
-  calculateStats(data, column) {
-    try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
-      
-      const values = data
-        .map(item => parseFloat(item[column]))
-        .filter(value => !isNaN(value));
+      const values = data.map(item => parseFloat(item[field])).filter(val => !isNaN(val));
       
       if (values.length === 0) {
-        throw new Error(`No numeric values found in column ${column}`);
+        return {
+          count: 0,
+          sum: 0,
+          avg: 0,
+          min: 0,
+          max: 0,
+          median: 0,
+          stdDev: 0
+        };
       }
-      
-      const sum = values.reduce((acc, val) => acc + val, 0);
-      const mean = sum / values.length;
       
       // Sort values for median and percentiles
       const sortedValues = [...values].sort((a, b) => a - b);
       
+      // Calculate statistics
+      const count = values.length;
+      const sum = values.reduce((acc, val) => acc + val, 0);
+      const avg = sum / count;
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      
       // Calculate median
-      const midIndex = Math.floor(sortedValues.length / 2);
-      const median = sortedValues.length % 2 === 0
+      const midIndex = Math.floor(count / 2);
+      const median = count % 2 === 0
         ? (sortedValues[midIndex - 1] + sortedValues[midIndex]) / 2
         : sortedValues[midIndex];
       
       // Calculate standard deviation
-      const squaredDiffs = values.map(value => Math.pow(value - mean, 2));
-      const variance = squaredDiffs.reduce((acc, val) => acc + val, 0) / values.length;
+      const squaredDiffs = values.map(val => Math.pow(val - avg, 2));
+      const variance = squaredDiffs.reduce((acc, val) => acc + val, 0) / count;
       const stdDev = Math.sqrt(variance);
       
-      // Calculate min, max
-      const min = Math.min(...values);
-      const max = Math.max(...values);
-      
-      // Calculate percentiles
-      const percentile25 = this._calculatePercentile(sortedValues, 25);
-      const percentile75 = this._calculatePercentile(sortedValues, 75);
-      const percentile90 = this._calculatePercentile(sortedValues, 90);
-      
       return {
-        count: values.length,
+        count,
+        sum,
+        avg,
         min,
         max,
-        sum,
-        mean,
         median,
-        stdDev,
-        variance,
-        percentile25,
-        percentile75,
-        percentile90
+        stdDev
       };
     } catch (error) {
-      logger.error(`Failed to calculate statistics for column ${column}`, error);
+      logger.error(`Failed to calculate statistics: ${error.message}`);
       throw error;
     }
   }
   
   /**
-   * Calculate percentile value
-   * @param {Array<number>} sortedValues - Sorted array of values
-   * @param {number} percentile - Percentile to calculate (0-100)
-   * @returns {number} Percentile value
-   * @private
+   * Detect outliers in a dataset
+   * @param {Array<Object>} data - Data to analyze
+   * @param {string} field - Field to analyze
+   * @returns {Array<Object>} Outliers
    */
-  _calculatePercentile(sortedValues, percentile) {
-    const index = (percentile / 100) * (sortedValues.length - 1);
-    const lower = Math.floor(index);
-    const upper = Math.ceil(index);
-    const weight = index - lower;
-    
-    if (upper >= sortedValues.length) {
-      return sortedValues[lower];
-    }
-    
-    return sortedValues[lower] * (1 - weight) + sortedValues[upper] * weight;
-  }
-  
-  /**
-   * Group data by a column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} groupBy - Column name to group by
-   * @returns {Object} Grouped data
-   */
-  groupBy(data, groupBy) {
+  detectOutliers(data, field) {
     try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
+      const stats = this.calculateStatistics(data, field);
+      const threshold = stats.stdDev * 2; // 2 standard deviations
       
-      return data.reduce((groups, item) => {
-        const key = item[groupBy];
-        groups[key] = groups[key] || [];
-        groups[key].push(item);
-        return groups;
-      }, {});
-    } catch (error) {
-      logger.error(`Failed to group data by ${groupBy}`, error);
-      throw error;
-    }
-  }
-  
-  /**
-   * Filter data by a condition
-   * @param {Array<Object>} data - Array of objects
-   * @param {Function} filterFn - Filter function
-   * @returns {Array<Object>} Filtered data
-   */
-  filter(data, filterFn) {
-    try {
-      if (!Array.isArray(data)) {
-        throw new Error('Data must be an array of objects');
-      }
-      
-      return data.filter(filterFn);
-    } catch (error) {
-      logger.error('Failed to filter data', error);
-      throw error;
-    }
-  }
-  
-  /**
-   * Sort data by a column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to sort by
-   * @param {boolean} ascending - Sort direction
-   * @returns {Array<Object>} Sorted data
-   */
-  sort(data, column, ascending = true) {
-    try {
-      if (!Array.isArray(data)) {
-        throw new Error('Data must be an array of objects');
-      }
-      
-      return [...data].sort((a, b) => {
-        const valueA = a[column];
-        const valueB = b[column];
-        
-        // Handle numeric values
-        if (!isNaN(valueA) && !isNaN(valueB)) {
-          return ascending
-            ? parseFloat(valueA) - parseFloat(valueB)
-            : parseFloat(valueB) - parseFloat(valueA);
-        }
-        
-        // Handle string values
-        const stringA = String(valueA).toLowerCase();
-        const stringB = String(valueB).toLowerCase();
-        
-        return ascending
-          ? stringA.localeCompare(stringB)
-          : stringB.localeCompare(stringA);
+      return data.filter(item => {
+        const value = parseFloat(item[field]);
+        return Math.abs(value - stats.avg) > threshold;
       });
     } catch (error) {
-      logger.error(`Failed to sort data by ${column}`, error);
+      logger.error(`Failed to detect outliers: ${error.message}`);
       throw error;
     }
   }
   
   /**
-   * Find top N values by a column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to analyze
-   * @param {number} n - Number of top values to return
-   * @returns {Array<Object>} Top N values
+   * Set color palette
+   * @param {Array<string>} colors - Color palette
    */
-  findTopValues(data, column, n = 5) {
-    try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
-      
-      return this.sort(data, column, false).slice(0, n);
-    } catch (error) {
-      logger.error(`Failed to find top ${n} values for column ${column}`, error);
-      throw error;
-    }
-  }
-  
-  /**
-   * Calculate frequency distribution for a column
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} column - Column name to analyze
-   * @returns {Object} Frequency distribution
-   */
-  frequencyDistribution(data, column) {
-    try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
-      
-      const counts = this.countValues(data, column);
-      const total = data.length;
-      
-      const result = {
-        counts,
-        percentages: {},
-        total
-      };
-      
-      // Calculate percentages
-      for (const [key, count] of Object.entries(counts)) {
-        result.percentages[key] = (count / total) * 100;
-      }
-      
-      return result;
-    } catch (error) {
-      logger.error(`Failed to calculate frequency distribution for column ${column}`, error);
-      throw error;
-    }
-  }
-  
-  /**
-   * Prepare data for chart visualization
-   * @param {Array<Object>} data - Array of objects
-   * @param {string} labelColumn - Column to use for labels
-   * @param {string|Array<string>} valueColumns - Column(s) to use for values
-   * @param {string} chartType - Type of chart ('bar', 'line', 'pie')
-   * @returns {Object} Chart configuration
-   */
-  prepareChartData(data, labelColumn, valueColumns, chartType = 'bar') {
-    try {
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('Data must be a non-empty array of objects');
-      }
-      
-      const labels = this.extractColumn(data, labelColumn);
-      
-      // Handle single value column
-      if (typeof valueColumns === 'string') {
-        valueColumns = [valueColumns];
-      }
-      
-      // Generate random colors for datasets
-      const generateColor = (index) => {
-        const colors = [
-          '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
-          '#FF9F40', '#8AC249', '#EA526F', '#23B5D3', '#279AF1'
-        ];
-        return colors[index % colors.length];
-      };
-      
-      // Prepare datasets
-      const datasets = valueColumns.map((column, index) => {
-        const color = generateColor(index);
-        
-        if (chartType === 'pie') {
-          return {
-            data: this.extractColumn(data, column),
-            backgroundColor: data.map((_, i) => generateColor(i))
-          };
-        }
-        
-        return {
-          label: column,
-          data: this.extractColumn(data, column),
-          backgroundColor: color,
-          borderColor: color,
-          borderWidth: 1
-        };
-      });
-      
-      // Return chart configuration
-      if (chartType === 'pie') {
-        return {
-          labels,
-          data: datasets[0].data,
-          backgroundColor: datasets[0].backgroundColor
-        };
-      }
-      
-      return {
-        labels,
-        datasets
-      };
-    } catch (error) {
-      logger.error('Failed to prepare chart data', error);
-      throw error;
+  setColorPalette(colors) {
+    if (Array.isArray(colors) && colors.length > 0) {
+      this.colorPalette = colors;
     }
   }
 }

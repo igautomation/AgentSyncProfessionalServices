@@ -1,244 +1,126 @@
-# Multi-Project Framework Implementation Guide
+# Multi-Project Guide
 
-This guide explains how to use the AgentSync Test Framework across multiple client projects.
+This guide explains how to use the framework across multiple projects and teams.
 
-## Overview
+## Framework Distribution Strategy
 
-The AgentSync Test Framework is distributed as a private GitHub NPM package, allowing it to be securely used across multiple client projects. This approach provides several benefits:
+The AgentSync Test Framework is distributed as a private GitHub NPM package, allowing multiple teams to use the same framework while maintaining consistency and enabling centralized updates.
 
-- **Centralized Maintenance**: Framework updates are made in one place
-- **Version Control**: Each project can use a specific framework version
-- **Secure Distribution**: Private access through GitHub authentication
-- **Consistent Testing**: Standardized approach across all projects
+## Setting Up Teams
 
-## Implementation Steps
+### 1. Grant Repository Access
 
-### 1. Framework Repository Setup
+Ensure all team members have access to the repository:
 
-The framework is hosted in a GitHub repository and published as a private NPM package.
+1. Go to https://github.com/igautomation/AgentSyncProfessionalServices/settings/access
+2. Add teams or individual users who need access
 
-**Key Components:**
-- GitHub repository with the framework code
-- GitHub Packages for distribution
-- GitHub Actions for automated testing and publishing
+### 2. Create Team Setup Guide
 
-### 2. Client Project Setup
+Create a team-specific setup guide with:
 
-Each client project consumes the framework as a dependency.
+1. Instructions for creating GitHub Personal Access Tokens
+2. `.npmrc` configuration
+3. Project initialization steps
+4. Team-specific conventions and standards
 
-#### Option A: Manual Setup
+### 3. Schedule Training Session
 
-1. **Create Project Structure**
+Organize a brief training session covering:
+- Framework features
+- Authentication setup
+- Common usage patterns
+- Best practices
 
-   ```bash
-   mkdir client-project
-   cd client-project
-   ```
+## Project Setup for Teams
 
-2. **Set Up Authentication**
+Each team should follow these steps:
 
-   Create a `.npmrc` file:
+1. Set up GitHub Packages authentication
+2. Create a new project using templates
+3. Customize the project for their specific needs
+4. Set up CI/CD integration
 
-   ```
-   @agentsync:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-   ```
+## Maintaining Consistency
 
-3. **Create package.json**
+### Shared Configuration
 
-   ```json
-   {
-     "name": "client-project",
-     "version": "1.0.0",
-     "dependencies": {
-       "@agentsync/test-framework": "^1.0.0"
-     },
-     "devDependencies": {
-       "@playwright/test": "^1.40.0"
-     }
-   }
-   ```
-
-4. **Install Dependencies**
-
-   ```bash
-   npm install
-   ```
-
-5. **Create Configuration Files**
-
-   Create a `playwright.config.js` file that extends the framework's base configuration.
-
-#### Option B: Automated Setup (Recommended)
-
-Use the provided setup script:
-
-```bash
-npx @agentsync/test-framework setup:client-project
-```
-
-This script will:
-1. Prompt for project information
-2. Create the project structure
-3. Set up configuration files
-4. Create example test files
-
-### 3. GitHub Actions Integration
-
-Each client project should include a GitHub Actions workflow for automated testing.
-
-1. **Create Workflow File**
-
-   Create a file at `.github/workflows/tests.yml`:
-
-   ```yaml
-   name: Client Tests
-   
-   on:
-     push:
-       branches: [main, develop]
-     pull_request:
-       branches: [main]
-   
-   jobs:
-     test:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-         
-         - name: Setup Node.js
-           uses: actions/setup-node@v4
-           with:
-             node-version: '18'
-             registry-url: 'https://npm.pkg.github.com'
-             scope: '@agentsync'
-         
-         - name: Install dependencies
-           run: npm ci
-           env:
-             NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         
-         - name: Install Playwright browsers
-           run: npx playwright install --with-deps
-         
-         - name: Run tests
-           run: npm test
-   ```
-
-2. **Add GitHub Token Secret**
-
-   Add a `GITHUB_TOKEN` secret in your repository settings.
-
-### 4. Framework Usage in Tests
+Create shared configuration files that teams can extend:
 
 ```javascript
-const { test, expect } = require('@playwright/test');
-const { utils, pages } = require('@agentsync/test-framework');
+// team-config.js
+const { baseConfig } = require('@igautomation/agentsyncprofessionalservices/config');
 
-test('should use framework utilities', async ({ page }) => {
-  const { webInteractions } = utils.web;
-  
-  await page.goto('/');
-  await webInteractions.waitForPageLoad(page);
-  
-  // Use self-healing locators
-  const { SelfHealingLocator } = utils.web;
-  
-  const loginButton = new SelfHealingLocator(page, {
-    selector: 'button[type="submit"]',
-    fallbackSelectors: [
-      'button:has-text("Login")',
-      '.login-button'
-    ],
-    name: 'Login Button'
-  });
-  
-  await loginButton.click();
-});
+module.exports = {
+  ...baseConfig,
+  // Team-specific configuration
+  timeout: 60000,
+  retries: 2,
+};
 ```
 
-### 5. Framework Updates
+### Shared Page Objects
 
-When the framework is updated:
+Create shared page objects for common components:
 
-1. **Publish New Version**
+```javascript
+// shared-components.js
+const { BasePage } = require('@igautomation/agentsyncprofessionalservices/pages');
 
-   ```bash
-   cd framework-repo
-   npm version patch  # or minor or major
-   npm run publish:framework
-   ```
+class Header extends BasePage {
+  constructor(page) {
+    super(page);
+    this.logo = page.locator('.header-logo');
+    this.menuButton = page.locator('.menu-button');
+  }
+  
+  async openMenu() {
+    await this.menuButton.click();
+  }
+}
 
-2. **Update Client Projects**
-
-   ```bash
-   cd client-project
-   npm update @agentsync/test-framework
-   ```
-
-## Best Practices
-
-### Version Management
-
-- Use semantic versioning for the framework
-- Pin to specific versions in critical projects
-- Use version ranges (e.g., `^1.0.0`) for flexibility in non-critical projects
-
-### Authentication
-
-- Use GitHub Personal Access Tokens for local development
-- Use GitHub Actions tokens for CI/CD
-- Rotate tokens regularly for security
-
-### Project Structure
-
-```
-client-project/
-├── .github/
-│   └── workflows/
-│       └── tests.yml
-├── tests/
-│   ├── example.spec.js
-│   └── ...
-├── .env
-├── .npmrc
-├── package.json
-└── playwright.config.js
+module.exports = { Header };
 ```
 
-### Documentation
+## Version Management
 
-- Keep a CHANGELOG.md in the framework repository
-- Document breaking changes clearly
-- Provide migration guides for major version updates
+### Framework Versioning
 
-## Troubleshooting
+When updating the framework:
 
-### Common Issues
+1. Increment the version number in package.json
+2. Publish the new version
+3. Notify teams of the update
 
-1. **Authentication Errors**
+### Project Versioning
 
-   ```
-   npm ERR! 401 Unauthorized
-   ```
+Teams should specify the framework version in their package.json:
 
-   **Solution**: Check your GitHub token and .npmrc configuration.
+```json
+"dependencies": {
+  "@igautomation/agentsyncprofessionalservices": "^1.0.2"
+}
+```
 
-2. **Missing Dependencies**
+## Support and Collaboration
 
-   ```
-   Error: Cannot find module '@agentsync/test-framework'
-   ```
+### Support Channel
 
-   **Solution**: Verify your package.json and run `npm install`.
+Create a Slack channel or Teams chat for framework support questions.
 
-3. **Version Conflicts**
+### Knowledge Sharing
 
-   **Solution**: Update to the latest compatible version or pin to a specific version.
+Encourage teams to:
+- Share custom utilities they've created
+- Report bugs and issues
+- Suggest improvements to the framework
 
-### Support
+## Monitoring and Metrics
 
-For framework support:
+Track framework usage across teams:
 
-- GitHub Issues: [https://github.com/agentsync/test-framework/issues](https://github.com/agentsync/test-framework/issues)
-- Email: support@agentsync.com
+- Number of tests created
+- Test execution metrics
+- Framework version adoption
+
+This helps identify areas for improvement and ensures all teams are benefiting from the framework.

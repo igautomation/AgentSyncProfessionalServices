@@ -16,6 +16,9 @@ module.exports = {
   // Data utilities
   data: require('./data'),
   
+  // Salesforce interactions
+  interactions: require('./SalesforceInteractions'),
+  
   // Global setup
   globalSetup: require('./global-setup'),
   

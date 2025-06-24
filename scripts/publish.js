@@ -4,14 +4,48 @@
  * Script to publish the package to GitHub Packages
  */
 
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const readline = require('readline');
+
+// Function to check if token is valid
+function checkTokenValidity(token) {
+  try {
+    // Create a temporary .npmrc file
+    const tempNpmrc = path.join(__dirname, '.temp-npmrc');
+    fs.writeFileSync(tempNpmrc, `@igautomation:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=${token}`);
+    
+    // Try to access the registry
+    const result = spawnSync('npm', ['whoami', '--registry=https://npm.pkg.github.com/', '--userconfig', tempNpmrc], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    
+    // Clean up
+    fs.unlinkSync(tempNpmrc);
+    
+    // Check if the command was successful
+    return result.status === 0;
+  } catch (error) {
+    return false;
+  }
+}
 
 // Check if GITHUB_TOKEN is set
 if (!process.env.GITHUB_TOKEN) {
   console.error('❌ GITHUB_TOKEN is not set. Please set it before running this script.');
   console.error('Example: export GITHUB_TOKEN=your_personal_access_token');
+  console.error('\nAlternatively, run: npm run setup:publish-token');
+  process.exit(1);
+}
+
+// Validate the token
+if (!checkTokenValidity(process.env.GITHUB_TOKEN)) {
+  console.error('❌ The provided GITHUB_TOKEN is invalid or does not have the required permissions.');
+  console.error('Please ensure your token has the following scopes: repo, read:packages, write:packages');
+  console.error('\nRun npm run setup:publish-token to set up a new token.');
   process.exit(1);
 }
 
@@ -46,7 +80,7 @@ try {
   }
 
   // Copy index.js to dist if it doesn't exist
-  if (!fs.existsSync('dist/index.js')) {
+  if (!fs.existsSync('dist/index.js') && fs.existsSync('index.js')) {
     fs.copyFileSync('index.js', 'dist/index.js');
   }
 
@@ -58,12 +92,21 @@ try {
   console.log('You can now install it with: npm install @igautomation/agentsyncprofessionalservices');
 } catch (error) {
   console.error('❌ Failed to publish package:', error.message);
+  
+  if (error.message.includes('401 Unauthorized')) {
+    console.error('\nAuthentication failed. Your token may be invalid or expired.');
+    console.error('Run npm run setup:publish-token to set up a new token.');
+  } else if (error.message.includes('403 Forbidden')) {
+    console.error('\nYou do not have permission to publish this package.');
+    console.error('Make sure your token has the write:packages scope and you have write access to the repository.');
+  }
+  
   process.exit(1);
 } finally {
   // Restore original .npmrc if it existed
   if (npmrcBackup) {
     fs.writeFileSync('.npmrc', npmrcBackup);
-  } else {
+  } else if (fs.existsSync('.npmrc')) {
     fs.unlinkSync('.npmrc');
   }
 }

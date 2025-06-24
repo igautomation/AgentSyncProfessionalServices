@@ -257,7 +257,6 @@ class SalesforceInteractions extends WebInteractions {
       
       // Record view locators
       recordName: '//div[contains(@class, "slds-page-header")]//lightning-formatted-text',
-      relatedListViewAll: (relatedListName) => `//span[text()="${relatedListName}"]/ancestor::div[contains(@class, "slds-card")]//a[text()="View All"]`,
       
       // Lightning datatable
       datatable: '//lightning-datatable',

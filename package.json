@@ -1,5 +1,5 @@
 {
-  "name": "@agentsync/professional-services-qa",
+  "name": "@igautomation/agentsyncprofessionalservices",
   "version": "1.0.7",
   "description": "AgentSync Test Automation Framework for multi-project distribution",
   "main": "src/index.js",
@@ -26,11 +26,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agentsync/professional-services-qa.git"
+    "url": "git+https://github.com/igautomation/agentsyncprofessionalservices.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "test": "playwright test",

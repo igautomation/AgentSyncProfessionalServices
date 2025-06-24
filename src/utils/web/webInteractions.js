@@ -3,7 +3,7 @@
  *
  * Provides common web interaction methods with built-in waiting and error handling
  */
-const { expect } = require('@playwright/test');
+// No imports needed for this utility class
 
 class WebInteractions {
   /**
@@ -103,7 +103,7 @@ class WebInteractions {
   async isVisible(selector, options = {}) {
     try {
       const element = this.page.locator(selector);
-      return await element.isVisible(options);
+      return element.isVisible(options);
     } catch (error) {
       return false;
     }
@@ -287,8 +287,6 @@ class WebInteractions {
     const frame = await frameElement.contentFrame();
     return frame;
   }
-}  return frame;
-  }
 
   /**
    * Verify text exists on the page
@@ -298,7 +296,7 @@ class WebInteractions {
    */
   async verifyText(text, options = {}) {
     const locator = this.page.getByText(text, options);
-    return await locator.isVisible({ timeout: options.timeout || this.defaultTimeout });
+    return locator.isVisible({ timeout: options.timeout || this.defaultTimeout });
   }
 
   /**
@@ -325,7 +323,7 @@ class WebInteractions {
    * @returns {Promise<number>} Element count
    */
   async getElementCount(selector) {
-    return await this.page.locator(selector).count();
+    return this.page.locator(selector).count();
   }
 
   /**

@@ -1,6 +1,6 @@
 {
-  "name": "@igautomation/agentsyncprofessionalservices",
-  "version": "1.0.6",
+  "name": "@igautomation/AgentSyncProfessionalServices",
+  "version": "1.0.7",
   "description": "AgentSync Test Automation Framework for multi-project distribution",
   "main": "src/index.js",
   "exports": {

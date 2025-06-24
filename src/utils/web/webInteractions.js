@@ -287,6 +287,8 @@ class WebInteractions {
     const frame = await frameElement.contentFrame();
     return frame;
   }
+}  return frame;
+  }
 
   /**
    * Verify text exists on the page

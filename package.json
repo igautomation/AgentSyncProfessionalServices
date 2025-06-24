@@ -45,6 +45,7 @@
     "setup:client-project": "node bin/setup-client-project.js",
     "setup:github-token": "node scripts/setup-github-token.js",
     "setup:publish-token": "node scripts/setup-publish-token.js",
+    "setup:org-info": "node scripts/update-org-info.js",
     "init": "node bin/index.js init",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

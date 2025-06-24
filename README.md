@@ -28,7 +28,7 @@ export GITHUB_TOKEN=your_personal_access_token
 3. Install the framework:
 
 ```bash
-npm install @igautomation/agentsyncprofessionalservices
+npm install @AgentSync/professional-services-qa
 ```
 
 ### Quick Setup with Templates
@@ -37,10 +37,10 @@ To create a new project using templates:
 
 ```bash
 # First install the framework
-npm install @igautomation/agentsyncprofessionalservices
+npm install @AgentSync/professional-services-qa
 
 # Then use the full package name with npx
-npx @igautomation/agentsyncprofessionalservices init -t basic -d my-project
+npx @AgentSync/professional-services-qa init -t basic -d my-project
 ```
 
 Available templates:
@@ -53,7 +53,7 @@ Available templates:
 
 ```javascript
 const { test, expect } = require('@playwright/test');
-const { utils } = require('@igautomation/agentsyncprofessionalservices');
+const { utils } = require('@AgentSync/professional-services-qa');
 
 test('basic test', async ({ page }) => {
   await page.goto('https://example.com');
@@ -65,7 +65,7 @@ test('basic test', async ({ page }) => {
 
 ```javascript
 const { test, expect } = require('@playwright/test');
-const { pages } = require('@igautomation/agentsyncprofessionalservices');
+const { pages } = require('@AgentSync/professional-services-qa');
 
 class LoginPage extends pages.BasePage {
   constructor(page) {
@@ -94,7 +94,7 @@ test('login test', async ({ page }) => {
 
 ```javascript
 const { test } = require('@playwright/test');
-const { utils } = require('@igautomation/agentsyncprofessionalservices');
+const { utils } = require('@AgentSync/professional-services-qa');
 
 test('using self-healing locators', async ({ page }) => {
   const { SelfHealingLocator } = utils.web;
@@ -116,7 +116,7 @@ test('using self-healing locators', async ({ page }) => {
 
 ```javascript
 const { test, expect } = require('@playwright/test');
-const { utils } = require('@igautomation/agentsyncprofessionalservices');
+const { utils } = require('@AgentSync/professional-services-qa');
 
 test('salesforce test', async ({ page }) => {
   // Login to Salesforce

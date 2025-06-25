@@ -72,7 +72,10 @@
     "publish:quick-fix": "node scripts/quick-publish-fix.js",
     "postinstall": "node scripts/check-dependencies.js",
     "generate:user-guide": "node scripts/generate-user-guide.js",
-    "update:user-guide": "node scripts/update-user-guide.js"
+    "update:user-guide": "node scripts/update-user-guide.js",
+    "collect:markdown": "node scripts/collect-markdown.js",
+    "categorize:markdown": "node scripts/create-categorized-index.js",
+    "organize:docs": "node scripts/organize-documentation.js"
   },
   "keywords": [
     "e2e",

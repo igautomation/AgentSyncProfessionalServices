@@ -3,23 +3,25 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Installation](#installation)
+2. [Installation & Setup](#installation--setup)
 3. [Framework Architecture](#framework-architecture)
 4. [Key Features](#key-features)
 5. [Running Tests](#running-tests)
 6. [Core Components](#core-components)
 7. [Utility Modules](#utility-modules)
-8. [CI/CD Integration](#cicd-integration)
-9. [Docker Support](#docker-support)
-10. [Customization](#customization)
-11. [Troubleshooting](#troubleshooting)
-12. [Reference](#reference)
+8. [Salesforce Integration](#salesforce-integration)
+9. [CI/CD Integration](#cicd-integration)
+10. [Docker Support](#docker-support)
+11. [Customization](#customization)
+12. [Multi-Project Usage](#multi-project-usage)
+13. [Troubleshooting](#troubleshooting)
+14. [Reference](#reference)
 
 ## Introduction
 
-This comprehensive Playwright testing framework provides a robust set of tools and utilities for end-to-end testing of web applications, APIs, and Salesforce. It's designed to be extensible, maintainable, and easy to use.
+This comprehensive Playwright testing framework provides a robust set of tools and utilities for end-to-end testing of web applications, APIs, and Salesforce. It's designed to be extensible, maintainable, and easy to use across multiple projects.
 
-## Installation
+## Installation & Setup
 
 ### Prerequisites
 
@@ -27,18 +29,19 @@ This comprehensive Playwright testing framework provides a robust set of tools a
 - npm (v7 or higher)
 - Git
 
-### Standard Installation
+### Quick Setup
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd AgentSyncProfessionalServices
+# Install the framework globally
+npm install -g @agentsync/test-framework
 
-# Install dependencies
-npm install
+# Create a new project
+mkdir my-project
+cd my-project
+agentsync-framework init --name "My Project"
 
-# Install Playwright browsers
-npx playwright install
+# Or install in an existing project
+npm install @agentsync/test-framework
 ```
 
 ### Environment Setup
@@ -55,20 +58,19 @@ cp .env.example .env
 The framework follows a modular architecture with clear separation of concerns:
 
 ```
-playwright-framework/
+framework/
 ├── src/                    # Source code
-│   ├── cli/                # Command-line interface tools
 │   ├── config/             # Configuration files
-│   ├── core/               # Core framework functionality
 │   ├── pages/              # Page objects
-│   ├── tests/              # Test files
-│   └── utils/              # Utility modules
-├── custom/                 # Client customizations
-├── data/                   # Test data
+│   ├── utils/              # Utility modules
+│   │   ├── api/            # API testing utilities
+│   │   ├── web/            # Web testing utilities
+│   │   └── ...             # Other utilities
+│   └── index.js            # Main exports
+├── templates/              # Project templates
+├── bin/                    # CLI tools
 ├── docs/                   # Documentation
-├── examples/               # Example tests
-├── scripts/                # Helper scripts
-└── templates/              # Project templates
+└── scripts/                # Helper scripts
 ```
 
 ## Key Features
@@ -169,20 +171,29 @@ Page objects represent web pages with their elements and actions:
 
 ```javascript
 // src/pages/LoginPage.js
-const BasePage = require('./BasePage');
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
 
-class LoginPage extends BasePage {
+class LoginPage {
   constructor(page) {
-    super(page);
-    this.usernameInput = page.locator('#username');
-    this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#login-button');
+    this.page = page;
+    this.usernameInput = new SelfHealingLocator(page, '#username', {
+      fallbackStrategies: [
+        { selector: 'input[name="username"]' },
+        { selector: 'input[type="email"]' }
+      ]
+    });
+    this.passwordInput = new SelfHealingLocator(page, '#password');
+    this.loginButton = new SelfHealingLocator(page, '#login-button');
   }
 
   async login(username, password) {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+    const usernameElement = await this.usernameInput.locate();
+    const passwordElement = await this.passwordInput.locate();
+    const loginButtonElement = await this.loginButton.locate();
+    
+    await usernameElement.fill(username);
+    await passwordElement.fill(password);
+    await loginButtonElement.click();
   }
 }
 
@@ -194,14 +205,14 @@ module.exports = LoginPage;
 Test files contain the actual test scenarios:
 
 ```javascript
-// src/tests/login.spec.js
+// tests/login.spec.js
 const { test, expect } = require('@playwright/test');
 const LoginPage = require('../pages/LoginPage');
 
 test.describe('Login functionality', () => {
-  test('should login with valid credentials', async ({ page }) => {
+  test('should login with valid credentials @smoke', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.navigate();
+    await page.goto('/login');
     await loginPage.login('user@example.com', 'password');
     
     // Assertions
@@ -212,10 +223,12 @@ test.describe('Login functionality', () => {
 
 ## Utility Modules
 
+The framework provides various utility modules to simplify test development:
+
 ### API Testing
 
 ```javascript
-const { ApiClient } = require('../../utils/api');
+const { ApiClient } = require('@agentsync/test-framework').utils.api;
 
 // Create API client
 const apiClient = new ApiClient('https://api.example.com');
@@ -225,10 +238,29 @@ const response = await apiClient.get('/users/1');
 const user = await apiClient.post('/users', { name: 'John', job: 'Developer' });
 ```
 
+### Self-Healing Locators
+
+```javascript
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
+
+// Create a self-healing locator
+const loginButton = new SelfHealingLocator(page, '#login-button', {
+  fallbackStrategies: [
+    { selector: '.login-btn' },
+    { selector: 'button:has-text("Login")' },
+    { selector: 'button.btn-primary' }
+  ]
+});
+
+// Use the locator
+const element = await loginButton.locate();
+await element.click();
+```
+
 ### Accessibility Testing
 
 ```javascript
-const { checkAccessibility } = require('../../utils/accessibility');
+const { checkAccessibility } = require('@agentsync/test-framework').utils.accessibility;
 
 // Check accessibility
 const result = await checkAccessibility(page, {
@@ -241,22 +273,29 @@ if (!result.passes) {
 }
 ```
 
-### Visual Comparison
+## Salesforce Integration
+
+### Salesforce Page Objects
+
+The framework includes specialized page objects for Salesforce:
 
 ```javascript
-const { VisualComparisonUtils } = require('../../utils/visual');
+const { SalesforceLoginPage } = require('@agentsync/test-framework').pages.salesforce;
 
-// Create visual comparison utility
-const visualUtils = new VisualComparisonUtils(page);
-
-// Compare screenshot with baseline
-const result = await visualUtils.compareScreenshot('homepage');
+test('should login to Salesforce', async ({ page }) => {
+  const loginPage = new SalesforceLoginPage(page);
+  await loginPage.navigate();
+  await loginPage.login(process.env.SF_USERNAME, process.env.SF_PASSWORD);
+  
+  // Verify login was successful
+  await expect(page).toHaveURL(/lightning/);
+});
 ```
 
-### Salesforce Testing
+### Salesforce API Integration
 
 ```javascript
-const { SalesforceClient } = require('../../utils/salesforce');
+const { SalesforceClient } = require('@agentsync/test-framework').utils.salesforce;
 
 // Create Salesforce client
 const sfClient = new SalesforceClient({
@@ -277,26 +316,45 @@ const accounts = await sfClient.query('SELECT Id, Name FROM Account LIMIT 10');
 The framework includes GitHub Actions workflows for automated testing:
 
 ```yaml
-# .github/workflows/ci.yml
-name: CI
-on: [push, pull_request]
+# .github/workflows/framework-ci.yml
+name: Framework CI/CD
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
 jobs:
-  test:
+  test-framework:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20 }
-      - run: npm ci
-      - run: npx playwright install --with-deps
-      - run: npm test
-      - uses: actions/upload-artifact@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@agentsync'
+      - name: Install dependencies
+        run: npm ci
+      - name: Create .env file
+        run: cp .env.example .env
+      - name: Run linting with CI config
+        run: npx eslint --config .eslintrc.ci.js . --max-warnings 1000
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Run core tests
+        run: npx playwright test src/tests/core/framework-validation.spec.js
+      - name: Run API tests
+        run: npx playwright test --project=api
+        continue-on-error: true
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: reports
+          name: test-results
           path: |
-            playwright-report/
             test-results/
+            playwright-report/
 ```
 
 ## Docker Support
@@ -330,7 +388,7 @@ BASE_URL=https://example.com HEADLESS=true docker-compose up
 
 ## Customization
 
-The framework can be extended through the `custom/` directory:
+The framework can be extended through custom components:
 
 ### Custom Plugins
 
@@ -353,21 +411,84 @@ module.exports = MyPlugin;
 
 ```javascript
 // custom/pages/my-page.js
-const { BasePage } = require('../../src/pages/BasePage');
+const { BasePage } = require('@agentsync/test-framework').pages;
+const { SelfHealingLocator } = require('@agentsync/test-framework').locators;
 
 class MyPage extends BasePage {
   constructor(page) {
     super(page);
     
-    // Define selectors
-    this.selectors = {
-      // Add your selectors here
-    };
+    // Define locators
+    this.submitButton = new SelfHealingLocator(page, '#submit-button');
+  }
+  
+  async submitForm() {
+    const button = await this.submitButton.locate();
+    await button.click();
   }
 }
 
 module.exports = MyPage;
 ```
+
+## Multi-Project Usage
+
+The framework is designed to be used across multiple projects:
+
+### Project Structure
+
+```
+project-repo/
+├── tests/
+│   ├── e2e/
+│   ├── api/
+│   ├── pages/
+│   └── components/
+├── auth/
+├── reports/
+├── .env
+├── package.json (includes framework as dependency)
+└── playwright.config.js (extends framework config)
+```
+
+### Project Configuration
+
+```javascript
+// playwright.config.js
+const { defineConfig, devices } = require('@playwright/test');
+const { baseConfig } = require('@agentsync/test-framework').config;
+require('dotenv').config();
+
+module.exports = defineConfig({
+  ...baseConfig,
+  testDir: './tests',
+  use: {
+    baseURL: process.env.BASE_URL || 'https://your-app.com',
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] }
+    }
+  ]
+});
+```
+
+### Project Dependencies
+
+```json
+// package.json
+{
+  "dependencies": {
+    "@agentsync/test-framework": "^1.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
+```
+
+For more details on multi-project usage, see the [Multi-Project Guide](MULTI_PROJECT_GUIDE.md).
 
 ## Troubleshooting
 
@@ -389,6 +510,7 @@ module.exports = MyPage;
    ```
 
 4. **Tests not finding elements**
+   - Use self-healing locators with fallback strategies
    - Check if `.env` file exists and has correct URLs
    - Verify network connectivity to test sites
 
@@ -413,23 +535,36 @@ Key environment variables used by the framework:
 | SF_USERNAME | Salesforce username | - |
 | SF_PASSWORD | Salesforce password | - |
 | SF_LOGIN_URL | Salesforce login URL | https://login.salesforce.com |
+| SF_INSTANCE_URL | Salesforce instance URL | - |
+| SF_SECURITY_TOKEN | Salesforce security token | - |
+| ACCESSIBILITY_ENABLED | Enable accessibility testing | true |
+| PERFORMANCE_ENABLED | Enable performance testing | false |
 
-### Useful Commands
+### CLI Commands
 
 ```bash
-# Run all tests
-npm test
+# Initialize a new project
+agentsync-framework init --name "My Project"
 
-# Run tests with UI mode
-npx playwright test --ui
+# Generate a page object
+agentsync-framework generate --page Login
 
-# Generate tests with Playwright Codegen
-npx playwright codegen https://example.com
+# Generate a test file
+agentsync-framework generate --test "User Authentication"
 
-# Show HTML report
-npx playwright show-report
+# Update framework
+agentsync-framework update
+
+# Open documentation
+agentsync-framework docs
 ```
 
----
+### Design Principles
+
+1. **Configurability**: All external resources are configurable through environment variables or configuration files.
+2. **Modularity**: Each utility focuses on a specific concern and can be used independently.
+3. **Reusability**: Utilities are designed to be reused across different tests and projects.
+4. **Testability**: All utilities can be easily tested in isolation.
+5. **Documentation**: All utilities are well-documented with JSDoc comments.
 
 For more detailed information on specific components, refer to the individual documentation files in the `docs/` directory.

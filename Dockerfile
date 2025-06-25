@@ -5,14 +5,11 @@ WORKDIR /app
 # Install Salesforce CLI
 RUN npm install -g @salesforce/cli
 
-# Copy package files
-COPY package*.json ./
+# Copy project files first
+COPY . .
 
 # Install dependencies
 RUN npm ci --legacy-peer-deps
-
-# Copy project files
-COPY . .
 
 # Create necessary directories
 RUN mkdir -p src/pages tests/pages sessions

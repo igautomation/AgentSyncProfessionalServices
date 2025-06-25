@@ -59,6 +59,9 @@ jobs:
           # Browser Configuration
           HEADLESS=true
           EOL
+      - name: Create reports directory
+        run: npm run setup:reports
+        
       - run: npm run test -- --project=${{ matrix.browser }}
       
       - name: Check for Salesforce credentials

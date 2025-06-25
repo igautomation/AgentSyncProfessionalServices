@@ -1,0 +1,105 @@
+name: Accessibility Tests
+
+on:
+  push:
+    branches: ['main', 'master', 'develop']
+    paths:
+      - 'src/tests/accessibility/**'
+      - 'src/utils/accessibility/**'
+      - '.github/workflows/accessibility-tests.yml'
+  pull_request:
+    branches: ['main', 'master', 'develop']
+    paths:
+      - 'src/tests/accessibility/**'
+      - 'src/utils/accessibility/**'
+      - '.github/workflows/accessibility-tests.yml'
+  workflow_dispatch:
+
+jobs:
+  accessibility-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+        
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        
+      - name: Create reports directory
+        run: mkdir -p reports/accessibility
+        
+      - name: Create .env file
+        run: |
+          cat > .env.dev << 'EOL'
+          # API Configuration
+          API_BASE_URL=https://reqres.in/api
+          API_URL=https://reqres.in/api
+          API_KEY=reqres-free-v1
+
+          # Web Configuration
+          BASE_URL=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+          EXAMPLE_URL=https://example.com
+          TODO_APP_URL=https://demo.playwright.dev/todomvc
+          ORANGEHRM_URL=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+          PLAYWRIGHT_DOCS_URL=https://playwright.dev/
+          AUTOMATION_EXERCISE_URL=https://automationexercise.com
+          SELECTORS_HUB_URL=https://selectorshub.com/xpath-practice-page/
+
+          # Credentials
+          USERNAME=Admin
+          PASSWORD=admin123
+          INVALID_USERNAME=invalid
+          INVALID_PASSWORD=wrong
+          API_TOKEN=your_api_token
+
+          # External Resources
+          AXE_CORE_CDN=https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.0/axe.min.js
+          
+          # Browser Configuration
+          HEADLESS=true
+          EOL
+          
+      - name: Run accessibility tests
+        run: npx playwright test src/tests/accessibility/fixed-accessibilityTest.spec.js --project=accessibility
+        env:
+          CI: true
+        continue-on-error: true
+        
+      - name: Generate test summary
+        if: always()
+        run: |
+          echo "# Accessibility Test Results" > accessibility-summary.md
+          echo "Tests run on $(date)" >> accessibility-summary.md
+          
+          if [ -d "reports/accessibility" ]; then
+            echo "## Reports Generated" >> accessibility-summary.md
+            ls -la reports/accessibility >> accessibility-summary.md
+          else
+            echo "## No reports were generated" >> accessibility-summary.md
+          fi
+          
+          if [ -d "playwright-report" ]; then
+            echo "## Playwright Report Available" >> accessibility-summary.md
+          fi
+        
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-test-results
+          path: |
+            reports/accessibility/
+            playwright-report/
+            test-results/
+            accessibility-summary.md
+          retention-days: 30

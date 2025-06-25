@@ -114,6 +114,9 @@ jobs:
           });
           EOL
         
+      - name: Create reports directory
+        run: npm run setup:reports
+        
       - name: Run Playwright tests
         run: npx playwright test --project=chromium src/tests/framework-validation.spec.js
         continue-on-error: true

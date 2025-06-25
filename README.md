@@ -4,6 +4,22 @@ A comprehensive test automation framework for AgentSync projects, distributed as
 
 ## Installation
 
+### System Dependencies
+
+This framework uses the `canvas` package which requires certain system dependencies to be installed. You can use our setup script to install these dependencies automatically:
+
+```bash
+npm run setup:dependencies
+```
+
+Or check if your system already has the required dependencies:
+
+```bash
+npm run check:dependencies
+```
+
+For detailed instructions and troubleshooting, see our [System Dependencies Guide](docs/SYSTEM_DEPENDENCIES.md).
+
 ### Using GitHub Packages
 
 1. Run the setup script to configure your GitHub token:
@@ -201,6 +217,7 @@ Refer to `.env.example` for all available configuration options.
 ## Documentation
 
 - [Installation Guide](docs/INSTALLATION.md)
+- [System Dependencies Guide](docs/SYSTEM_DEPENDENCIES.md)
 - [GitHub Packages Setup Guide](docs/GITHUB_PACKAGES_SETUP.md)
 - [NPM Setup Guide](docs/npm-setup.md)
 - [Multi-Project Guide](docs/MULTI_PROJECT_GUIDE.md)

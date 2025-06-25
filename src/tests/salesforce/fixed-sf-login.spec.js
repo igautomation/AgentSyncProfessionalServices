@@ -1,7 +1,5 @@
 /**
- * Salesforce Login Test
- *
- * This test verifies that we can log into Salesforce with the provided credentials
+ * Fixed Salesforce Login Test with improved reliability
  */
 const { test, expect } = require('@playwright/test');
 const dotenv = require('dotenv');
@@ -22,24 +20,44 @@ if (!fs.existsSync(authDir)) {
   fs.mkdirSync(authDir, { recursive: true });
 }
 
-test.describe('Salesforce Login Test', () => {
-  test('should login to Salesforce successfully', async ({ page }) => {
+test('Salesforce login test with improved reliability', async ({ page }) => {
+  // Increase timeouts for this specific test
+  page.setDefaultTimeout(120000);
+  
+  console.log('Starting Salesforce login test...');
+  
+  try {
     // Navigate to login page
-    await page.goto(process.env.SF_LOGIN_URL);
-
+    await page.goto(process.env.SF_LOGIN_URL, { timeout: 60000 });
+    console.log('Navigated to login page');
+    
     // Fill login form
     await page.fill('#username', process.env.SF_USERNAME);
     await page.fill('#password', process.env.SF_PASSWORD);
-
+    console.log('Filled login credentials');
+    
     // Click login button
     await page.click('#Login');
-
-    // Wait for login to complete
-    await page.waitForTimeout(15000);
-
+    console.log('Clicked login button');
+    
+    // Wait for login to complete with better handling
+    try {
+      // Wait for redirect after login
+      await page.waitForNavigation({ timeout: 60000 });
+      console.log('Navigation completed');
+      
+      // Wait additional time for the page to stabilize
+      await page.waitForTimeout(10000);
+      console.log('Additional wait completed');
+    } catch (error) {
+      console.log(`Navigation error: ${error.message}`);
+      // Continue anyway as the page might have loaded
+    }
+    
     // Take a screenshot for verification
     await page.screenshot({ path: './auth/salesforce-login-attempt.png' });
-
+    console.log('Screenshot taken');
+    
     // Check if we're still on the login page
     if (page.url().includes('login.salesforce.com')) {
       const errorElement = await page.$('#error');
@@ -50,10 +68,11 @@ test.describe('Salesforce Login Test', () => {
         throw new Error('Failed to login to Salesforce');
       }
     }
-
+    
     // Save the authentication state for future tests
     await page.context().storageState({ path: './auth/salesforce-storage-state.json' });
-
+    console.log('Authentication state saved');
+    
     // Add assertions
     const pageTitle = await page.title();
     console.log(`Current page title: ${pageTitle}`);
@@ -62,5 +81,9 @@ test.describe('Salesforce Login Test', () => {
     // We've successfully logged in
     expect(page.url()).not.toContain('login.salesforce.com');
     console.log('✅ Successfully logged in to Salesforce and saved authentication state');
-  });
+  } catch (error) {
+    console.error(`Login test failed: ${error.message}`);
+    await page.screenshot({ path: './auth/salesforce-login-error.png' });
+    throw error;
+  }
 });

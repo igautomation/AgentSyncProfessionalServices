@@ -22,7 +22,7 @@ module.exports = defineConfig({
   testMatch: '**/*.spec.js',
   
   // Maximum time one test can run for
-  timeout: parseInt(process.env.TEST_TIMEOUT) || 60 * 1000,
+  timeout: parseInt(process.env.TEST_TIMEOUT) || 90 * 1000,
   
   // Expect assertion timeout
   expect: {
@@ -153,10 +153,18 @@ module.exports = defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         storageState: './auth/salesforce-storage-state.json',
-        baseURL: process.env.SF_INSTANCE_URL
+        baseURL: process.env.SF_INSTANCE_URL,
+        actionTimeout: 60000,
+        navigationTimeout: 60000,
+        launchOptions: {
+          slowMo: 500,
+          args: ['--disable-dev-shm-usage']
+        }
       },
       dependencies: ['setup'],
-      testMatch: '**/salesforce/**/*.spec.js'
+      testMatch: '**/salesforce/**/*.spec.js',
+      timeout: 120000,
+      retries: 1
     },
     {
       name: 'api',

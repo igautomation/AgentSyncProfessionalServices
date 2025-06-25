@@ -40,12 +40,19 @@
     "test:salesforce:headed": "playwright test src/tests/salesforce --headed",
     "test:salesforce:debug": "playwright test src/tests/salesforce --debug",
     "test:salesforce:ui": "playwright test src/tests/salesforce --ui",
+    "test:sf:minimal": "playwright test src/tests/salesforce/minimal-sf-flow.spec.js --headed --config=playwright.config.salesforce.js",
+    "test:sf:login": "playwright test src/tests/salesforce/sf-login-test.spec.js --headed",
+    "test:sf:fixed": "./run-fixed-tests.sh",
+    "test:sf:fixed:login": "playwright test src/tests/salesforce/fixed-sf-login.spec.js --headed",
+    "test:sf:fixed:account": "playwright test src/tests/salesforce/fixed-account-contact.spec.js --headed",
     "setup:credentials": "node setup-credentials.js",
     "setup:salesforce": "node src/tests/salesforce/global-setup.js",
     "setup:client-project": "node bin/setup-client-project.js",
     "setup:github-token": "node scripts/setup-github-token.js",
     "setup:publish-token": "node scripts/setup-publish-token.js",
     "setup:org-info": "node scripts/update-org-info.js",
+    "setup:dependencies": "node bin/setup-dependencies.js",
+    "check:dependencies": "node scripts/check-dependencies.js",
     "init": "node bin/index.js init",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -61,7 +68,8 @@
     "framework:init": "node bin/cli.js init",
     "publish:framework": "node scripts/publish.js",
     "publish:setup": "node scripts/setup-publish-token.js",
-    "publish:quick-fix": "node scripts/quick-publish-fix.js"
+    "publish:quick-fix": "node scripts/quick-publish-fix.js",
+    "postinstall": "node scripts/check-dependencies.js"
   },
   "keywords": [
     "e2e",
@@ -121,5 +129,10 @@
   },
   "resolutions": {
     "chartjs-node-canvas/chart.js": "^4.4.0"
+  },
+  "overrides": {
+    "chartjs-node-canvas": {
+      "chart.js": "^4.4.0"
+    }
   }
 }

@@ -8,6 +8,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const dotenv = require('dotenv');
 const logger = require('../common/logger');
+const setupSalesforce = require('./salesforceSetup');
 
 // Load environment variables
 dotenv.config();
@@ -74,68 +75,13 @@ async function setupAuthenticationStates(config) {
 async function setupSalesforceAuth() {
   logger.info('Setting up Salesforce authentication...');
   
-  const storageStatePath = path.resolve('./auth/salesforce-storage-state.json');
-  
-  // Check if we already have a recent storage state file
   try {
-    const stats = await fs.stat(storageStatePath);
-    const fileAgeHours = (Date.now() - stats.mtime) / (1000 * 60 * 60);
-    
-    // If file exists and is less than 4 hours old, skip authentication
-    if (fileAgeHours < 4) {
-      logger.info('Using existing Salesforce authentication state');
-      return;
-    }
+    // Use our dedicated Salesforce setup module
+    await setupSalesforce();
+    logger.info('Salesforce authentication state saved successfully');
   } catch (error) {
-    // File doesn't exist, continue with authentication
-  }
-  
-  // Launch browser
-  const browser = await chromium.launch({ headless: true });
-  
-  try {
-    // Create context and page
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    
-    // Implement retry mechanism
-    const maxRetries = 3;
-    let lastError;
-    
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        // Navigate to login page
-        await page.goto(process.env.SF_LOGIN_URL || 'https://login.salesforce.com');
-        
-        // Fill login form
-        await page.fill('#username', process.env.SF_USERNAME);
-        await page.fill('#password', process.env.SF_PASSWORD);
-        await page.click('#Login');
-        
-        // Wait for login to complete
-        await page.waitForTimeout(10000);
-        
-        // Take screenshot for verification
-        await page.screenshot({ path: './auth/salesforce-auth-state.png' });
-        
-        // Save storage state
-        await context.storageState({ path: storageStatePath });
-        
-        logger.info('Salesforce authentication state saved successfully');
-        return;
-      } catch (error) {
-        lastError = error;
-        if (attempt < maxRetries) {
-          const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
-          logger.warn(`Auth attempt ${attempt} failed. Retrying in ${delay}ms`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-      }
-    }
-    
-    throw new Error(`Failed after ${maxRetries} attempts: ${lastError.message}`);
-  } finally {
-    await browser.close();
+    logger.error(`Salesforce authentication failed: ${error.message}`);
+    throw error;
   }
 }
 

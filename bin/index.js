@@ -11,6 +11,19 @@ program
   .version('1.0.1');
 
 program
+  .command('check-dependencies')
+  .description('Check system dependencies required for the framework')
+  .action(() => {
+    const checkDependenciesPath = path.join(__dirname, '../scripts/check-dependencies.js');
+    try {
+      require(checkDependenciesPath);
+    } catch (error) {
+      console.error('Failed to run dependency check:', error);
+      process.exit(1);
+    }
+  });
+
+program
   .command('init')
   .description('Initialize a new test project')
   .option('-t, --template <template>', 'Template to use (basic, salesforce)', 'basic')

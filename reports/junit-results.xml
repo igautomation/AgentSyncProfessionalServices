@@ -1,12 +1,12 @@
-<testsuites id="" name="" tests="146" failures="0" skipped="49" errors="0" time="81.597442">
-<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="3" failures="0" skipped="1" time="14.468" errors="0">
-<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.699">
+<testsuites id="" name="" tests="144" failures="0" skipped="44" errors="0" time="93.984087">
+<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="3" failures="0" skipped="1" time="15.761" errors="0">
+<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="5.175">
 <system-out>
 <![CDATA[Critical violations: []
 ]]>
 </system-out>
 </testcase>
-<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.771">
+<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="5.219">
 <properties>
 <property name="skip" value="">
 </property>
@@ -14,11 +14,11 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="4.998">
+<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="5.367">
 </testcase>
 </testsuite>
-<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="3" failures="0" skipped="1" time="13.737" errors="0">
-<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.831">
+<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="3" failures="0" skipped="1" time="14.569" errors="0">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.366">
 <system-out>
 <![CDATA[Accessibility violations: [
   {
@@ -31,7 +31,7 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.155">
+<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.132">
 <properties>
 <property name="skip" value="">
 </property>
@@ -39,41 +39,41 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.751">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.071">
 </testcase>
 </testsuite>
-<testsuite name="core/authentication.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.628" errors="0">
-<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="4.941">
+<testsuite name="core/authentication.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="3" failures="0" skipped="0" time="15.918" errors="0">
+<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="5.361">
 </testcase>
-<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="4.867">
+<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="5.316">
 </testcase>
-<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="4.82">
-</testcase>
-</testsuite>
-<testsuite name="core/form-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.189" errors="0">
-<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="4.702">
-</testcase>
-<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="4.629">
-</testcase>
-<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="4.858">
+<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="5.241">
 </testcase>
 </testsuite>
-<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.195" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.195">
+<testsuite name="core/form-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="3" failures="0" skipped="0" time="15.152" errors="0">
+<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="5.213">
+</testcase>
+<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="4.892">
+</testcase>
+<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="5.047">
 </testcase>
 </testsuite>
-<testsuite name="core/navigation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="4" failures="0" skipped="0" time="17.464" errors="0">
-<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.315">
-</testcase>
-<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.273">
-</testcase>
-<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="4.492">
-</testcase>
-<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.384">
+<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.234" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.234">
 </testcase>
 </testsuite>
-<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="7" failures="0" skipped="7" time="2.406" errors="0">
-<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.241">
+<testsuite name="core/navigation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="4" failures="0" skipped="0" time="18.075" errors="0">
+<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.446">
+</testcase>
+<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.45">
+</testcase>
+<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="4.711">
+</testcase>
+<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.468">
+</testcase>
+</testsuite>
+<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="7" failures="0" skipped="7" time="2.835" errors="0">
+<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.285">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -81,7 +81,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.255">
+<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.295">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -89,7 +89,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.376">
+<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.475">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -97,7 +97,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.365">
+<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.495">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -105,7 +105,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.372">
+<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.422">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -113,7 +113,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.404">
+<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.432">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -121,7 +121,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.393">
+<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.431">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -130,23 +130,23 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="3" failures="0" skipped="0" time="3.83" errors="0">
-<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.186">
+<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="3" failures="0" skipped="0" time="3.841" errors="0">
+<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.227">
 <properties>
 <property name="flaky" value="This test is known to be flaky">
 </property>
 </properties>
 </testcase>
-<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.294">
+<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.269">
 </testcase>
-<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.35">
-</testcase>
-</testsuite>
-<testsuite name="framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.499" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.499">
+<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.345">
 </testcase>
 </testsuite>
-<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testsuite name="framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.501" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.501">
+</testcase>
+</testsuite>
+<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="2" failures="0" skipped="2" time="0" errors="0">
 <testcase name="Jira API Integration › should search for issues using JQL @JIRA-123" classname="integration/jira-integration.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -164,7 +164,7 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="2" failures="0" skipped="2" time="0" errors="0">
 <testcase name="Salesforce Objects Integration › should get object metadata @SF-123" classname="integration/salesforce-objects.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -182,7 +182,7 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="1" failures="0" skipped="1" time="0" errors="0">
+<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="1" failures="0" skipped="1" time="0" errors="0">
 <testcase name="TestRail Integration › Execute TestRail test case" classname="integration/testrail-example.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -192,22 +192,223 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.005" errors="0">
-<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.005">
+<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.013" errors="0">
+<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.013">
 </testcase>
 </testsuite>
-<testsuite name="reporting/simple.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.002" errors="0">
+<testsuite name="reporting/simple.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.001" errors="0">
+<testcase name="Simple Test › should pass" classname="reporting/simple.spec.js" time="0.001">
+</testcase>
+</testsuite>
+<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="3" failures="0" skipped="1" time="15.614" errors="0">
+<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="5.084">
+<system-out>
+<![CDATA[Critical violations: []
+]]>
+</system-out>
+</testcase>
+<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="5.356">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="5.174">
+</testcase>
+</testsuite>
+<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="3" failures="0" skipped="1" time="14.303" errors="0">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.181">
+<system-out>
+<![CDATA[Accessibility violations: [
+  {
+    type: [32m'html-lang'[39m,
+    message: [32m'Document language not specified'[39m,
+    severity: [32m'serious'[39m,
+    element: { tagName: [32m'html'[39m, selector: [32m'html'[39m }
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.08">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.042">
+</testcase>
+</testsuite>
+<testsuite name="core/authentication.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="3" failures="0" skipped="0" time="15.486" errors="0">
+<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="5.183">
+</testcase>
+<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="5.115">
+</testcase>
+<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="5.188">
+</testcase>
+</testsuite>
+<testsuite name="core/form-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="3" failures="0" skipped="0" time="15.038" errors="0">
+<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="5.242">
+</testcase>
+<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="4.876">
+</testcase>
+<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="4.92">
+</testcase>
+</testsuite>
+<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="1" failures="0" skipped="0" time="1.272" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.272">
+</testcase>
+</testsuite>
+<testsuite name="core/navigation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="4" failures="0" skipped="0" time="19.062" errors="0">
+<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.529">
+</testcase>
+<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.543">
+</testcase>
+<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="5.22">
+</testcase>
+<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.77">
+</testcase>
+</testsuite>
+<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="7" failures="0" skipped="7" time="2.281" errors="0">
+<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.25">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.256">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.262">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.297">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.348">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.415">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.453">
+<properties>
+<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="3" failures="0" skipped="0" time="4.2" errors="0">
+<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.458">
+<properties>
+<property name="flaky" value="This test is known to be flaky">
+</property>
+</properties>
+</testcase>
+<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.336">
+</testcase>
+<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.406">
+</testcase>
+</testsuite>
+<testsuite name="framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.585" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.585">
+</testcase>
+</testsuite>
+<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testcase name="Jira API Integration › should search for issues using JQL @JIRA-123" classname="integration/jira-integration.spec.js" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Jira API Integration › should get issue details @JIRA-124" classname="integration/jira-integration.spec.js" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testcase name="Salesforce Objects Integration › should get object metadata @SF-123" classname="integration/salesforce-objects.spec.js" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Salesforce Objects Integration › should create and retrieve test case @SF-124" classname="integration/salesforce-objects.spec.js" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="1" failures="0" skipped="1" time="0" errors="0">
+<testcase name="TestRail Integration › Execute TestRail test case" classname="integration/testrail-example.spec.js" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.008" errors="0">
+<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.008">
+</testcase>
+</testsuite>
+<testsuite name="reporting/simple.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.002" errors="0">
 <testcase name="Simple Test › should pass" classname="reporting/simple.spec.js" time="0.002">
 </testcase>
 </testsuite>
-<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="3" failures="0" skipped="1" time="14.715" errors="0">
-<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.903">
+<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="3" failures="0" skipped="1" time="14.693" errors="0">
+<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.959">
 <system-out>
 <![CDATA[Critical violations: []
 ]]>
 </system-out>
 </testcase>
-<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="5.041">
+<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.943">
 <properties>
 <property name="skip" value="">
 </property>
@@ -215,11 +416,11 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="4.771">
+<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="4.791">
 </testcase>
 </testsuite>
-<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="3" failures="0" skipped="1" time="13.644" errors="0">
-<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.707">
+<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="3" failures="0" skipped="1" time="13.429" errors="0">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.853">
 <system-out>
 <![CDATA[Accessibility violations: [
   {
@@ -232,7 +433,7 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="5.238">
+<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.907">
 <properties>
 <property name="skip" value="">
 </property>
@@ -240,41 +441,41 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.699">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.669">
 </testcase>
 </testsuite>
-<testsuite name="core/authentication.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="3" failures="0" skipped="0" time="14.845" errors="0">
-<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="5.134">
+<testsuite name="core/authentication.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="3" failures="0" skipped="0" time="16.455" errors="0">
+<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="5.555">
 </testcase>
-<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="4.921">
+<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="5.457">
 </testcase>
-<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="4.79">
-</testcase>
-</testsuite>
-<testsuite name="core/form-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="3" failures="0" skipped="0" time="15.105" errors="0">
-<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="5.197">
-</testcase>
-<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="5.009">
-</testcase>
-<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="4.899">
+<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="5.443">
 </testcase>
 </testsuite>
-<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="1" failures="0" skipped="0" time="1.187" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.187">
+<testsuite name="core/form-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="3" failures="0" skipped="0" time="15.926" errors="0">
+<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="5.327">
+</testcase>
+<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="5.163">
+</testcase>
+<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="5.436">
 </testcase>
 </testsuite>
-<testsuite name="core/navigation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="4" failures="0" skipped="0" time="18.305" errors="0">
-<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.52">
-</testcase>
-<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.442">
-</testcase>
-<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="4.958">
-</testcase>
-<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.385">
+<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="1" failures="0" skipped="0" time="1.151" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.151">
 </testcase>
 </testsuite>
-<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="7" failures="0" skipped="7" time="2.016" errors="0">
-<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.212">
+<testsuite name="core/navigation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="4" failures="0" skipped="0" time="18.252" errors="0">
+<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.317">
+</testcase>
+<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.425">
+</testcase>
+<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="4.912">
+</testcase>
+<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.598">
+</testcase>
+</testsuite>
+<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="7" failures="0" skipped="7" time="2.194" errors="0">
+<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.254">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -282,7 +483,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.224">
+<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.274">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -290,7 +491,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.243">
+<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.309">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -298,7 +499,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.301">
+<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.311">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -306,7 +507,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.284">
+<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.339">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -314,7 +515,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.367">
+<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.368">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -322,7 +523,7 @@
 <skipped>
 </skipped>
 </testcase>
-<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.385">
+<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.339">
 <properties>
 <property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
 </property>
@@ -331,23 +532,23 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="3" failures="0" skipped="0" time="4.186" errors="0">
-<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.45">
+<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="3" failures="0" skipped="0" time="3.693" errors="0">
+<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.247">
 <properties>
 <property name="flaky" value="This test is known to be flaky">
 </property>
 </properties>
 </testcase>
-<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.373">
+<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.196">
 </testcase>
-<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.363">
-</testcase>
-</testsuite>
-<testsuite name="framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.618" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.618">
+<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.25">
 </testcase>
 </testsuite>
-<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testsuite name="framework-validation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.346" errors="0">
+<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.346">
+</testcase>
+</testsuite>
+<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="2" failures="0" skipped="2" time="0" errors="0">
 <testcase name="Jira API Integration › should search for issues using JQL @JIRA-123" classname="integration/jira-integration.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -365,7 +566,7 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="2" failures="0" skipped="2" time="0" errors="0">
+<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="2" failures="0" skipped="2" time="0" errors="0">
 <testcase name="Salesforce Objects Integration › should get object metadata @SF-123" classname="integration/salesforce-objects.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -383,7 +584,7 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="1" failures="0" skipped="1" time="0" errors="0">
+<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="1" failures="0" skipped="1" time="0" errors="0">
 <testcase name="TestRail Integration › Execute TestRail test case" classname="integration/testrail-example.spec.js" time="0">
 <properties>
 <property name="skip" value="">
@@ -393,217 +594,74 @@
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.023" errors="0">
-<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.023">
+<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.015" errors="0">
+<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.015">
 </testcase>
 </testsuite>
-<testsuite name="reporting/simple.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="firefox" tests="1" failures="0" skipped="0" time="0.001" errors="0">
-<testcase name="Simple Test › should pass" classname="reporting/simple.spec.js" time="0.001">
+<testsuite name="reporting/simple.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.002" errors="0">
+<testcase name="Simple Test › should pass" classname="reporting/simple.spec.js" time="0.002">
 </testcase>
 </testsuite>
-<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="3" failures="0" skipped="1" time="14.469" errors="0">
-<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.87">
+<testsuite name="salesforce/fixed-account-contact.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="salesforce" tests="2" failures="0" skipped="0" time="28.44" errors="0">
+<testcase name="Fixed Salesforce Account and Contact Creation › should create a new account using direct navigation" classname="salesforce/fixed-account-contact.spec.js" time="15.608">
 <system-out>
-<![CDATA[Critical violations: []
+<![CDATA[Using account name: AgentSync1750838971050
+Navigating directly to Accounts list view...
+Clicking New button...
+Filling account details...
+Saving account...
+Account creation completed
+Account ID: view
 ]]>
 </system-out>
 </testcase>
-<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="4.775">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="4.824">
-</testcase>
-</testsuite>
-<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="3" failures="0" skipped="1" time="13.229" errors="0">
-<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.829">
+<testcase name="Fixed Salesforce Account and Contact Creation › should create a contact using direct navigation" classname="salesforce/fixed-account-contact.spec.js" time="12.832">
 <system-out>
-<![CDATA[Accessibility violations: [
-  {
-    type: [32m'html-lang'[39m,
-    message: [32m'Document language not specified'[39m,
-    severity: [32m'serious'[39m,
-    element: { tagName: [32m'html'[39m, selector: [32m'html'[39m }
-  }
-]
+<![CDATA[Using account: AgentSync1750838006642 (view)
+Navigating directly to New Contact form...
+Filling contact details...
+Saving contact...
+Contact creation completed
 ]]>
 </system-out>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="4.831">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.569">
+</testsuite>
+<testsuite name="salesforce/fixed-sf-login.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="salesforce" tests="1" failures="0" skipped="0" time="17.827" errors="0">
+<testcase name="Salesforce login test with improved reliability" classname="salesforce/fixed-sf-login.spec.js" time="17.827">
+<system-out>
+<![CDATA[Starting Salesforce login test...
+Navigated to login page
+Filled login credentials
+Clicked login button
+Navigation completed
+Additional wait completed
+Screenshot taken
+Authentication state saved
+Current page title: Home | Salesforce
+Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lightning/setup/SetupOneHome/home
+✅ Successfully logged in to Salesforce and saved authentication state
+]]>
+</system-out>
 </testcase>
 </testsuite>
-<testsuite name="core/authentication.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="3" failures="0" skipped="0" time="16.539" errors="0">
-<testcase name="Authentication › should login with valid credentials" classname="core/authentication.spec.js" time="5.433">
-</testcase>
-<testcase name="Authentication › should show error with invalid credentials" classname="core/authentication.spec.js" time="5.422">
-</testcase>
-<testcase name="Authentication › should require username and password" classname="core/authentication.spec.js" time="5.684">
-</testcase>
-</testsuite>
-<testsuite name="core/form-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="3" failures="0" skipped="0" time="15.665" errors="0">
-<testcase name="Form Validation › should validate required fields" classname="core/form-validation.spec.js" time="5.461">
-</testcase>
-<testcase name="Form Validation › should validate input format" classname="core/form-validation.spec.js" time="4.98">
-</testcase>
-<testcase name="Form Validation › should accept valid form submission" classname="core/form-validation.spec.js" time="5.224">
-</testcase>
-</testsuite>
-<testsuite name="core/framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="1" failures="0" skipped="0" time="1.127" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="core/framework-validation.spec.js" time="1.127">
+<testsuite name="salesforce/minimal-navigation.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="salesforce" tests="1" failures="0" skipped="0" time="29.265" errors="0">
+<testcase name="Minimal Salesforce navigation test" classname="salesforce/minimal-navigation.spec.js" time="29.265">
+<system-out>
+<![CDATA[Logging in to Salesforce...
+Navigating to home page...
+Attempting to access App Launcher...
+App Launcher button found by role
+App Launcher button not visible by CSS selector
+Trying direct navigation to Accounts...
+Direct navigation to Accounts completed
+Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lightning/o/Account/list?filterName=__Recent
+Page title: Recently Viewed | Accounts | Salesforce
+]]>
+</system-out>
 </testcase>
 </testsuite>
-<testsuite name="core/navigation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="4" failures="0" skipped="0" time="17.387" errors="0">
-<testcase name="Navigation › should navigate to Checkboxes page" classname="core/navigation.spec.js" time="4.24">
-</testcase>
-<testcase name="Navigation › should navigate to Dropdown page" classname="core/navigation.spec.js" time="4.027">
-</testcase>
-<testcase name="Navigation › should navigate to Form Authentication page" classname="core/navigation.spec.js" time="4.705">
-</testcase>
-<testcase name="Navigation › should navigate back to home page" classname="core/navigation.spec.js" time="4.415">
-</testcase>
-</testsuite>
-<testsuite name="core/orangehrm-tests.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="7" failures="0" skipped="7" time="1.703" errors="0">
-<testcase name="OrangeHRM Authentication › should login with valid credentials" classname="core/orangehrm-tests.spec.js" time="0.213">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Authentication › should logout successfully" classname="core/orangehrm-tests.spec.js" time="0.203">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Navigation › should navigate to Admin page" classname="core/orangehrm-tests.spec.js" time="0.223">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Navigation › should navigate to PIM page" classname="core/orangehrm-tests.spec.js" time="0.222">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Navigation › should navigate back to Dashboard" classname="core/orangehrm-tests.spec.js" time="0.274">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Form Validation › should validate password strength in Add User form" classname="core/orangehrm-tests.spec.js" time="0.27">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="OrangeHRM Form Validation › should validate password confirmation in Add User form" classname="core/orangehrm-tests.spec.js" time="0.298">
-<properties>
-<property name="skip" value="OrangeHRM tests are skipped due to site availability issues">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="examples/flaky-test-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="3" failures="0" skipped="0" time="3.337" errors="0">
-<testcase name="Flaky Test Examples › flaky test with annotation" classname="examples/flaky-test-example.spec.js" time="1.148">
-<properties>
-<property name="flaky" value="This test is known to be flaky">
-</property>
-</properties>
-</testcase>
-<testcase name="Flaky Test Examples › test that might be quarantined automatically" classname="examples/flaky-test-example.spec.js" time="1.084">
-</testcase>
-<testcase name="Flaky Test Examples › manually skipped test if needed" classname="examples/flaky-test-example.spec.js" time="1.105">
-</testcase>
-</testsuite>
-<testsuite name="framework-validation.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.225" errors="0">
-<testcase name="Framework Validation › Framework validation test" classname="framework-validation.spec.js" time="0.225">
-</testcase>
-</testsuite>
-<testsuite name="integration/jira-integration.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="2" failures="0" skipped="2" time="0" errors="0">
-<testcase name="Jira API Integration › should search for issues using JQL @JIRA-123" classname="integration/jira-integration.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Jira API Integration › should get issue details @JIRA-124" classname="integration/jira-integration.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="integration/salesforce-objects.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="2" failures="0" skipped="2" time="0" errors="0">
-<testcase name="Salesforce Objects Integration › should get object metadata @SF-123" classname="integration/salesforce-objects.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Salesforce Objects Integration › should create and retrieve test case @SF-124" classname="integration/salesforce-objects.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="integration/testrail-example.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="1" failures="0" skipped="1" time="0" errors="0">
-<testcase name="TestRail Integration › Execute TestRail test case" classname="integration/testrail-example.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="reporting/reportingUtils.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.003" errors="0">
-<testcase name="Reporting Utilities › should process Playwright results" classname="reporting/reportingUtils.spec.js" time="0.003">
-</testcase>
-</testsuite>
-<testsuite name="reporting/simple.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="webkit" tests="1" failures="0" skipped="0" time="0.001" errors="0">
-<testcase name="Simple Test › should pass" classname="reporting/simple.spec.js" time="0.001">
-</testcase>
-</testsuite>
-<testsuite name="salesforce/salesforce-api-mock.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="salesforce" tests="4" failures="0" skipped="0" time="0.066" errors="0">
-<testcase name="Salesforce API Mock Tests › should get API limits" classname="salesforce/salesforce-api-mock.spec.js" time="0.011">
+<testsuite name="salesforce/salesforce-api-mock.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="salesforce" tests="4" failures="0" skipped="0" time="0.027" errors="0">
+<testcase name="Salesforce API Mock Tests › should get API limits" classname="salesforce/salesforce-api-mock.spec.js" time="0.01">
 <system-out>
 <![CDATA[API Limits: {
   "DailyApiRequests": {
@@ -622,145 +680,91 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Salesforce API Mock Tests › should describe global objects" classname="salesforce/salesforce-api-mock.spec.js" time="0.012">
+<testcase name="Salesforce API Mock Tests › should describe global objects" classname="salesforce/salesforce-api-mock.spec.js" time="0.005">
 <system-out>
 <![CDATA[Objects: [ [32m'Account'[39m, [32m'Contact'[39m ]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Salesforce API Mock Tests › should describe Contact object" classname="salesforce/salesforce-api-mock.spec.js" time="0.013">
+<testcase name="Salesforce API Mock Tests › should describe Contact object" classname="salesforce/salesforce-api-mock.spec.js" time="0.006">
 <system-out>
 <![CDATA[Contact Fields: [ [32m'Id'[39m, [32m'FirstName'[39m, [32m'LastName'[39m, [32m'Email'[39m, [32m'Phone'[39m ]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Salesforce API Mock Tests › should extract Contact metadata to file" classname="salesforce/salesforce-api-mock.spec.js" time="0.03">
+<testcase name="Salesforce API Mock Tests › should extract Contact metadata to file" classname="salesforce/salesforce-api-mock.spec.js" time="0.006">
 <system-out>
 <![CDATA[Contact metadata extracted to /Users/mzahirudeen/Desktop/AgentSync/Client Deliverable/AgentSyncProfessionalServices/temp/contact-metadata-mock.json
 ]]>
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="salesforce/salesforce-api.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="salesforce" tests="4" failures="0" skipped="4" time="0.003" errors="0">
-<testcase name="Salesforce API Tests › should get API limits" classname="salesforce/salesforce-api.spec.js" time="0.001">
-<properties>
-<property name="skip" value="No access token available">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testsuite name="api/rest/create-user.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="api" tests="5" failures="0" skipped="0" time="3.409" errors="0">
+<testcase name="Create User API Tests › Create new user with valid data" classname="api/rest/create-user.spec.js" time="1.88">
 </testcase>
-<testcase name="Salesforce API Tests › should describe global objects" classname="salesforce/salesforce-api.spec.js" time="0.001">
-<properties>
-<property name="skip" value="No access token available">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="Create User API Tests › Create user with minimal data" classname="api/rest/create-user.spec.js" time="0.348">
 </testcase>
-<testcase name="Salesforce API Tests › should describe Contact object" classname="salesforce/salesforce-api.spec.js" time="0">
-<properties>
-<property name="skip" value="No access token available">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="Create User API Tests › Update user with PUT request" classname="api/rest/create-user.spec.js" time="0.424">
 </testcase>
-<testcase name="Salesforce API Tests › should extract Contact metadata to file" classname="salesforce/salesforce-api.spec.js" time="0.001">
-<properties>
-<property name="skip" value="No access token available">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="Create User API Tests › Update user with PATCH request" classname="api/rest/create-user.spec.js" time="0.383">
+</testcase>
+<testcase name="Create User API Tests › Delete user" classname="api/rest/create-user.spec.js" time="0.374">
 </testcase>
 </testsuite>
-<testsuite name="salesforce/salesforce-login.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="salesforce" tests="1" failures="0" skipped="0" time="18.454" errors="0">
-<testcase name="Salesforce Login Test › should login to Salesforce successfully" classname="salesforce/salesforce-login.spec.js" time="18.454">
-<system-out>
-<![CDATA[Current page title: Home | Salesforce
-Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lightning/setup/SetupOneHome/home
-✅ Successfully logged in to Salesforce and saved authentication state
-]]>
-</system-out>
+<testsuite name="api/rest/data-driven-api.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="api" tests="12" failures="0" skipped="0" time="2.925" errors="0">
+<testcase name="Data-Driven API Tests › Create user: User 1 - Job 1" classname="api/rest/data-driven-api.spec.js" time="0.394">
+</testcase>
+<testcase name="Data-Driven API Tests › Create user: User 2 - Job 2" classname="api/rest/data-driven-api.spec.js" time="0.529">
+</testcase>
+<testcase name="Data-Driven API Tests › Create user: User 3 - Job 3" classname="api/rest/data-driven-api.spec.js" time="0.493">
+</testcase>
+<testcase name="Data-Driven API Tests › Get user with ID: 1" classname="api/rest/data-driven-api.spec.js" time="0.186">
+</testcase>
+<testcase name="Data-Driven API Tests › Get user with ID: 2" classname="api/rest/data-driven-api.spec.js" time="0.238">
+</testcase>
+<testcase name="Data-Driven API Tests › Get user with ID: 3" classname="api/rest/data-driven-api.spec.js" time="0.425">
+</testcase>
+<testcase name="Data-Driven API Tests › Get user with ID: 23" classname="api/rest/data-driven-api.spec.js" time="0.333">
+</testcase>
+<testcase name="Data-Driven API Tests › Get users from page 1" classname="api/rest/data-driven-api.spec.js" time="0.044">
+</testcase>
+<testcase name="Data-Driven API Tests › Get users from page 2" classname="api/rest/data-driven-api.spec.js" time="0.053">
+</testcase>
+<testcase name="Data-Driven API Tests › Get users from page 3" classname="api/rest/data-driven-api.spec.js" time="0.069">
+</testcase>
+<testcase name="Data-Driven API Tests › API with page=1" classname="api/rest/data-driven-api.spec.js" time="0.073">
+</testcase>
+<testcase name="Data-Driven API Tests › API with per_page=3" classname="api/rest/data-driven-api.spec.js" time="0.088">
 </testcase>
 </testsuite>
-<testsuite name="salesforce/salesforce-simple-contact.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="salesforce" tests="1" failures="0" skipped="1" time="0" errors="0">
-<testcase name="Salesforce Simple Contact Test › should navigate to contacts list" classname="salesforce/salesforce-simple-contact.spec.js" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testsuite name="api/rest/fixed-reqres-api.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="api" tests="4" failures="0" skipped="0" time="0.921" errors="0">
+<testcase name="ReqRes API with Schema Validation › Get users list with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.12">
+</testcase>
+<testcase name="ReqRes API with Schema Validation › Get single user with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.056">
+</testcase>
+<testcase name="ReqRes API with Schema Validation › Create user with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.358">
+</testcase>
+<testcase name="ReqRes API with Schema Validation › Validate error response for non-existent resource" classname="api/rest/fixed-reqres-api.spec.js" time="0.387">
 </testcase>
 </testsuite>
-<testsuite name="api/rest/create-user.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="api" tests="5" failures="0" skipped="0" time="2.23" errors="0">
-<testcase name="Create User API Tests › Create new user with valid data" classname="api/rest/create-user.spec.js" time="0.468">
+<testsuite name="api/rest/user-api.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="api" tests="4" failures="0" skipped="0" time="0.478" errors="0">
+<testcase name="User API Tests › Get list of users" classname="api/rest/user-api.spec.js" time="0.058">
 </testcase>
-<testcase name="Create User API Tests › Create user with minimal data" classname="api/rest/create-user.spec.js" time="0.483">
+<testcase name="User API Tests › Get single user by ID" classname="api/rest/user-api.spec.js" time="0.044">
 </testcase>
-<testcase name="Create User API Tests › Update user with PUT request" classname="api/rest/create-user.spec.js" time="0.433">
+<testcase name="User API Tests › Get non-existent user returns 404" classname="api/rest/user-api.spec.js" time="0.336">
 </testcase>
-<testcase name="Create User API Tests › Update user with PATCH request" classname="api/rest/create-user.spec.js" time="0.515">
-</testcase>
-<testcase name="Create User API Tests › Delete user" classname="api/rest/create-user.spec.js" time="0.331">
+<testcase name="User API Tests › Get user resources" classname="api/rest/user-api.spec.js" time="0.04">
 </testcase>
 </testsuite>
-<testsuite name="api/rest/data-driven-api.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="api" tests="12" failures="0" skipped="0" time="2.956" errors="0">
-<testcase name="Data-Driven API Tests › Create user: User 1 - Job 1" classname="api/rest/data-driven-api.spec.js" time="0.355">
-</testcase>
-<testcase name="Data-Driven API Tests › Create user: User 2 - Job 2" classname="api/rest/data-driven-api.spec.js" time="0.385">
-</testcase>
-<testcase name="Data-Driven API Tests › Create user: User 3 - Job 3" classname="api/rest/data-driven-api.spec.js" time="0.333">
-</testcase>
-<testcase name="Data-Driven API Tests › Get user with ID: 1" classname="api/rest/data-driven-api.spec.js" time="0.336">
-</testcase>
-<testcase name="Data-Driven API Tests › Get user with ID: 2" classname="api/rest/data-driven-api.spec.js" time="0.045">
-</testcase>
-<testcase name="Data-Driven API Tests › Get user with ID: 3" classname="api/rest/data-driven-api.spec.js" time="0.365">
-</testcase>
-<testcase name="Data-Driven API Tests › Get user with ID: 23" classname="api/rest/data-driven-api.spec.js" time="0.365">
-</testcase>
-<testcase name="Data-Driven API Tests › Get users from page 1" classname="api/rest/data-driven-api.spec.js" time="0.031">
-</testcase>
-<testcase name="Data-Driven API Tests › Get users from page 2" classname="api/rest/data-driven-api.spec.js" time="0.032">
-</testcase>
-<testcase name="Data-Driven API Tests › Get users from page 3" classname="api/rest/data-driven-api.spec.js" time="0.324">
-</testcase>
-<testcase name="Data-Driven API Tests › API with page=1" classname="api/rest/data-driven-api.spec.js" time="0.049">
-</testcase>
-<testcase name="Data-Driven API Tests › API with per_page=3" classname="api/rest/data-driven-api.spec.js" time="0.336">
-</testcase>
-</testsuite>
-<testsuite name="api/rest/fixed-reqres-api.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="api" tests="4" failures="0" skipped="0" time="0.829" errors="0">
-<testcase name="ReqRes API with Schema Validation › Get users list with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.063">
-</testcase>
-<testcase name="ReqRes API with Schema Validation › Get single user with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.053">
-</testcase>
-<testcase name="ReqRes API with Schema Validation › Create user with schema validation" classname="api/rest/fixed-reqres-api.spec.js" time="0.379">
-</testcase>
-<testcase name="ReqRes API with Schema Validation › Validate error response for non-existent resource" classname="api/rest/fixed-reqres-api.spec.js" time="0.334">
-</testcase>
-</testsuite>
-<testsuite name="api/rest/user-api.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="api" tests="4" failures="0" skipped="0" time="0.442" errors="0">
-<testcase name="User API Tests › Get list of users" classname="api/rest/user-api.spec.js" time="0.04">
-</testcase>
-<testcase name="User API Tests › Get single user by ID" classname="api/rest/user-api.spec.js" time="0.032">
-</testcase>
-<testcase name="User API Tests › Get non-existent user returns 404" classname="api/rest/user-api.spec.js" time="0.335">
-</testcase>
-<testcase name="User API Tests › Get user resources" classname="api/rest/user-api.spec.js" time="0.035">
-</testcase>
-</testsuite>
-<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="accessibility" tests="3" failures="0" skipped="1" time="10.753" errors="0">
-<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="3.661">
+<testsuite name="accessibility/accessibility.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="accessibility" tests="3" failures="0" skipped="1" time="10.707" errors="0">
+<testcase name="Accessibility Tests › login page should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="3.587">
 <system-out>
 <![CDATA[Critical violations: []
 ]]>
 </system-out>
 </testcase>
-<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="3.475">
+<testcase name="Accessibility Tests › dashboard should not have critical accessibility violations" classname="accessibility/accessibility.spec.js" time="3.511">
 <properties>
 <property name="skip" value="">
 </property>
@@ -768,11 +772,11 @@ Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lig
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="3.617">
+<testcase name="Accessibility Tests › login page should pass specific accessibility rules" classname="accessibility/accessibility.spec.js" time="3.609">
 </testcase>
 </testsuite>
-<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-24T12:51:52.416Z" hostname="accessibility" tests="3" failures="0" skipped="1" time="10.239" errors="0">
-<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.653">
+<testsuite name="accessibility/fixed-accessibilityTest.spec.js" timestamp="2025-06-25T08:08:27.183Z" hostname="accessibility" tests="3" failures="0" skipped="1" time="10.447" errors="0">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login page should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.513">
 <system-out>
 <![CDATA[Accessibility violations: [
   {
@@ -785,7 +789,7 @@ Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lig
 ]]>
 </system-out>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.202">
+<testcase name="Fixed Accessibility Tests › OrangeHRM dashboard should generate accessibility report" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.417">
 <properties>
 <property name="skip" value="">
 </property>
@@ -793,7 +797,7 @@ Current URL: https://wise-koala-a44c19-dev-ed.trailblaze.lightning.force.com/lig
 <skipped>
 </skipped>
 </testcase>
-<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.384">
+<testcase name="Fixed Accessibility Tests › OrangeHRM login form should be accessible" classname="accessibility/fixed-accessibilityTest.spec.js" time="3.517">
 </testcase>
 </testsuite>
 </testsuites>

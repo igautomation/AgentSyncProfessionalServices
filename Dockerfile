@@ -8,8 +8,8 @@ RUN npm install -g @salesforce/cli
 # Copy project files first
 COPY . .
 
-# Install dependencies
-RUN npm ci --legacy-peer-deps
+# Install dependencies (skip postinstall script)
+RUN npm ci --legacy-peer-deps --ignore-scripts
 
 # Create necessary directories
 RUN mkdir -p src/pages tests/pages sessions

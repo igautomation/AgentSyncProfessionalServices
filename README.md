@@ -1,5 +1,7 @@
 # AgentSync Test Framework
 
+> **Note**: For a comprehensive guide to the framework, please see the [Master README](MASTER_README.md).
+
 A comprehensive test automation framework for AgentSync projects, distributed as a private GitHub NPM package.
 
 ## Installation
@@ -216,14 +218,28 @@ Refer to `.env.example` for all available configuration options.
 
 ## Documentation
 
-- [Installation Guide](docs/INSTALLATION.md)
+### User Guide
+
+A comprehensive user guide is available in the [docs/user-guide](docs/user-guide/index.md) directory. This includes:
+
+- [Installation Guide](docs/user-guide/INSTALLATION.md)
+- [Quick Start Guide](docs/user-guide/QUICK_START.md)
+- [Usage Guide](docs/user-guide/USAGE.md)
+- [Environment Variables Guide](docs/user-guide/ENVIRONMENT_VARIABLES.md)
+- [Templates Guide](docs/user-guide/TEMPLATES_GUIDE.md)
+- [Multi-Project Guide](docs/user-guide/MULTI_PROJECT_GUIDE.md)
+- [Salesforce Testing Guide](docs/user-guide/README-SALESFORCE-TESTS.md)
+
+### Additional Documentation
+
 - [System Dependencies Guide](docs/SYSTEM_DEPENDENCIES.md)
 - [GitHub Packages Setup Guide](docs/GITHUB_PACKAGES_SETUP.md)
 - [NPM Setup Guide](docs/npm-setup.md)
-- [Multi-Project Guide](docs/MULTI_PROJECT_GUIDE.md)
-- [Quick Start Guide](docs/QUICK_START.md)
 - [Client Setup Checklist](docs/CLIENT_SETUP_CHECKLIST.md)
-- [Environment Variables Guide](docs/ENVIRONMENT_VARIABLES.md)
+
+### Consolidated Documentation
+
+A single file containing all documentation is available at [docs/CONSOLIDATED_USER_GUIDE.md](docs/CONSOLIDATED_USER_GUIDE.md).
 
 ## License
 

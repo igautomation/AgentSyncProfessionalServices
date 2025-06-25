@@ -22,7 +22,8 @@
     "config",
     "index.js",
     "README.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    "docs/user-guide"
   ],
   "repository": {
     "type": "git",
@@ -69,7 +70,9 @@
     "publish:framework": "node scripts/publish.js",
     "publish:setup": "node scripts/setup-publish-token.js",
     "publish:quick-fix": "node scripts/quick-publish-fix.js",
-    "postinstall": "node scripts/check-dependencies.js"
+    "postinstall": "node scripts/check-dependencies.js",
+    "generate:user-guide": "node scripts/generate-user-guide.js",
+    "update:user-guide": "node scripts/update-user-guide.js"
   },
   "keywords": [
     "e2e",

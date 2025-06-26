@@ -1,0 +1,21 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "dependencies": {
+    "@playwright/test": "^1.53.1",
+    "dotenv": "^16.3.1",
+    
+    /* Method 1: Using GitHub URL with auth token */
+    "private-framework": "git+https://${GITHUB_TOKEN}:x-oauth-basic@github.com/igautomation/agentsyncprofessionalservices.git#main",
+    
+    /* Method 2: Using GitHub shorthand with auth in .npmrc */
+    "private-framework-alt": "github:igautomation/agentsyncprofessionalservices#main",
+    
+    /* Method 3: Using specific commit hash for better reproducibility */
+    "private-framework-fixed": "github:igautomation/agentsyncprofessionalservices#commit-hash"
+  },
+  "scripts": {
+    "test": "playwright test"
+  }
+}

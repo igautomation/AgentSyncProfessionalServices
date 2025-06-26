@@ -5,11 +5,22 @@ WORKDIR /app
 # Install Salesforce CLI
 RUN npm install -g @salesforce/cli
 
-# Copy project files first
-COPY . .
+# Copy package files first for better layer caching
+COPY package*.json ./
+COPY .npmrc* ./
 
-# Install dependencies (skip postinstall script)
-RUN npm ci --legacy-peer-deps --ignore-scripts
+# Set up GitHub authentication if GITHUB_TOKEN is provided
+ARG GITHUB_TOKEN
+RUN if [ -n "$GITHUB_TOKEN" ]; then \
+    echo "@igautomation:registry=https://npm.pkg.github.com/" > .npmrc && \
+    echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc; \
+    fi
+
+# Install dependencies
+RUN npm ci --legacy-peer-deps
+
+# Copy the rest of the project files
+COPY . .
 
 # Create necessary directories
 RUN mkdir -p src/pages tests/pages sessions

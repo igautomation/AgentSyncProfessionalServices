@@ -1,0 +1,52 @@
+name: Export to Client Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      client_repo:
+        description: 'Client repository URL (e.g., organization/repo-name)'
+        required: true
+      branch:
+        description: 'Branch to push to'
+        required: true
+        default: 'main'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Push to client repository
+        env:
+          PAT: ${{ secrets.CLIENT_REPO_PAT }}
+          CLIENT_REPO: ${{ github.event.inputs.client_repo }}
+          TARGET_BRANCH: ${{ github.event.inputs.branch }}
+        run: |
+          # Create a temporary directory
+          mkdir -p /tmp/client-export
+          cd /tmp/client-export
+          
+          # Clone the client repository using PAT
+          git clone https://x-access-token:${PAT}@github.com/${CLIENT_REPO}.git .
+          
+          # Create or checkout branch
+          git checkout ${TARGET_BRANCH} 2>/dev/null || git checkout -b ${TARGET_BRANCH}
+          
+          # Copy files from our repository (excluding .git directory)
+          rsync -av --exclude='.git' $GITHUB_WORKSPACE/ .
+          
+          # Commit and push changes
+          git add .
+          git commit -m "Export Playwright framework from AgentSyncProfessionalServices" || echo "No changes to commit"
+          
+          # Push to the client repository
+          git push origin ${TARGET_BRANCH}

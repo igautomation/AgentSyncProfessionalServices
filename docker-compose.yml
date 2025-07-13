@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        # Pass GitHub token during build
+        GITHUB_TOKEN: ${GITHUB_TOKEN}
+    environment:
+      # Runtime environment variables
+      NODE_ENV: production
+      CI: 'true'
+      HEADLESS: 'true'
+    volumes:
+      # Mount local directories for development if needed
+      - ./reports:/app/reports
+      - ./test-results:/app/test-results
+    command: npm test

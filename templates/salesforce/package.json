@@ -1,0 +1,18 @@
+{
+  "name": "agentsync-salesforce-tests",
+  "version": "1.0.0",
+  "description": "Salesforce tests using AgentSync Test Framework",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "setup": "node global-setup.js"
+  },
+  "dependencies": {
+    "@igautomation/agentsyncprofessionalservices": "^1.0.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "dotenv": "^16.3.1"
+  }
+}
